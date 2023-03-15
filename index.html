@@ -155,6 +155,160 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-React+antDesign实现上传图片功能(类组件)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/15/clf94ml770004d0fya48b0p0t/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+	<!-- 目录内容 -->
+	     
+<!-- 目录内容结束 -->
+
+
+
+  
+    <article id="post-react中使用的富文本编辑器braft-editor使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/14/clf94ml7d0008d0fy75mwbpio/">react中使用的富文本编辑器braft-editor使用</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/14/clf94ml7d0008d0fy75mwbpio/" class="archive-article-date">
+  	<time datetime="2023-03-14T03:05:54.581Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>目录</strong></p>
+<p><a href="#%E5%89%8D%E8%A8%80">前言</a></p>
+<p><a href="#%E5%AF%BC%E8%AF%AD">导语</a></p>
+<p><a href="#%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF">解决思路</a></p>
+<p><a href="#%E6%80%BB%E7%BB%93">总结</a></p>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>我是歌谣 我有个兄弟 巅峰的时候排名c站总榜19 叫前端小歌谣 曾经我花了三年的时间创作了他 现在我要用五年的时间超越他 今天又是接近兄弟的一天人生难免坎坷 大不了从头再来 歌谣的意志是永恒的 放弃很容易 但是坚持一定很酷</p>
+</blockquote>
+<h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
+<p>歌谣 歌谣 项目中需要使用富文本的编辑器 你有什么推荐吗</p>
+</blockquote>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/92c7138b29d748d4a3991f9b5e55485a~tplv-k3u1fbpfcp-zoom-1.image"><img src="" title="点击并拖拽以移动">​编辑</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bb63462a1ea8425ebd0c2c3a4f6ed429~tplv-k3u1fbpfcp-zoom-1.image"><img src="" title="点击并拖拽以移动">​编辑</p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>第一步安装依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#使用yarn安装     yarn add braft-editor</span><br><span class="line"></span><br><span class="line">#使用npm安装    npm install braft-editor --save</span><br></pre></td></tr></table></figure>
+
+<p><img src="" title="点击并拖拽以移动"></p>
+<p>第二步 封装子组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#x27;react&#x27;</span><br><span class="line">import BraftEditor from &#x27;braft-editor&#x27;;</span><br><span class="line">import &#x27;braft-editor/dist/index.css&#x27;;</span><br><span class="line">//音频接口方法</span><br><span class="line">import &#123; xxxxx &#125; from &#x27;@/services/common/upload&#x27;;</span><br><span class="line">class BaseRichText extends Component &#123;</span><br><span class="line">  myUploadFn = async (parame) =&gt; &#123;</span><br><span class="line">    const &#123; dispatch, handleFetchUrl &#125; = this.props;</span><br><span class="line">    const formData = new FormData();</span><br><span class="line">    formData.append(&#x27;file&#x27;, parame.file);</span><br><span class="line">    formData.append(&#x27;fileCode&#x27;, &#x27;PIC&#x27;);</span><br><span class="line">    const res = await xxxxx(formData);</span><br><span class="line">    parame.success(&#123;</span><br><span class="line">      url: res.data,</span><br><span class="line">      meta: &#123;</span><br><span class="line"></span><br><span class="line">        loop: false, // 指定音视频是否循环播放</span><br><span class="line">        autoPlay: false, // 指定音视频是否自动播放</span><br><span class="line">        controls: false, // 指定音视频是否显示控制栏</span><br><span class="line">        // poster: &#x27;http://xxx/xx.png&#x27;, // 指定视频播放器的封面</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; editorState, handleEditorChange, height = 640, </span><br><span class="line">style, ...reset &#125; = this.props;</span><br><span class="line">    return (</span><br><span class="line">      &lt;BraftEditor</span><br><span class="line">        value=&#123;editorState&#125;</span><br><span class="line">        onChange=&#123;handleEditorChange&#125;</span><br><span class="line">        style=&#123;style&#125;</span><br><span class="line">        contentStyle=&#123;&#123; height, boxShadow: &#x27;inset 0 1px 3px</span><br><span class="line"> rgba(0,0,0,.1)&#x27; &#125;&#125;</span><br><span class="line">        &#123;...reset&#125;</span><br><span class="line">        media=&#123;&#123; uploadFn: this.myUploadFn &#125;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export default BaseRichText;</span><br></pre></td></tr></table></figure>
+
+<p><img src="" title="点击并拖拽以移动"></p>
+<p>第三步 引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;BaseRichText height=&#123;360&#125; handleEditorChange=&#123;this.handleEditorChange&#125; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="" title="点击并拖拽以移动"></p>
+<p>第四部 回调</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">handleEditorChange = (editorState) =&gt; &#123;</span><br><span class="line">   console.log(editorState, &#x27;editorState&#x27;);</span><br><span class="line">   this.setState(&#123; activityRule: editorState &#125;);</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="" title="点击并拖拽以移动"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>要点1 处理数据分别用xxx.toHtml（）转化和BraftEditor.createEditorState（xxxx）反转化</p>
+<p>要点2 回调可以实时返回当前值 及时存储</p>
+</blockquote>
+<p>​</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/14/clf94ml7d0008d0fy75mwbpio/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+	<!-- 目录内容 -->
+	     
+<!-- 目录内容结束 -->
+
+
+
+  
     <article id="post-Taro+react+TaroUi封装一个公司库的下拉组件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,12 +316,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/12/clf57moi1000660fyh0bedhvl/">Taro+react+TaroUi封装一个公司库的下拉组件</a>
+      <a class="article-title" href="/2023/03/12/clf94ml780006d0fy9hw87q0r/">Taro+react+TaroUi封装一个公司库的下拉组件</a>
     </h1>
   
 
         
-        <a href="/2023/03/12/clf57moi1000660fyh0bedhvl/" class="archive-article-date">
+        <a href="/2023/03/12/clf94ml780006d0fy9hw87q0r/" class="archive-article-date">
   	<time datetime="2023-03-12T09:28:29.528Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-12</time>
 </a>
         
@@ -264,7 +418,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/12/clf57moi1000660fyh0bedhvl/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/12/clf94ml780006d0fy9hw87q0r/">展开全文 >></a>
         </p>
       
 
@@ -306,12 +460,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/12/clf57mohw000160fye59xbu8d/">React+Hook+ts+antDesignMobile实现input自动获取功能</a>
+      <a class="article-title" href="/2023/03/12/clf94ml6z0000d0fy6np20awo/">React+Hook+ts+antDesignMobile实现input自动获取功能</a>
     </h1>
   
 
         
-        <a href="/2023/03/12/clf57mohw000160fye59xbu8d/" class="archive-article-date">
+        <a href="/2023/03/12/clf94ml6z0000d0fy6np20awo/" class="archive-article-date">
   	<time datetime="2023-03-12T09:22:06.768Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-12</time>
 </a>
         
@@ -345,7 +499,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/12/clf57mohw000160fye59xbu8d/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/12/clf94ml6z0000d0fy6np20awo/">展开全文 >></a>
         </p>
       
 
@@ -387,12 +541,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/10/clf57mohz000360fydnzm5q6t/">React+Hook+ts+antDesign实现table增加一个合计功能</a>
+      <a class="article-title" href="/2023/03/10/clf94ml790007d0fy11exevfu/">React+Hook+ts+antDesign实现table增加一个合计功能</a>
     </h1>
   
 
         
-        <a href="/2023/03/10/clf57mohz000360fydnzm5q6t/" class="archive-article-date">
+        <a href="/2023/03/10/clf94ml790007d0fy11exevfu/" class="archive-article-date">
   	<time datetime="2023-03-10T02:32:17.932Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-10</time>
 </a>
         
@@ -423,7 +577,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/10/clf57mohz000360fydnzm5q6t/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/10/clf94ml790007d0fy11exevfu/">展开全文 >></a>
         </p>
       
 
@@ -465,12 +619,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/09/clf57mohy000260fyhlgog7zl/">React+Hook+ts+antDesign实现伪定时调用接口功能</a>
+      <a class="article-title" href="/2023/03/09/clf94ml780005d0fy009yglgo/">React+Hook+ts+antDesign实现伪定时调用接口功能</a>
     </h1>
   
 
         
-        <a href="/2023/03/09/clf57mohy000260fyhlgog7zl/" class="archive-article-date">
+        <a href="/2023/03/09/clf94ml780005d0fy009yglgo/" class="archive-article-date">
   	<time datetime="2023-03-09T08:49:51.628Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-09</time>
 </a>
         
@@ -514,7 +668,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/09/clf57mohy000260fyhlgog7zl/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/09/clf94ml780005d0fy009yglgo/">展开全文 >></a>
         </p>
       
 
@@ -556,12 +710,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/09/clf57moi1000560fy3xzzfs4g/">React+hook+ts+ant design upload实现多个文件一次上传</a>
+      <a class="article-title" href="/2023/03/09/clf94ml770003d0fyaq0rdy6x/">React+hook+ts+ant design upload实现多个文件一次上传</a>
     </h1>
   
 
         
-        <a href="/2023/03/09/clf57moi1000560fy3xzzfs4g/" class="archive-article-date">
+        <a href="/2023/03/09/clf94ml770003d0fyaq0rdy6x/" class="archive-article-date">
   	<time datetime="2023-03-09T02:21:03.377Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-09</time>
 </a>
         
@@ -617,7 +771,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/09/clf57moi1000560fy3xzzfs4g/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/09/clf94ml770003d0fyaq0rdy6x/">展开全文 >></a>
         </p>
       
 
@@ -659,12 +813,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/07/clf57moi0000460fy0j0gfbh2/">React+Hook+ts+antDesign实现table行编辑功能</a>
+      <a class="article-title" href="/2023/03/07/clf94ml760002d0fyb3ws69vx/">React+Hook+ts+antDesign实现table行编辑功能</a>
     </h1>
   
 
         
-        <a href="/2023/03/07/clf57moi0000460fy0j0gfbh2/" class="archive-article-date">
+        <a href="/2023/03/07/clf94ml760002d0fyb3ws69vx/" class="archive-article-date">
   	<time datetime="2023-03-07T06:26:15.198Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-07</time>
 </a>
         
@@ -712,7 +866,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/07/clf57moi0000460fy0j0gfbh2/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/07/clf94ml760002d0fyb3ws69vx/">展开全文 >></a>
         </p>
       
 
@@ -754,12 +908,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/06/clf57moi1000760fy69dybx9b/">react+ts+hook封装一个table分页组件(建议收藏,直接使用)</a>
+      <a class="article-title" href="/2023/03/06/clf94ml7d0009d0fy42q34tb3/">react+ts+hook封装一个table分页组件(建议收藏,直接使用)</a>
     </h1>
   
 
         
-        <a href="/2023/03/06/clf57moi1000760fy69dybx9b/" class="archive-article-date">
+        <a href="/2023/03/06/clf94ml7d0009d0fy42q34tb3/" class="archive-article-date">
   	<time datetime="2023-03-06T08:33:44.690Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
 </a>
         
@@ -813,7 +967,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/06/clf57moi1000760fy69dybx9b/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/06/clf94ml7d0009d0fy42q34tb3/">展开全文 >></a>
         </p>
       
 
