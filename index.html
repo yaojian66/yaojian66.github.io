@@ -155,6 +155,371 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端小知识点扫盲笔记记录3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/27/clfqiks7z000f4gfy5pup2a8t/">前端小知识点扫盲笔记记录3</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/27/clfqiks7z000f4gfy5pup2a8t/" class="archive-article-date">
+  	<time datetime="2023-03-27T07:32:28.760Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣带你进入前端巅峰交流群 今天继续对前端知识的小结</p>
+</blockquote>
+<h1 id="localStorage-和-sessionStorage"><a href="#localStorage-和-sessionStorage" class="headerlink" title="localStorage 和 sessionStorage"></a>localStorage 和 sessionStorage</h1><blockquote>
+<p>cookie 本身用于浏览器和 server 通讯。 被“借用”到本地存储来的。 可用<br>        document.cookie = ‘…’ 来修改。 其缺点： 存储大小限制为 4KB。 http<br>        请求时需要发送到服务端，增加请求数量。 只能用 document.cookie = ‘…’<br>        来修改，太过简陋。 2、localStorage 和 sessionStorage HTML5<br>        专门为存储来设计的，最大可存 5M。 API 简单易用， setItem getItem。<br>        不会随着 http 请求被发送到服务端。 它们的区别： localStorage<br>        数据会永久存储，除非代码删除或手动删除。 sessionStorage<br>        数据只存在于当前会话，浏览器关闭则清空。 一般用 localStorage 会多一些</p>
+</blockquote>
+<h1 id="objectDefineProperty"><a href="#objectDefineProperty" class="headerlink" title="objectDefineProperty"></a>objectDefineProperty</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">// 三个参数（属性所在的对象，你要操作的属性，被操作的属性的特性）</span><br><span class="line">      //   var geyao = &#123;</span><br><span class="line">      //     sex: &quot;男&quot;,</span><br><span class="line">      //     age: 18,</span><br><span class="line">      //   &#125;;</span><br><span class="line">      //   console.log(geyao,&quot;geyao1&quot;)</span><br><span class="line"></span><br><span class="line">      //   Object.defineProperty(geyao, &quot;sex&quot;, &#123;</span><br><span class="line"></span><br><span class="line">      //     get: function () &#123;</span><br><span class="line">      //       console.log(&quot;读取时,get被触发&quot;);</span><br><span class="line"></span><br><span class="line">      //       return this.sex</span><br><span class="line">      //     &#125;,</span><br><span class="line">      //     set: function (value) &#123;</span><br><span class="line">      //       console.log(value,&quot;value&quot;);</span><br><span class="line">      //      this.sex=value</span><br><span class="line">      //     &#125;,</span><br><span class="line"></span><br><span class="line">      //   &#125;);</span><br><span class="line">      //   console.log(geyao.sex,&quot;geyao2&quot;)</span><br><span class="line">      function getObj() &#123;</span><br><span class="line">        let obj = &#123;</span><br><span class="line">            sex:&quot;男&quot;,</span><br><span class="line">            age:18</span><br><span class="line">        &#125;;</span><br><span class="line">        let val = &quot;&quot;; //此处val是安全的,外部是无法修改的</span><br><span class="line">        let o = Object.defineProperty(obj, &quot;key&quot;, &#123;</span><br><span class="line">          configurable: true,</span><br><span class="line">          enumerable: true,</span><br><span class="line">          get: function () &#123;</span><br><span class="line">            return val || 0;</span><br><span class="line">          &#125;,</span><br><span class="line">          set: function (n) &#123;</span><br><span class="line">            val = n;</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">        return o; //每个对象都是新的</span><br><span class="line">      &#125;</span><br><span class="line">      let aa = getObj();</span><br><span class="line">      console.log(aa.sex); //返回性别</span><br></pre></td></tr></table></figure>
+
+<h1 id="objectDefinePropertytest"><a href="#objectDefinePropertytest" class="headerlink" title="objectDefinePropertytest"></a>objectDefinePropertytest</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      //</span><br><span class="line">      let geyao = &#123;</span><br><span class="line">        name: &quot;歌谣&quot;,</span><br><span class="line">        age: 18,</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      function definereactive(data, key, val) &#123;</span><br><span class="line">        Object.defineProperty(data, key, &#123;</span><br><span class="line">          enumerable: true,</span><br><span class="line">          configurable: true,</span><br><span class="line">          get: function () &#123;</span><br><span class="line">            console.log(&quot;有人在读取我&quot;);</span><br><span class="line">            return val;</span><br><span class="line">          &#125;,</span><br><span class="line">          set: function (newVal) &#123;</span><br><span class="line">            if (val == newVal) &#123;</span><br><span class="line">              console.log(&quot;我没有变化&quot;);</span><br><span class="line">              return;</span><br><span class="line">            &#125;</span><br><span class="line">            console.log(&quot;我变化了 我的天呀&quot;);</span><br><span class="line">            val = newVal;</span><br><span class="line">          </span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">      &#125;</span><br><span class="line">      console.log(&quot;--------------1&quot;);</span><br><span class="line">      console.log(definereactive(geyao, &quot;age&quot;, 18));</span><br><span class="line">      console.log(&quot;--------------1&quot;);</span><br><span class="line">      console.log(&quot;--------------2&quot;);</span><br><span class="line">      geyao.age = 19;</span><br><span class="line">      console.log(geyao,&quot;geyao&quot;)</span><br><span class="line">      console.log(&quot;--------------2&quot;);</span><br><span class="line">      console.log(&quot;--------------3&quot;);</span><br><span class="line">      console.log(definereactive(geyao, &quot;age&quot;));</span><br><span class="line">      console.log(&quot;--------------3&quot;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;slice&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var fangfang=[&quot;geyao&quot;,&quot;fangfang&quot;,&quot;huahua&quot;,&quot;mingming&quot;]</span><br><span class="line">    //arr.slice([begin[, end]])</span><br><span class="line">    var fangfangTest=fangfang.slice(1)</span><br><span class="line">    //从第一位进行截取</span><br><span class="line">    console.log(fangfangTest,&quot;fangfangTest&quot;) // [ &quot;fangfang&quot;, &quot;huahua&quot;, &quot;mingming&quot; ]</span><br><span class="line">    //截取数组的二到四位</span><br><span class="line">    var fangfangList=fangfang.slice(2,4)</span><br><span class="line">    console.log(fangfangList,&quot;fangfangList&quot;) //[  &quot;huahua&quot;, &quot;mingming&quot; ]</span><br><span class="line">    //截取数组的第一位到倒数第二个元素</span><br><span class="line">    var fangfangHH=fangfang.slice(1,-1)</span><br><span class="line">    console.log(fangfangHH,&quot;fangfangHH&quot;) //[ &quot;fangfang&quot;,&quot;huahua&quot;]</span><br><span class="line"></span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;Symbol&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			const symbol1 = Symbol()</span><br><span class="line">			const symbol2 = Symbol(42)</span><br><span class="line">			const symbol3 = Symbol(&#x27;foo&#x27;)</span><br><span class="line">			console.log(typeof symbol1)</span><br><span class="line">			// expected output: &quot;symbol&quot;</span><br><span class="line">			console.log(symbol2 === 42)</span><br><span class="line">			// expected output: false</span><br><span class="line">			console.log(symbol3.toString())</span><br><span class="line">			// expected output: &quot;Symbol(foo)&quot;</span><br><span class="line">			console.log(Symbol(&#x27;foo&#x27;) === Symbol(&#x27;foo&#x27;))</span><br><span class="line">			// expected output: false</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="this指向小练习"><a href="#this指向小练习" class="headerlink" title="this指向小练习"></a>this指向小练习</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;this指向&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    window.val = 1;</span><br><span class="line">    var json = &#123;</span><br><span class="line">      val: 10,</span><br><span class="line">      dbl: function () &#123;</span><br><span class="line">        this.val *= 2;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    json.dbl(); </span><br><span class="line">    console.log(json.val,&quot;jsonval&quot;)//20</span><br><span class="line">    console.log(window.val,&quot;winval&quot;)//1</span><br><span class="line">    var dbl = json.dbl;</span><br><span class="line">   </span><br><span class="line">    dbl();</span><br><span class="line">    console.log(json.val,&quot;jsonval&quot;)//20</span><br><span class="line">    console.log(window.val,&quot;winval&quot;)//2</span><br><span class="line">    json.dbl.call(window);</span><br><span class="line">    console.log(json.val,&quot;jsonval&quot;)//20</span><br><span class="line">    console.log(window.val,&quot;winval&quot;)//4</span><br><span class="line">    console.log(window.val + json.val); //24</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="this指向问题"><a href="#this指向问题" class="headerlink" title="this指向问题"></a>this指向问题</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;this指向&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function foo() &#123;</span><br><span class="line">  console.log(this.a)</span><br><span class="line">&#125;</span><br><span class="line">var a = 1</span><br><span class="line">foo() //1</span><br><span class="line"></span><br><span class="line">const obj = &#123;</span><br><span class="line">  a: 2,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;</span><br><span class="line">obj.foo()//2 </span><br><span class="line"></span><br><span class="line">const c = new foo()//undefined</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="typeOf"><a href="#typeOf" class="headerlink" title="typeOf"></a>typeOf</h1><blockquote>
+<p> //typeof：能判断所有值类型，函数。不可对 null、对象、数组进行精确判断，因为都返回 object<br>            // console.log(typeof undefined) // undefined<br>            // console.log(typeof 2) // number<br>            // console.log(typeof true) // boolean<br>            // console.log(typeof ‘str’) // string<br>            // console.log(typeof Symbol(‘foo’)) // symbol<br>            // console.log(typeof 2172141653n) // bigint<br>            // console.log(typeof function () {}) // function<br>            // // 不能判别<br>            // console.log(typeof []) // object<br>            // console.log(typeof {}) // object<br>            // console.log(typeof null) // object</p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 最好的种树是十年前 其次是现在 加油 歌谣</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/27/clfqiks7z000f4gfy5pup2a8t/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+	<!-- 目录内容 -->
+	     
+<!-- 目录内容结束 -->
+
+
+
+  
+    <article id="post-前端小知识点扫盲笔记记录2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/25/clfqiks80000g4gfygal8h9ms/">前端小知识点扫盲笔记记录2</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/25/clfqiks80000g4gfygal8h9ms/" class="archive-article-date">
+  	<time datetime="2023-03-25T07:41:10.149Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 今天继续进行前端知识的一些总结 想加入前端巅峰交流群私信我</p>
+</blockquote>
+<h1 id="innerHTML和innerText的使用"><a href="#innerHTML和innerText的使用" class="headerlink" title="innerHTML和innerText的使用"></a>innerHTML和innerText的使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;innerHTML和innerText的使用220313&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;geyao&quot;&gt;&lt;p&gt;geyao&lt;/p&gt;&lt;p&gt;fangfang&lt;/p&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">       var geyao= document.getElementById(&quot;geyao&quot;)</span><br><span class="line">       console.log(geyao,&quot;geyao&quot;)</span><br><span class="line">       var innerHtml=geyao.innerHTML</span><br><span class="line">       var innerText=geyao.innerText</span><br><span class="line">       console.log(innerHtml,&quot;innerHtml&quot;)</span><br><span class="line">       console.log(innerText,&quot;innerText&quot;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="instanceOf"><a href="#instanceOf" class="headerlink" title="instanceOf"></a>instanceOf</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;instanceOf&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			var simpleStr = &#x27;我是歌谣&#x27;</span><br><span class="line">			var myString = new String()</span><br><span class="line">			var newStr = new String(&#x27;我是方方&#x27;)</span><br><span class="line">			var myDate = new Date()</span><br><span class="line">			var myObj = &#123;&#125;</span><br><span class="line">			var myNonObj = Object.create(null)</span><br><span class="line">			simpleStr instanceof String // 返回 false, 非对象实例，因此返回 false</span><br><span class="line">			myString instanceof String // 返回 true</span><br><span class="line">			newStr instanceof String // 返回 true</span><br><span class="line">			myString instanceof Object // 返回 true</span><br><span class="line">			myObj instanceof Object // 返回 true, 尽管原型没有定义</span><br><span class="line">			;(&#123;&#125; instanceof Object) // 返回 true, 同上</span><br><span class="line">			myNonObj instanceof Object // 返回 false, 一种创建非 Object 实例的对象的方法</span><br><span class="line">			myString instanceof Date //返回 false</span><br><span class="line">			myDate instanceof Date // 返回 true</span><br><span class="line">			myDate instanceof Object // 返回 true</span><br><span class="line">			myDate instanceof String // 返回 false</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="javacript实现面向对象和继承机制"><a href="#javacript实现面向对象和继承机制" class="headerlink" title="javacript实现面向对象和继承机制"></a>javacript实现面向对象和继承机制</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;javascript面向对象和继承机制&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        //javascript面向对象和继承机制</span><br><span class="line">        function MyObject()&#123;</span><br><span class="line">            this.name=&quot;myObject&quot;</span><br><span class="line">            this.type=&quot;class&quot;</span><br><span class="line">            this.methodA=function()&#123;</span><br><span class="line">                console.log(this.name)</span><br><span class="line">            &#125;</span><br><span class="line">            this.methodB=function()&#123;</span><br><span class="line">                return this.type</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="javascript实现数组升序"><a href="#javascript实现数组升序" class="headerlink" title="javascript实现数组升序"></a>javascript实现数组升序</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var arr=[2,3,5,1,15,8,12,11,7]</span><br><span class="line">        function des(a,b)&#123;</span><br><span class="line">            return a-b</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(arr.sort(des))</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="javascript实现继承"><a href="#javascript实现继承" class="headerlink" title="javascript实现继承"></a>javascript实现继承</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;实现继承与多态&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function parentClass() &#123;</span><br><span class="line">      //私人变量</span><br><span class="line">      var x=&quot;我是私人变量&quot;</span><br><span class="line">      //私人方法</span><br><span class="line">      function method() &#123;</span><br><span class="line">        console.log(&quot;我是私人方法&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">      //公共变量</span><br><span class="line">      this.x=&quot;我是公共变量&quot;</span><br><span class="line">      //公共方法</span><br><span class="line">      this.method=function() &#123;</span><br><span class="line">        console.log(x)</span><br><span class="line">        console.log(this.x)</span><br><span class="line">        method()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    parentClass.prototype.method1=function() &#123;</span><br><span class="line">      console.log(&quot;我是父级的原型方法&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    parentClass.staticMethod=function()&#123;</span><br><span class="line">      console.log(&quot;我是父级的静态方法&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="js数据类型"><a href="#js数据类型" class="headerlink" title="js数据类型"></a>js数据类型</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;js数据类型&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			// 原始数据类型</span><br><span class="line">			// number</span><br><span class="line">			// string</span><br><span class="line">			// boolean</span><br><span class="line">			// null</span><br><span class="line">			// undefined</span><br><span class="line">			// symbol(ES6)</span><br><span class="line">			// bigint(ES10)</span><br><span class="line">			// 引用数据类型</span><br><span class="line">			// object</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="js的继承关系"><a href="#js的继承关系" class="headerlink" title="js的继承关系"></a>js的继承关系</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    oldObject=function()&#123;</span><br><span class="line">      this.a=&quot;我是歌谣&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    //赋值出一个新对象</span><br><span class="line">    newObject=function()&#123;</span><br><span class="line">      newObject.b=&quot;属性2&quot;</span><br><span class="line">      newObject.function=function()&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    var geyao=new newObject()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="less-sass-scss区别"><a href="#less-sass-scss区别" class="headerlink" title="less,sass,scss区别"></a>less,sass,scss区别</h1><blockquote>
+<p>// less, sass, scss都是css预处理语言（ 也是对应的文件后缀名）， 它们的语法功能比css更强大。<br>    // 预处理语言使用是： 开发时用预处理语言， 在打包上线时， 用webpack再配合loader工具给转成css（ Cascading Style Sheets） 给浏览器使用。<br>    // scss 的基本语法：<br>    // 1. 可以使用$来标识变量（ 可以将常用的样式标记成变量， 后续复用即可， 方便维护）<br>    // 2. 嵌套语法（ 和less语法相同）<br>    // 3. &amp; 父选择器(跟less语法相同)<br>    // 假如你想针对某个特定子元素 进行设置<br>    // 4. 模块化<br>    // 可以将需要的变量定义在一个新的js文件中， 需要使用的样式文件直接引入即可</p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣学习前端知识</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/25/clfqiks80000g4gfygal8h9ms/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+	<!-- 目录内容 -->
+	     
+<!-- 目录内容结束 -->
+
+
+
+  
+    <article id="post-前端小知识点扫盲笔记记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/23/clfqiks7z000e4gfy0ih19vaz/">前端小知识点扫盲笔记记录</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/23/clfqiks7z000e4gfy0ih19vaz/" class="archive-article-date">
+  	<time datetime="2023-03-23T08:47:32.642Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 微信公众号关注前端小歌谣带你进入前端巅峰人才交流群</p>
+</blockquote>
+<h2 id="MVC和MVVM"><a href="#MVC和MVVM" class="headerlink" title="MVC和MVVM"></a>MVC和MVVM</h2><blockquote>
+<pre><code>// 在MVVM框架下视图和模型是不能直接通信的，只能通过ViewModel进行交互，它能够监听到数据的变化，
+        // 然后通知视图进行自动更新，而当用户操作视图时，VM也能监听到视图的变化，然后通知数据做相应改动，
+        // 这实际上就实现了数据的双向绑定。并且V和VM可以进行通信。
+        // Model（模型）
+        // 模型是指代表真实状态内容的领域模型（面向对象），或指代表内容的数据访问层（以数据为中心）。
+        // View（视图）
+        // 就像在MVC和MVP模式中一样，视图是用户在屏幕上看到的结构、布局和外观（UI）。
+        // ViewModel（视图模型）
+        // 视图模型是暴露公共属性和命令的视图的抽象。MVVM没有MVC模式的控制器，也没有MVP模式的presenter，有的是一个绑定器。在视图模型中，绑定器在视图和数据绑定器之间进行通信。
+        // 低耦合:View可以独立于Model变化和修改,一个ViewModel可以绑定到不同的View上,当View变化的时候Model可以不变,当Model变化的时候View也可以不变。
+        // 可重用性: 可以把一些视图逻辑放在一个ViewModel里面,让很多View重用这段视图逻辑。
+        // 独立开发: 开发人员可以专注于业务逻辑和数据的开发,设计人员可以专注于页面的设计。
+        // MVC是应用最广泛的软件架构之一,一般MVC分为:Model(模型),View(视图),Controller(控制器)。 
+        // 这主要是基于分层的目的,让彼此的职责分开.View一般用过Controller来和Model进行联系。
+        // Controller是Model和View的协调者,View和Model不直接联系。基本都是单向联系。M和V指的意思和MVVM中的M和V意思一样。
+        // C即Controller指的是页面业务逻辑。MVC是单向通信。也就是View跟Model，必须通过Controller来承上启下。
+        // 低耦合
+        // 重用性高
+        // 生命周期成本低
+        // 部署快
+        // 可维护性高
+        // 有利软件工程化管理
+</code></pre>
+</blockquote>
+<h2 id="object-Create"><a href="#object-Create" class="headerlink" title="object.Create"></a>object.Create</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;Object.create&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //利用object.create实现继承</span><br><span class="line">    function father(name)&#123;</span><br><span class="line">      var name=&quot;geyao&quot;</span><br><span class="line">      this.name = name;</span><br><span class="line">     </span><br><span class="line">    &#125;</span><br><span class="line">    function children()&#123;</span><br><span class="line">        father.call(this)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    children.prototype=Object.create(father.prototype);</span><br><span class="line">    children.prototype.constructor=children</span><br><span class="line"></span><br><span class="line">    var geyao=new children()</span><br><span class="line">    console.log(geyao.name,&quot;geyao&quot;) //geyao</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="argument"><a href="#argument" class="headerlink" title="argument"></a>argument</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;arguments&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">            //arguments 是一个对应于传递给函数的参数的类数组对象。</span><br><span class="line">			//这边的arguments[0]等价于fn</span><br><span class="line">			var length = 10</span><br><span class="line">			function fn() &#123;</span><br><span class="line">				console.log(this.length, &#x27;length&#x27;)</span><br><span class="line">			&#125;</span><br><span class="line">			var obj = &#123;</span><br><span class="line">				length: 5,</span><br><span class="line">				method: function (fn) &#123;</span><br><span class="line">					console.log(arguments[0], &#x27;arguments&#x27;)</span><br><span class="line">					//      fn()&#123;</span><br><span class="line">					//     console.log(this.length,&quot;length&quot;);</span><br><span class="line">					//   &#125; &#x27;arguments&#x27;</span><br><span class="line">					arguments[0]()</span><br><span class="line">				&#125;,</span><br><span class="line">			&#125;</span><br><span class="line">			obj.method(fn) //1</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="class类继承"><a href="#class类继承" class="headerlink" title="class类继承"></a>class类继承</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			class Rectangle &#123;</span><br><span class="line">				// constructor</span><br><span class="line">				constructor(height, width) &#123;</span><br><span class="line">					this.height = height</span><br><span class="line">					this.width = width</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				// Getter</span><br><span class="line">				get area() &#123;</span><br><span class="line">					return this.calcArea()</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				// Method</span><br><span class="line">				calcArea() &#123;</span><br><span class="line">					return this.height * this.width</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			const rectangle = new Rectangle(10, 20)</span><br><span class="line">			console.log(rectangle.area)</span><br><span class="line">			// 输出 200</span><br><span class="line"></span><br><span class="line">			// 继承</span><br><span class="line">			class Square extends Rectangle &#123;</span><br><span class="line">				constructor(length) &#123;</span><br><span class="line">					super(length, length)</span><br><span class="line"></span><br><span class="line">					// 如果子类中存在构造函数，则需要在使用“this”之前首先调用 super()。</span><br><span class="line">					this.name = &#x27;Square&#x27;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				get area() &#123;</span><br><span class="line">					return this.height * this.width</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			const square = new Square(10)</span><br><span class="line">			console.log(square.area)</span><br><span class="line">			// 输出 100</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;constructor&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //属性的值是对函数本身的引用</span><br><span class="line"></span><br><span class="line">    function father(name)&#123;</span><br><span class="line">      this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    var gg=new father(&quot;father&quot;)</span><br><span class="line">    console.log(gg.constructor,&quot;gg&quot;)</span><br><span class="line"></span><br><span class="line">    //ƒ father(name)&#123;</span><br><span class="line">    //  this.name = name;</span><br><span class="line">   // &#125; &#x27;gg&#x27;</span><br><span class="line">  //创建自身属性的方法</span><br><span class="line">   function Parent() &#123;&#125;;</span><br><span class="line">    function CreatedConstructor() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    CreatedConstructor.prototype = Object.create(Parent.prototype);</span><br><span class="line">    //创建一个Parent的对象</span><br><span class="line">    console.log( Object.create(Parent.prototype),&quot;Parent&quot;)</span><br><span class="line">    CreatedConstructor.prototype.constructor = CreatedConstructor; // 改变指向到父级</span><br><span class="line">    CreatedConstructor.prototype.create = function create() &#123;</span><br><span class="line">      return new this.constructor();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    new CreatedConstructor().create().create(); </span><br><span class="line">    //按照父亲级别的属性进行创造</span><br><span class="line">    console.log(new CreatedConstructor().create().create(),&quot;CreatedConstructor&quot;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="cookie-session区别"><a href="#cookie-session区别" class="headerlink" title="cookie,session区别"></a>cookie,session区别</h2><blockquote>
+<p>// cookie 和 session 区别<br>    // cookie数据存放在浏览器中， session数据存放在服务器上<br>    // cookie是不安全的， 别人可以分析存放在本地的cookie并进行cookie诈骗， 考虑到安全性能， 应尽量使用session<br>    // session会在一定时间内保存在服务器上。 当访问增多时， 会比较占用服务器的性能。 考虑到服务性能， 应尽量使用cookie<br>    // 单个cookie保存的数据不能超过4k， 很多浏览器都限制一个站点最多保存20个cookie<br>    // cookie和session都用来存储用户信息， cookie存放于客户端有可能被窃取， 所以cookie一般用来存放不敏感的信息， 比如用户设置的网站主题， 敏感的信息用session存储， 比如用户的登录信息<br>    // cookie， sessionStorage， localStorage 区别<br>    // HTML5中提出了webStorage的概念， webStorage包括sessionStorage和localStorage， 只为了保存数据， 不会与服务器进行通信<br>    // cookie, localStorage, sessionStorage都是在客户端保存数据， 存储数据的类型： 字符串<br>    // webStorage不会随着HTTP header发送到服务器端， 所以安全性相对来说比cookie高， 不必担心截获<br>    // 生命周期不同（ 见后文）， localStorage要手动清除， sessionStorage在浏览器关闭后清除<br>    // 生命周期<br>    // cookie： 可设置失效时间， 否则默认为关闭浏览器后消失<br>    // localStorage： 除非被手动清除， 否则永久保存<br>    // sessionStorage： 仅在当前网页会话下有效， 关闭页面或浏览器后就会被清除</p>
+</blockquote>
+<h2 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h2><blockquote>
+<p>// 传统diff算法<br>            // 虚拟DOM中的Diff算法<br>            // 传统算法查找两颗树每一个节点的差异<br>            // 会运行n1(dom1的节点数)*n2(dom2的节点数)次方去对比,找到差异的部分再去更新<br>            // snabbdom的diff算法优化<br>            //  Snbbdom根据DOM的特点对传统的diff算法做了优化<br>            //  DOM操作时候很少会跨级别操作节点<br>            //  只比较同级别的节点<br>            // key的作用<br>            // Diff操作可以更加快速<br>            // Diff操作可以更加准确<br>            // 避免渲染错误<br>            // 不推荐使用索引作为key</p>
+</blockquote>
+<h2 id="eval使用"><a href="#eval使用" class="headerlink" title="eval使用"></a>eval使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;eval的使用&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //   eval() 函数会将传入的字符串当做 JavaScript 代码进行执行。</span><br><span class="line">  var fangfang=eval(new String(&#x27;2 + 2&#x27;)) </span><br><span class="line">  console.log(fangfang,&quot;fangfang&quot;) //String &#123; &quot;2 + 2&quot; &#125;</span><br><span class="line">  var fangfangTest=new String(&#x27;2 + 2&#x27;)</span><br><span class="line">  console.log(fangfangTest,&quot;fangfangTest&quot;) //String &#123; &quot;2 + 2&quot; &#125;</span><br><span class="line">  var geyao=eval(&#x27;2 + 2&#x27;) </span><br><span class="line">  console.log(geyao,&quot;geyao&quot;) //4</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="http1-0-2-0-3-0区别"><a href="#http1-0-2-0-3-0区别" class="headerlink" title="http1.0,2.0,3.0区别"></a>http1.0,2.0,3.0区别</h2><blockquote>
+<p>  HTTP1.0和HTTP1.1主要区别主要体现在：缓存处理，在HTTP1.0中主要使用header里的If-Modified-Since,Expires来做为缓存判断的标准，HTTP1.1则引入了更多的缓存控制策略例如Entity tag，If-Unmodified-Since, If-Match, If-None-Match等更多可供选择的缓存头来控制缓存策略。带宽优化及网络连接的使用，HTTP1.0中，存在一些浪费带宽的现象，例如客户端只是需要某个对象的一部分，而服务器却将整个对象送过来了，并且不支持断点续传功能，HTTP1.1则在请求头引入了range头域，它允许只请求资源的某个部分，即返回码是206（Partial Content)这样就方便了开发者自由的选择以便于充分利用带宽和连接。错误通知的管理，在HTTP1.1中新增了24个错误状态响应码，如409（Conflict）表示请求的资源与资源的当前状态发生冲突；410（Gone）表示服务器上的某个资源被永久性的删除。Host头处理，在HTTP1.0中认为每台服务器都绑定一个唯一的IP地址，因此，请求消息中的URL并没有传递主机名（hostname）。但随着虚拟主机技术的发展，在一台物理服务器上可以存在多个虚拟主机（Multi-homed Web Servers），并且它们共享一个IP地址。HTTP1.1的请求消息和响应消息都应支持Host头域，且请求消息中如果没有Host头域会报告一个错误（400 Bad Request）。长连接，HTTP 1.1支持长连接（PersistentConnection）和请求的流水线（Pipelining）处理，在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟，在HTTP1.1中默认开启Connection： keep-alive，一定程度上弥补了HTTP1.0每次请求都要创建连接的缺点。HTTP2.0HTTP2.0是HTTP协议自1999年HTTP1.1发布后的首个更新，主要基于SPDY协议。HTTP2.0大幅度的提高了web性能，在HTTP1.1完全语义兼容的基础上，进一步减少了网络的延迟。实现低延迟高吞吐量。对于前端开发者而言，减少了优化工作。主要体现在以下几点特性：头部压缩多路复用二进制分帧请求优先级服务器推送 </p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我是歌谣 这些都是扫盲时候的笔记 微信公众号关注前端小歌谣 学习前端知识</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/23/clfqiks7z000e4gfy0ih19vaz/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+	<!-- 目录内容 -->
+	     
+<!-- 目录内容结束 -->
+
+
+
+  
+    <article id="post-Viewer.js实现图片预览效果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/23/clfqiks7w000a4gfy752havxr/">Viewer.js实现图片预览效果</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/23/clfqiks7w000a4gfy752havxr/" class="archive-article-date">
+  	<time datetime="2023-03-23T07:52:26.765Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 今天要说的是一个需求图片可以实现一个预览的结果最近涉及一个移动端项目需要把其中的图片变成可预览的图片<br>听学弟说 可以利用viewer进行实现首先我们需要做的就是先写一个简单demo<br>先实现其中的效果 2021年的事情了</p>
+</blockquote>
+<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/08880b828d9743deadc3baee198451ca~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h2 id="基本案例"><a href="#基本案例" class="headerlink" title="基本案例"></a>基本案例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot;</span><br><span class="line">          content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/bootstrap@4/dist/css/bootstrap.min.css&quot; crossorigin=&quot;anonymous&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/viewer.css&quot;&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;!--./images/thumbnails/tibet-1.jpg--&gt;</span><br><span class="line">&lt;div id=&quot;galley&quot;&gt;</span><br><span class="line">    &lt;ul id=&quot;images1&quot; class=&quot;img-list&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;!--二--&gt;</span><br><span class="line"> &lt;!--   &lt;ul id=&quot;image2&quot; class=&quot;img-list&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;--&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/jquery@3/dist/jquery.slim.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./js/viewer.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = function()&#123;</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;galley&#x27;), &#123;&#125;);</span><br><span class="line">        //</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;image2&#x27;), &#123;</span><br><span class="line">            url: &#x27;data-imgurl&#x27;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目实现部分"><a href="#项目实现部分" class="headerlink" title="项目实现部分"></a>项目实现部分</h2><blockquote>
+<p>看一下效果预览点击的时候就可以进行一个效果的预览操作了<br>同样 三步走第一步引入第二步注意结构第三步效果演示</p>
+</blockquote>
+<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">      &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;col-lg-12&quot;&gt;</span><br><span class="line">            &lt;div id=&quot;allmap&quot;&gt;</span><br><span class="line">​</span><br><span class="line">                &lt;img src=&quot;images/867.png&quot; data-imgurl=&quot;images/867.png&quot; alt=&quot;&quot; style=&quot;width: 100%&quot;&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">​</span><br><span class="line">​</span><br><span class="line">&lt;!--公共尾部--&gt;</span><br><span class="line">&lt;div class=&quot;footer&quot;&gt;&lt;/div&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;js/aos.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;js/viewer.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">​</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = function()&#123;</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;allmap&#x27;), &#123;&#125;);</span><br><span class="line">        //</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;image2&#x27;), &#123;</span><br><span class="line">            url: &#x27;data-imgurl&#x27;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    //DOM加载完成之后执行函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b0225be808fc4b158036435c4acbb668~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>2021年的时候当时是对官网项目的维护 微信公众号关注前端小歌谣带你进入前端巅峰交流群</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/23/clfqiks7w000a4gfy752havxr/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+	<!-- 目录内容 -->
+	     
+<!-- 目录内容结束 -->
+
+
+
+  
     <article id="post-ant design table实现上下行拖拽功能(类组件)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,12 +527,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/21/clfhxjxh10007t8fygmiuep1n/">ant design table实现上下行拖拽功能(类组件)</a>
+      <a class="article-title" href="/2023/03/21/clfqiks7v00094gfydqy2fvdz/">ant design table实现上下行拖拽功能(类组件)</a>
     </h1>
   
 
         
-        <a href="/2023/03/21/clfhxjxh10007t8fygmiuep1n/" class="archive-article-date">
+        <a href="/2023/03/21/clfqiks7v00094gfydqy2fvdz/" class="archive-article-date">
   	<time datetime="2023-03-21T07:13:56.994Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-21</time>
 </a>
         
@@ -223,7 +588,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/21/clfhxjxh10007t8fygmiuep1n/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/21/clfqiks7v00094gfydqy2fvdz/">展开全文 >></a>
         </p>
       
 
@@ -265,12 +630,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/17/clfhxjxh20008t8fyacz5hqaz/">npm,cnpm,yarn简单对比笔记</a>
+      <a class="article-title" href="/2023/03/17/clfqiks7y000d4gfydl8p5lrp/">npm,cnpm,yarn简单对比笔记</a>
     </h1>
   
 
         
-        <a href="/2023/03/17/clfhxjxh20008t8fyacz5hqaz/" class="archive-article-date">
+        <a href="/2023/03/17/clfqiks7y000d4gfydl8p5lrp/" class="archive-article-date">
   	<time datetime="2023-03-17T07:28:00.481Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-17</time>
 </a>
         
@@ -321,7 +686,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/17/clfhxjxh20008t8fyacz5hqaz/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/17/clfqiks7y000d4gfydl8p5lrp/">展开全文 >></a>
         </p>
       
 
@@ -363,12 +728,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/15/clfhxjxh00005t8fy5wv8ey23/">React+antDesign封装一个tab组件(类组件)</a>
+      <a class="article-title" href="/2023/03/15/clfqiks7s00054gfycptq2uyb/">React+antDesign封装一个tab组件(类组件)</a>
     </h1>
   
 
         
-        <a href="/2023/03/15/clfhxjxh00005t8fy5wv8ey23/" class="archive-article-date">
+        <a href="/2023/03/15/clfqiks7s00054gfycptq2uyb/" class="archive-article-date">
   	<time datetime="2023-03-15T07:21:58.789Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-15</time>
 </a>
         
@@ -427,7 +792,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/15/clfhxjxh00005t8fy5wv8ey23/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/15/clfqiks7s00054gfycptq2uyb/">展开全文 >></a>
         </p>
       
 
@@ -469,12 +834,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/15/clfhxjxh3000at8fydpld1uv0/">React+antDesign实现上传图片功能(类组件)</a>
+      <a class="article-title" href="/2023/03/15/clfqiks7h00024gfye5sdel2z/">React+antDesign实现上传图片功能(类组件)</a>
     </h1>
   
 
         
-        <a href="/2023/03/15/clfhxjxh3000at8fydpld1uv0/" class="archive-article-date">
+        <a href="/2023/03/15/clfqiks7h00024gfye5sdel2z/" class="archive-article-date">
   	<time datetime="2023-03-15T03:31:00.863Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-15</time>
 </a>
         
@@ -511,7 +876,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/15/clfhxjxh3000at8fydpld1uv0/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/15/clfqiks7h00024gfye5sdel2z/">展开全文 >></a>
         </p>
       
 
@@ -553,12 +918,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/14/clfhxjxh5000ct8fy30il44lz/">react中使用的富文本编辑器braft-editor使用</a>
+      <a class="article-title" href="/2023/03/14/clfqiks7x000b4gfyhkt62cih/">react中使用的富文本编辑器braft-editor使用</a>
     </h1>
   
 
         
-        <a href="/2023/03/14/clfhxjxh5000ct8fy30il44lz/" class="archive-article-date">
+        <a href="/2023/03/14/clfqiks7x000b4gfyhkt62cih/" class="archive-article-date">
   	<time datetime="2023-03-14T03:05:54.581Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-14</time>
 </a>
         
@@ -613,7 +978,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/14/clfhxjxh5000ct8fy30il44lz/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/14/clfqiks7x000b4gfyhkt62cih/">展开全文 >></a>
         </p>
       
 
@@ -655,12 +1020,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/12/clfhxjxh4000bt8fy0ze25318/">Taro+react+TaroUi封装一个公司库的下拉组件</a>
+      <a class="article-title" href="/2023/03/12/clfqiks7u00084gfy05x83mav/">Taro+react+TaroUi封装一个公司库的下拉组件</a>
     </h1>
   
 
         
-        <a href="/2023/03/12/clfhxjxh4000bt8fy0ze25318/" class="archive-article-date">
+        <a href="/2023/03/12/clfqiks7u00084gfy05x83mav/" class="archive-article-date">
   	<time datetime="2023-03-12T09:28:29.528Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-12</time>
 </a>
         
@@ -757,360 +1122,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/12/clfhxjxh4000bt8fy0ze25318/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-	<!-- 目录内容 -->
-	     
-<!-- 目录内容结束 -->
-
-
-
-  
-    <article id="post-React+Hook+ts+antDesignMobile实现input自动获取功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/12/clfhxjxgw0001t8fy7zy2f8jq/">React+Hook+ts+antDesignMobile实现input自动获取功能</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/12/clfhxjxgw0001t8fy7zy2f8jq/" class="archive-article-date">
-  	<time datetime="2023-03-12T09:22:06.768Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>大家好 我是歌谣 今天继续处理工作遇到的问题 目前要做的问题是移动端需要做一个进入页面获取焦点的功能</p>
-</blockquote>
-<h1 id="实现演示"><a href="#实现演示" class="headerlink" title="实现演示"></a>实现演示</h1><p><img src="https://img-blog.csdnimg.cn/7c12c2fa35564a4592437d08cd7b5629.png" alt="在这里插入图片描述"></p>
-<h1 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h1><h2 id="input上面绑定refs"><a href="#input上面绑定refs" class="headerlink" title="input上面绑定refs"></a>input上面绑定refs</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Input onChange=&#123;handleChange&#125; ref=&#123;inputRef&#125; placeholder=&quot;请输入条形编码或者扫码录入&quot; /&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="定义状态"><a href="#定义状态" class="headerlink" title="定义状态"></a>定义状态</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const inputRef:any=useRef(null)</span><br></pre></td></tr></table></figure>
-
-<h2 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(()=&gt;&#123;</span><br><span class="line">    if(inputRef.current)&#123;</span><br><span class="line">      inputRef.current.focus()</span><br><span class="line">      console.log(inputRef.current)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,[])</span><br></pre></td></tr></table></figure>
-
-<h2 id="change回调"><a href="#change回调" class="headerlink" title="change回调"></a>change回调</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">const handleChange=async (e:any)=&gt;&#123;</span><br><span class="line">    console.log(e,&quot;eeeeeeeee&quot;)</span><br><span class="line">    const response = await postWormHouseing(&#123;</span><br><span class="line">      barCode: e,</span><br><span class="line">    &#125;);</span><br><span class="line">    if (response.code == 200) &#123;</span><br><span class="line">      console.log(response.data, &quot;response&quot;);</span><br><span class="line">      setBedCode(&quot;&quot;);</span><br><span class="line"></span><br><span class="line">      Toast.show(&#123;</span><br><span class="line">        icon: &quot;success&quot;,</span><br><span class="line">        content: &quot;裁床入库成功&quot;,</span><br><span class="line">      &#125;);</span><br><span class="line">      form.resetFields();</span><br><span class="line"></span><br><span class="line">      // props.onConfirm();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      setBedCode(&quot;&quot;);</span><br><span class="line">      // message.error(&#x27;当前裁床不存在&#x27;);</span><br><span class="line">      Toast.show(&#123;</span><br><span class="line">        icon: &quot;fail&quot;,</span><br><span class="line">        content: response.msg,</span><br><span class="line">      &#125;);</span><br><span class="line">      // form.resetFields();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>如上所述 问题得到解决 我是歌谣 放弃很容易 但是坚持一定很酷 想加入前端巅峰交流群联系我</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/12/clfhxjxgw0001t8fy7zy2f8jq/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-	<!-- 目录内容 -->
-	     
-<!-- 目录内容结束 -->
-
-
-
-  
-    <article id="post-React+Hook+ts+antDesign实现table增加一个合计功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/10/clfhxjxgy0002t8fy7mun9e64/">React+Hook+ts+antDesign实现table增加一个合计功能</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/10/clfhxjxgy0002t8fy7mun9e64/" class="archive-article-date">
-  	<time datetime="2023-03-10T02:32:17.932Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">今天继续平常的一个任务开发 今天需要给我们的ant design table增加一个合计的一个功能</span><br></pre></td></tr></table></figure>
-
-<h1 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h1><p><img src="https://img-blog.csdnimg.cn/2b7a6b55a81549fc911c9bec4d92bfec.png" alt="在这里插入图片描述"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote>
-<p>首先 我们遇到问题的思路就是要看官方api<br>通过 summary 设置总结栏。使用 Table.Summary.Cell 同步 Column 的固定状态。你可以通过配置 Table.Summary 的 fixed 属性使其固定(4.16.0 支持)。</p>
-</blockquote>
-<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">const App: React.FC = () =&gt; (</span><br><span class="line">  &lt;&gt;</span><br><span class="line">    &lt;Table</span><br><span class="line">      columns=&#123;columns&#125;</span><br><span class="line">      dataSource=&#123;data&#125;</span><br><span class="line">      pagination=&#123;false&#125;</span><br><span class="line">      bordered</span><br><span class="line">      summary=&#123;pageData =&gt; &#123;</span><br><span class="line">        let totalBorrow = 0;</span><br><span class="line">        let totalRepayment = 0;</span><br><span class="line"></span><br><span class="line">        pageData.forEach((&#123; borrow, repayment &#125;) =&gt; &#123;</span><br><span class="line">          totalBorrow += borrow;</span><br><span class="line">          totalRepayment += repayment;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        return (</span><br><span class="line">          &lt;&gt;</span><br><span class="line">            &lt;Table.Summary.Row&gt;</span><br><span class="line">              &lt;Table.Summary.Cell index=&#123;0&#125;&gt;Total&lt;/Table.Summary.Cell&gt;</span><br><span class="line">              &lt;Table.Summary.Cell index=&#123;1&#125;&gt;</span><br><span class="line">                &lt;Text type=&quot;danger&quot;&gt;&#123;totalBorrow&#125;&lt;/Text&gt;</span><br><span class="line">              &lt;/Table.Summary.Cell&gt;</span><br><span class="line">              &lt;Table.Summary.Cell index=&#123;2&#125;&gt;</span><br><span class="line">                &lt;Text&gt;&#123;totalRepayment&#125;&lt;/Text&gt;</span><br><span class="line">              &lt;/Table.Summary.Cell&gt;</span><br><span class="line">            &lt;/Table.Summary.Row&gt;</span><br><span class="line">            &lt;Table.Summary.Row&gt;</span><br><span class="line">              &lt;Table.Summary.Cell index=&#123;0&#125;&gt;Balance&lt;/Table.Summary.Cell&gt;</span><br><span class="line">              &lt;Table.Summary.Cell index=&#123;1&#125; colSpan=&#123;2&#125;&gt;</span><br><span class="line">                &lt;Text type=&quot;danger&quot;&gt;&#123;totalBorrow - totalRepayment&#125;&lt;/Text&gt;</span><br><span class="line">              &lt;/Table.Summary.Cell&gt;</span><br><span class="line">            &lt;/Table.Summary.Row&gt;</span><br><span class="line">          &lt;/&gt;</span><br><span class="line">        );</span><br><span class="line">      &#125;&#125;</span><br><span class="line">    /&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;Table dataSource=&#123;menuData.list&#125; columns=&#123;columns&#125; pagination=&#123;false&#125; </span><br><span class="line">                      summary=&#123;data =&gt; &#123;</span><br><span class="line">                        let totalCount = 0;</span><br><span class="line">                        return (</span><br><span class="line">                            &lt;&gt;</span><br><span class="line">                                &lt;Table.Summary.Row&gt;</span><br><span class="line">                                    &lt;Table.Summary.Cell index=&#123;0&#125;&gt;合计&lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                    &lt;Table.Summary.Cell index=&#123;1&#125;&gt;</span><br><span class="line">                                    &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                    &lt;Table.Summary.Cell index=&#123;2&#125;&gt;</span><br><span class="line">                                    &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                    &lt;Table.Summary.Cell index=&#123;3&#125;&gt;</span><br><span class="line">                                    &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                    &lt;Table.Summary.Cell index=&#123;4&#125;&gt;</span><br><span class="line">                                        &lt;span&gt;&#123;total&#125;&lt;/span&gt;</span><br><span class="line">                                    &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                &lt;/Table.Summary.Row&gt;</span><br><span class="line">                            &lt;/&gt;</span><br><span class="line">                        );</span><br><span class="line">                    &#125;&#125;</span><br><span class="line">                    /&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>这样就完美完成了 我是歌谣 放弃很容易 但是坚持一定很酷<br>微信公众号前端小歌谣</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/10/clfhxjxgy0002t8fy7mun9e64/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-	<!-- 目录内容 -->
-	     
-<!-- 目录内容结束 -->
-
-
-
-  
-    <article id="post-React+Hook+ts+antDesign实现伪定时调用接口功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/09/clfhxjxh00004t8fy7b97bdh2/">React+Hook+ts+antDesign实现伪定时调用接口功能</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/09/clfhxjxh00004t8fy7b97bdh2/" class="archive-article-date">
-  	<time datetime="2023-03-09T08:49:51.628Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>大家好 我是歌谣 微信公众号关注前端小歌谣 今天要做的需求是接口 在一定时间里面执行一次的功能</p>
-</blockquote>
-<h2 id="定义循环时长"><a href="#定义循环时长" class="headerlink" title="定义循环时长"></a>定义循环时长</h2><blockquote>
-<p>说一下整体实现思路吧 定义定时器执行时间的状态 这里是十秒 可以通过接口配置调用</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const [delay, setDelay] = useState(10000)</span><br></pre></td></tr></table></figure>
-
-<h2 id="定义分页"><a href="#定义分页" class="headerlink" title="定义分页"></a>定义分页</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const [pageIndex, setPageIndex] = useState(0)</span><br></pre></td></tr></table></figure>
-
-<h2 id="核心代码实现"><a href="#核心代码实现" class="headerlink" title="核心代码实现"></a>核心代码实现</h2><blockquote>
-<p>分页变化调用接口</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> const timer = setInterval(() =&gt; &#123;</span><br><span class="line">    if (pageIndex == total) &#123;</span><br><span class="line"></span><br><span class="line">      setPageIndex(0)</span><br><span class="line">      // setVisable(visable++)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      setPageIndex(pageIndex + 1)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, delay)</span><br><span class="line">  return () =&gt; clearInterval(timer)</span><br><span class="line">  // &#125;else&#123;</span><br><span class="line">  //   const time1 = setInterval(() =&gt; &#123;</span><br><span class="line">  //     initMenuList()</span><br><span class="line">  //   &#125;, delay)</span><br><span class="line">  //   return () =&gt; clearInterval(time1)</span><br><span class="line">  // &#125;</span><br><span class="line"></span><br><span class="line">&#125;, [pageIndex, total])</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">  initMenuList();</span><br><span class="line">&#125;, [pageIndex]);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const initMenuList = async () =&gt; &#123;</span><br><span class="line">   const response = await postScreenList(&#123; pageIndex: pageIndex, pageSize: 1, bedCodeList: [&quot;CC001&quot;] &#125;);</span><br><span class="line">   console.log(response, &quot;response&quot;);</span><br><span class="line"></span><br><span class="line">   if (response.code == 200) &#123;</span><br><span class="line">     setMenuList(response.data);</span><br><span class="line">     setTotal(response.total)</span><br><span class="line">     // setPages(response.pages)</span><br><span class="line">     // setCurrent(response.current)</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><blockquote>
-<p>接口中的数据返回的response.total当数据未空时候 返回为1<br>其他正常返回 这样就能实现定时器的永动了</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/4156760d42c2479ea531e8d19eed6019.png" alt="在这里插入图片描述"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我是歌谣 放弃很容易 但是坚持一定很酷</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/09/clfhxjxh00004t8fy7b97bdh2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-	<!-- 目录内容 -->
-	     
-<!-- 目录内容结束 -->
-
-
-
-  
-    <article id="post-React+hook+ts+ant design upload实现多个文件一次上传" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/09/clfhxjxh10006t8fyaix1gmup/">React+hook+ts+ant design upload实现多个文件一次上传</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/09/clfhxjxh10006t8fyaix1gmup/" class="archive-article-date">
-  	<time datetime="2023-03-09T02:21:03.377Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>大家好 我是歌谣 在日常的学习生活中 我们会遇到各种各样的问题 今天在工作中就遇到了多个文件上传的时候会调用多次接口 感谢群友的帮助 想加入前端巅峰交流群可以私信我</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/86ec66419dbe49c29a65b8bb3100ae76.png" alt="在这里插入图片描述"></p>
-<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><blockquote>
-<p>一开始不知道原因 后来在群友的帮助下 最后知道了原因<br>是onChange的原因</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上传中、完成、失败都会调用这个函数</span><br></pre></td></tr></table></figure>
-
-<h1 id="思路解答"><a href="#思路解答" class="headerlink" title="思路解答"></a>思路解答</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">群友给的demo</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">import &quot;./styles.css&quot;;</span><br><span class="line">import React, &#123; useState, useEffect, useRef &#125; from &quot;react&quot;;</span><br><span class="line">import &#123; Button, Upload &#125; from &quot;antd&quot;;</span><br><span class="line">import &#123; UploadOutlined &#125; from &quot;@ant-design/icons&quot;;</span><br><span class="line">export default function App() &#123;</span><br><span class="line">  const fileState = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList;</span><br><span class="line">    return function (list, setState) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line"></span><br><span class="line">  function beforeUpload(_, fileList) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    console.log(&quot;自定义上传&quot;, uploadFiles);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">      fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">      &lt;h1&gt;Hello CodeSandbox&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;Start editing to see some magic happen!&lt;/h2&gt;</span><br><span class="line">      &lt;Upload</span><br><span class="line">        listType=&quot;picture&quot;</span><br><span class="line">        maxCount=&#123;3&#125;</span><br><span class="line">        multiple</span><br><span class="line">        beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;Button&gt;Upload (Max: 3)&lt;/Button&gt;</span><br><span class="line">      &lt;/Upload&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/04a472d3c18f4819818c196fdff962b3.png" alt="在这里插入图片描述"></p>
-<h1 id="项目给的demo"><a href="#项目给的demo" class="headerlink" title="项目给的demo"></a>项目给的demo</h1><h2 id="upload部分"><a href="#upload部分" class="headerlink" title="upload部分"></a>upload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Upload</span><br><span class="line">                  name=&quot;file&quot;</span><br><span class="line">                  customRequest=&#123;customRequest&#125;</span><br><span class="line">                  multiple=&#123;true&#125;</span><br><span class="line">                  beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">                  headers=&#123;&#123; Authorization: getToken() || &quot;&quot; &#125;&#125;</span><br><span class="line">                &gt;</span><br><span class="line">                  &lt;Button style=&#123;&#123; width: &quot;100%&quot; &#125;&#125; icon=&#123;&lt;UploadOutlined /&gt;&#125;&gt;</span><br><span class="line">                    上传</span><br><span class="line">                  &lt;/Button&gt;</span><br><span class="line">                &lt;/Upload&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="beforeUpload部分"><a href="#beforeUpload部分" class="headerlink" title="beforeUpload部分"></a>beforeUpload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">const fileState: any = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList: any = null;</span><br><span class="line">    return function (list: any, setState: any) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">       fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  function beforeUpload(_: any, fileList: any) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const [loadingButton,setLoadingButton]=useState&lt;boolean&gt;(false)</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line">    uploadFile(&quot;manufacture/cutScheme/batchUploadDrawing&quot;, formData).then((res) =&gt; &#123;</span><br><span class="line">      if (res.code == 200) &#123;</span><br><span class="line">        setFileId(res.data.fileIdList)</span><br><span class="line">        message.success(&quot;文件上传成功&quot;)</span><br><span class="line">        setLoadingButton(false)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        message.error(res.msg)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="解析部分"><a href="#解析部分" class="headerlink" title="解析部分"></a>解析部分</h1><blockquote>
-<p>multiple多选文件</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/0cbbb8fc90944e64ad933105a06ab18d.png" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>return false控制只执行一次<br><img src="https://img-blog.csdnimg.cn/de2d37df69704b1ca98d435d2cc7b0b4.png" alt="在这里插入图片描述"><br>customRequest</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/e3b7651c225c4da9bf70adf567ba5c8e.png" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>formdata转文件格式</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>核心 hook写法</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const updateFiles = (function () &#123;</span><br><span class="line">  let fileList: any = null;</span><br><span class="line">  return function (list: any, setState: any) &#123;</span><br><span class="line">    if (!fileList) &#123;</span><br><span class="line">      fileList = list;</span><br><span class="line">      setState &amp;&amp; setState(list);</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;</span><br><span class="line">      fileList,</span><br><span class="line">      reset() &#123;</span><br><span class="line">        fileList = false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>我是歌谣 感谢生命中帮助你的每一个人 感谢山川~</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/09/clfhxjxh10006t8fyaix1gmup/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/12/clfqiks7u00084gfy05x83mav/">展开全文 >></a>
         </p>
       
 
