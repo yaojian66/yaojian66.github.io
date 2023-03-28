@@ -162,12 +162,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clfryoux2000d8sfy58r3chwq/">前端小知识点扫盲笔记记录2</a>
+      <a class="article-title" href="/2023/03/28/clfs1458j000fzofy2ht51vp7/">前端小知识点扫盲笔记记录2</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clfryoux2000d8sfy58r3chwq/" class="archive-article-date">
+        <a href="/2023/03/28/clfs1458j000fzofy2ht51vp7/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.841Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -203,7 +203,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clfryoux2000d8sfy58r3chwq/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clfs1458j000fzofy2ht51vp7/">展开全文 >></a>
         </p>
       
 
@@ -240,12 +240,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clfryoux3000g8sfy0rch84y2/">前端小知识点扫盲笔记记录3</a>
+      <a class="article-title" href="/2023/03/28/clfs1458j000gzofy844bdj5f/">前端小知识点扫盲笔记记录3</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clfryoux3000g8sfy0rch84y2/" class="archive-article-date">
+        <a href="/2023/03/28/clfs1458j000gzofy844bdj5f/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.841Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -285,84 +285,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clfryoux3000g8sfy0rch84y2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Viewer.js实现图片预览效果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clfryouwz00078sfyds660mxo/">Viewer.js实现图片预览效果</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/clfryouwz00078sfyds660mxo/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>大家好 我是歌谣 今天要说的是一个需求图片可以实现一个预览的结果最近涉及一个移动端项目需要把其中的图片变成可预览的图片<br>听学弟说 可以利用viewer进行实现首先我们需要做的就是先写一个简单demo<br>先实现其中的效果 2021年的事情了</p>
-</blockquote>
-<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/08880b828d9743deadc3baee198451ca~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h2 id="基本案例"><a href="#基本案例" class="headerlink" title="基本案例"></a>基本案例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot;</span><br><span class="line">          content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/bootstrap@4/dist/css/bootstrap.min.css&quot; crossorigin=&quot;anonymous&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/viewer.css&quot;&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;!--./images/thumbnails/tibet-1.jpg--&gt;</span><br><span class="line">&lt;div id=&quot;galley&quot;&gt;</span><br><span class="line">    &lt;ul id=&quot;images1&quot; class=&quot;img-list&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;!--二--&gt;</span><br><span class="line"> &lt;!--   &lt;ul id=&quot;image2&quot; class=&quot;img-list&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;--&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/jquery@3/dist/jquery.slim.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./js/viewer.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = function()&#123;</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;galley&#x27;), &#123;&#125;);</span><br><span class="line">        //</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;image2&#x27;), &#123;</span><br><span class="line">            url: &#x27;data-imgurl&#x27;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
-
-<h2 id="项目实现部分"><a href="#项目实现部分" class="headerlink" title="项目实现部分"></a>项目实现部分</h2><blockquote>
-<p>看一下效果预览点击的时候就可以进行一个效果的预览操作了<br>同样 三步走第一步引入第二步注意结构第三步效果演示</p>
-</blockquote>
-<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">      &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;col-lg-12&quot;&gt;</span><br><span class="line">            &lt;div id=&quot;allmap&quot;&gt;</span><br><span class="line">​</span><br><span class="line">                &lt;img src=&quot;images/867.png&quot; data-imgurl=&quot;images/867.png&quot; alt=&quot;&quot; style=&quot;width: 100%&quot;&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">​</span><br><span class="line">​</span><br><span class="line">&lt;!--公共尾部--&gt;</span><br><span class="line">&lt;div class=&quot;footer&quot;&gt;&lt;/div&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;js/aos.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;js/viewer.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">​</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = function()&#123;</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;allmap&#x27;), &#123;&#125;);</span><br><span class="line">        //</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;image2&#x27;), &#123;</span><br><span class="line">            url: &#x27;data-imgurl&#x27;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    //DOM加载完成之后执行函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b0225be808fc4b158036435c4acbb668~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
-<p>2021年的时候当时是对官网项目的维护 微信公众号关注前端小歌谣带你进入前端巅峰交流群</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clfryouwz00078sfyds660mxo/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clfs1458j000gzofy844bdj5f/">展开全文 >></a>
         </p>
       
 
@@ -399,12 +322,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clfryoux000098sfyfmou9mli/">ant design table实现上下行拖拽功能(类组件)</a>
+      <a class="article-title" href="/2023/03/28/clfs1458g0009zofy5oh9a1gk/">ant design table实现上下行拖拽功能(类组件)</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clfryoux000098sfyfmou9mli/" class="archive-article-date">
+        <a href="/2023/03/28/clfs1458g0009zofy5oh9a1gk/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -460,7 +383,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clfryoux000098sfyfmou9mli/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clfs1458g0009zofy5oh9a1gk/">展开全文 >></a>
         </p>
       
 
@@ -497,12 +420,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clfryoux0000a8sfyelklebk8/">npm,cnpm,yarn简单对比笔记</a>
+      <a class="article-title" href="/2023/03/28/clfs1458h000azofy4l8c43nu/">npm,cnpm,yarn简单对比笔记</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clfryoux0000a8sfyelklebk8/" class="archive-article-date">
+        <a href="/2023/03/28/clfs1458h000azofy4l8c43nu/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -553,7 +476,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clfryoux0000a8sfyelklebk8/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clfs1458h000azofy4l8c43nu/">展开全文 >></a>
         </p>
       
 
@@ -590,12 +513,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clfryoux2000c8sfy2v810pqe/">react+ts+hook封装一个table分页组件(建议收藏,直接使用)</a>
+      <a class="article-title" href="/2023/03/28/clfs1458h000bzofy7zy990yp/">react+ts+hook封装一个table分页组件(建议收藏,直接使用)</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clfryoux2000c8sfy2v810pqe/" class="archive-article-date">
+        <a href="/2023/03/28/clfs1458h000bzofy7zy990yp/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -649,7 +572,84 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clfryoux2000c8sfy2v810pqe/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clfs1458h000bzofy7zy990yp/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Viewer.js实现图片预览效果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/28/clfs1458i000czofydeti98ll/">Viewer.js实现图片预览效果</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clfs1458i000czofydeti98ll/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 今天要说的是一个需求图片可以实现一个预览的结果最近涉及一个移动端项目需要把其中的图片变成可预览的图片<br>听学弟说 可以利用viewer进行实现首先我们需要做的就是先写一个简单demo<br>先实现其中的效果 2021年的事情了</p>
+</blockquote>
+<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/08880b828d9743deadc3baee198451ca~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h2 id="基本案例"><a href="#基本案例" class="headerlink" title="基本案例"></a>基本案例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot;</span><br><span class="line">          content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/bootstrap@4/dist/css/bootstrap.min.css&quot; crossorigin=&quot;anonymous&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/viewer.css&quot;&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;!--./images/thumbnails/tibet-1.jpg--&gt;</span><br><span class="line">&lt;div id=&quot;galley&quot;&gt;</span><br><span class="line">    &lt;ul id=&quot;images1&quot; class=&quot;img-list&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;!--二--&gt;</span><br><span class="line"> &lt;!--   &lt;ul id=&quot;image2&quot; class=&quot;img-list&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;--&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/jquery@3/dist/jquery.slim.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./js/viewer.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = function()&#123;</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;galley&#x27;), &#123;&#125;);</span><br><span class="line">        //</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;image2&#x27;), &#123;</span><br><span class="line">            url: &#x27;data-imgurl&#x27;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目实现部分"><a href="#项目实现部分" class="headerlink" title="项目实现部分"></a>项目实现部分</h2><blockquote>
+<p>看一下效果预览点击的时候就可以进行一个效果的预览操作了<br>同样 三步走第一步引入第二步注意结构第三步效果演示</p>
+</blockquote>
+<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">      &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;col-lg-12&quot;&gt;</span><br><span class="line">            &lt;div id=&quot;allmap&quot;&gt;</span><br><span class="line">​</span><br><span class="line">                &lt;img src=&quot;images/867.png&quot; data-imgurl=&quot;images/867.png&quot; alt=&quot;&quot; style=&quot;width: 100%&quot;&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">​</span><br><span class="line">​</span><br><span class="line">&lt;!--公共尾部--&gt;</span><br><span class="line">&lt;div class=&quot;footer&quot;&gt;&lt;/div&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;js/aos.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;js/viewer.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">​</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = function()&#123;</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;allmap&#x27;), &#123;&#125;);</span><br><span class="line">        //</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;image2&#x27;), &#123;</span><br><span class="line">            url: &#x27;data-imgurl&#x27;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    //DOM加载完成之后执行函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b0225be808fc4b158036435c4acbb668~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>2021年的时候当时是对官网项目的维护 微信公众号关注前端小歌谣带你进入前端巅峰交流群</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/28/clfs1458i000czofydeti98ll/">展开全文 >></a>
         </p>
       
 
@@ -686,12 +686,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clfryoux3000e8sfy47we21l7/">react中使用的富文本编辑器braft-editor使用</a>
+      <a class="article-title" href="/2023/03/28/clfs1458i000dzofyhfwhfpzp/">react中使用的富文本编辑器braft-editor使用</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clfryoux3000e8sfy47we21l7/" class="archive-article-date">
+        <a href="/2023/03/28/clfs1458i000dzofyhfwhfpzp/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -746,7 +746,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clfryoux3000e8sfy47we21l7/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clfs1458i000dzofyhfwhfpzp/">展开全文 >></a>
         </p>
       
 
@@ -783,12 +783,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clfryoux3000f8sfy9gd52gpv/">前端小知识点扫盲笔记记录</a>
+      <a class="article-title" href="/2023/03/28/clfs1458j000ezofyfn1rfsee/">前端小知识点扫盲笔记记录</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clfryoux3000f8sfy9gd52gpv/" class="archive-article-date">
+        <a href="/2023/03/28/clfs1458j000ezofyfn1rfsee/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -854,7 +854,105 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clfryoux3000f8sfy9gd52gpv/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clfs1458j000ezofyfn1rfsee/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-React+hook+ts+ant design upload实现多个文件一次上传" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/28/clfs1458f0006zofy7qmeby87/">React+hook+ts+ant design upload实现多个文件一次上传</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clfs1458f0006zofy7qmeby87/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 在日常的学习生活中 我们会遇到各种各样的问题 今天在工作中就遇到了多个文件上传的时候会调用多次接口 感谢群友的帮助 想加入前端巅峰交流群可以私信我</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/86ec66419dbe49c29a65b8bb3100ae76.png" alt="在这里插入图片描述"></p>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><blockquote>
+<p>一开始不知道原因 后来在群友的帮助下 最后知道了原因<br>是onChange的原因</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上传中、完成、失败都会调用这个函数</span><br></pre></td></tr></table></figure>
+
+<h1 id="思路解答"><a href="#思路解答" class="headerlink" title="思路解答"></a>思路解答</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">群友给的demo</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">import &quot;./styles.css&quot;;</span><br><span class="line">import React, &#123; useState, useEffect, useRef &#125; from &quot;react&quot;;</span><br><span class="line">import &#123; Button, Upload &#125; from &quot;antd&quot;;</span><br><span class="line">import &#123; UploadOutlined &#125; from &quot;@ant-design/icons&quot;;</span><br><span class="line">export default function App() &#123;</span><br><span class="line">  const fileState = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList;</span><br><span class="line">    return function (list, setState) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line"></span><br><span class="line">  function beforeUpload(_, fileList) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    console.log(&quot;自定义上传&quot;, uploadFiles);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">      fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">      &lt;h1&gt;Hello CodeSandbox&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;Start editing to see some magic happen!&lt;/h2&gt;</span><br><span class="line">      &lt;Upload</span><br><span class="line">        listType=&quot;picture&quot;</span><br><span class="line">        maxCount=&#123;3&#125;</span><br><span class="line">        multiple</span><br><span class="line">        beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;Button&gt;Upload (Max: 3)&lt;/Button&gt;</span><br><span class="line">      &lt;/Upload&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/04a472d3c18f4819818c196fdff962b3.png" alt="在这里插入图片描述"></p>
+<h1 id="项目给的demo"><a href="#项目给的demo" class="headerlink" title="项目给的demo"></a>项目给的demo</h1><h2 id="upload部分"><a href="#upload部分" class="headerlink" title="upload部分"></a>upload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Upload</span><br><span class="line">                  name=&quot;file&quot;</span><br><span class="line">                  customRequest=&#123;customRequest&#125;</span><br><span class="line">                  multiple=&#123;true&#125;</span><br><span class="line">                  beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">                  headers=&#123;&#123; Authorization: getToken() || &quot;&quot; &#125;&#125;</span><br><span class="line">                &gt;</span><br><span class="line">                  &lt;Button style=&#123;&#123; width: &quot;100%&quot; &#125;&#125; icon=&#123;&lt;UploadOutlined /&gt;&#125;&gt;</span><br><span class="line">                    上传</span><br><span class="line">                  &lt;/Button&gt;</span><br><span class="line">                &lt;/Upload&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="beforeUpload部分"><a href="#beforeUpload部分" class="headerlink" title="beforeUpload部分"></a>beforeUpload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">const fileState: any = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList: any = null;</span><br><span class="line">    return function (list: any, setState: any) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">       fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  function beforeUpload(_: any, fileList: any) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const [loadingButton,setLoadingButton]=useState&lt;boolean&gt;(false)</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line">    uploadFile(&quot;manufacture/cutScheme/batchUploadDrawing&quot;, formData).then((res) =&gt; &#123;</span><br><span class="line">      if (res.code == 200) &#123;</span><br><span class="line">        setFileId(res.data.fileIdList)</span><br><span class="line">        message.success(&quot;文件上传成功&quot;)</span><br><span class="line">        setLoadingButton(false)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        message.error(res.msg)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="解析部分"><a href="#解析部分" class="headerlink" title="解析部分"></a>解析部分</h1><blockquote>
+<p>multiple多选文件</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/0cbbb8fc90944e64ad933105a06ab18d.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>return false控制只执行一次<br><img src="https://img-blog.csdnimg.cn/de2d37df69704b1ca98d435d2cc7b0b4.png" alt="在这里插入图片描述"><br>customRequest</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/e3b7651c225c4da9bf70adf567ba5c8e.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>formdata转文件格式</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>核心 hook写法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const updateFiles = (function () &#123;</span><br><span class="line">  let fileList: any = null;</span><br><span class="line">  return function (list: any, setState: any) &#123;</span><br><span class="line">    if (!fileList) &#123;</span><br><span class="line">      fileList = list;</span><br><span class="line">      setState &amp;&amp; setState(list);</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;</span><br><span class="line">      fileList,</span><br><span class="line">      reset() &#123;</span><br><span class="line">        fileList = false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 感谢生命中帮助你的每一个人 感谢山川~</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/28/clfs1458f0006zofy7qmeby87/">展开全文 >></a>
         </p>
       
 
@@ -891,12 +989,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clfryouwy00058sfyabh44pyd/">React+antDesign封装一个tab组件(类组件)</a>
+      <a class="article-title" href="/2023/03/28/clfs1458f0007zofyds5b7o9j/">React+antDesign封装一个tab组件(类组件)</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clfryouwy00058sfyabh44pyd/" class="archive-article-date">
+        <a href="/2023/03/28/clfs1458f0007zofyds5b7o9j/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -955,105 +1053,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clfryouwy00058sfyabh44pyd/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React+hook+ts+ant design upload实现多个文件一次上传" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clfryouwz00068sfyh5pj8apw/">React+hook+ts+ant design upload实现多个文件一次上传</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/clfryouwz00068sfyh5pj8apw/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>大家好 我是歌谣 在日常的学习生活中 我们会遇到各种各样的问题 今天在工作中就遇到了多个文件上传的时候会调用多次接口 感谢群友的帮助 想加入前端巅峰交流群可以私信我</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/86ec66419dbe49c29a65b8bb3100ae76.png" alt="在这里插入图片描述"></p>
-<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><blockquote>
-<p>一开始不知道原因 后来在群友的帮助下 最后知道了原因<br>是onChange的原因</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上传中、完成、失败都会调用这个函数</span><br></pre></td></tr></table></figure>
-
-<h1 id="思路解答"><a href="#思路解答" class="headerlink" title="思路解答"></a>思路解答</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">群友给的demo</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">import &quot;./styles.css&quot;;</span><br><span class="line">import React, &#123; useState, useEffect, useRef &#125; from &quot;react&quot;;</span><br><span class="line">import &#123; Button, Upload &#125; from &quot;antd&quot;;</span><br><span class="line">import &#123; UploadOutlined &#125; from &quot;@ant-design/icons&quot;;</span><br><span class="line">export default function App() &#123;</span><br><span class="line">  const fileState = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList;</span><br><span class="line">    return function (list, setState) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line"></span><br><span class="line">  function beforeUpload(_, fileList) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    console.log(&quot;自定义上传&quot;, uploadFiles);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">      fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">      &lt;h1&gt;Hello CodeSandbox&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;Start editing to see some magic happen!&lt;/h2&gt;</span><br><span class="line">      &lt;Upload</span><br><span class="line">        listType=&quot;picture&quot;</span><br><span class="line">        maxCount=&#123;3&#125;</span><br><span class="line">        multiple</span><br><span class="line">        beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;Button&gt;Upload (Max: 3)&lt;/Button&gt;</span><br><span class="line">      &lt;/Upload&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/04a472d3c18f4819818c196fdff962b3.png" alt="在这里插入图片描述"></p>
-<h1 id="项目给的demo"><a href="#项目给的demo" class="headerlink" title="项目给的demo"></a>项目给的demo</h1><h2 id="upload部分"><a href="#upload部分" class="headerlink" title="upload部分"></a>upload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Upload</span><br><span class="line">                  name=&quot;file&quot;</span><br><span class="line">                  customRequest=&#123;customRequest&#125;</span><br><span class="line">                  multiple=&#123;true&#125;</span><br><span class="line">                  beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">                  headers=&#123;&#123; Authorization: getToken() || &quot;&quot; &#125;&#125;</span><br><span class="line">                &gt;</span><br><span class="line">                  &lt;Button style=&#123;&#123; width: &quot;100%&quot; &#125;&#125; icon=&#123;&lt;UploadOutlined /&gt;&#125;&gt;</span><br><span class="line">                    上传</span><br><span class="line">                  &lt;/Button&gt;</span><br><span class="line">                &lt;/Upload&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="beforeUpload部分"><a href="#beforeUpload部分" class="headerlink" title="beforeUpload部分"></a>beforeUpload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">const fileState: any = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList: any = null;</span><br><span class="line">    return function (list: any, setState: any) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">       fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  function beforeUpload(_: any, fileList: any) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const [loadingButton,setLoadingButton]=useState&lt;boolean&gt;(false)</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line">    uploadFile(&quot;manufacture/cutScheme/batchUploadDrawing&quot;, formData).then((res) =&gt; &#123;</span><br><span class="line">      if (res.code == 200) &#123;</span><br><span class="line">        setFileId(res.data.fileIdList)</span><br><span class="line">        message.success(&quot;文件上传成功&quot;)</span><br><span class="line">        setLoadingButton(false)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        message.error(res.msg)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="解析部分"><a href="#解析部分" class="headerlink" title="解析部分"></a>解析部分</h1><blockquote>
-<p>multiple多选文件</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/0cbbb8fc90944e64ad933105a06ab18d.png" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>return false控制只执行一次<br><img src="https://img-blog.csdnimg.cn/de2d37df69704b1ca98d435d2cc7b0b4.png" alt="在这里插入图片描述"><br>customRequest</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/e3b7651c225c4da9bf70adf567ba5c8e.png" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>formdata转文件格式</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>核心 hook写法</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const updateFiles = (function () &#123;</span><br><span class="line">  let fileList: any = null;</span><br><span class="line">  return function (list: any, setState: any) &#123;</span><br><span class="line">    if (!fileList) &#123;</span><br><span class="line">      fileList = list;</span><br><span class="line">      setState &amp;&amp; setState(list);</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;</span><br><span class="line">      fileList,</span><br><span class="line">      reset() &#123;</span><br><span class="line">        fileList = false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>我是歌谣 感谢生命中帮助你的每一个人 感谢山川~</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clfryouwz00068sfyh5pj8apw/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clfs1458f0007zofyds5b7o9j/">展开全文 >></a>
         </p>
       
 
@@ -1349,5 +1349,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2d/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2d/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"display":{"position":"left"},"mobile":{"show":false},"model":{"scale":1.2,"jsonPath":"weier"},"log":false});</script></body>
 </html>

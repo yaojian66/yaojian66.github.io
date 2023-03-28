@@ -6,18 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | 前端导师歌谣的博客</title>
+  <title>React+hook+ts+ant design upload实现多个文件一次上传 | 前端导师歌谣的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分享技术 分享快乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="前端导师歌谣的博客">
-<meta property="og:url" content="http://example.com/archives/page/2/index.html">
+  <meta name="description" content="前言 大家好 我是歌谣 在日常的学习生活中 我们会遇到各种各样的问题 今天在工作中就遇到了多个文件上传的时候会调用多次接口 感谢群友的帮助 想加入前端巅峰交流群可以私信我   原因 一开始不知道原因 后来在群友的帮助下 最后知道了原因是onChange的原因  1上传中、完成、失败都会调用这个函数  思路解答1群友给的demo  1234567891011121314151617181920212">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React+hook+ts+ant design upload实现多个文件一次上传">
+<meta property="og:url" content="http://example.com/2023/03/28/clfs1458f0006zofy7qmeby87/index.html">
 <meta property="og:site_name" content="前端导师歌谣的博客">
-<meta property="og:description" content="分享技术 分享快乐">
+<meta property="og:description" content="前言 大家好 我是歌谣 在日常的学习生活中 我们会遇到各种各样的问题 今天在工作中就遇到了多个文件上传的时候会调用多次接口 感谢群友的帮助 想加入前端巅峰交流群可以私信我   原因 一开始不知道原因 后来在群友的帮助下 最后知道了原因是onChange的原因  1上传中、完成、失败都会调用这个函数  思路解答1群友给的demo  1234567891011121314151617181920212">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/86ec66419dbe49c29a65b8bb3100ae76.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/04a472d3c18f4819818c196fdff962b3.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0cbbb8fc90944e64ad933105a06ab18d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/de2d37df69704b1ca98d435d2cc7b0b4.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/e3b7651c225c4da9bf70adf567ba5c8e.png">
+<meta property="article:published_time" content="2023-03-28T07:12:42.839Z">
+<meta property="article:modified_time" content="2023-03-28T07:12:42.839Z">
 <meta property="article:author" content="geyao">
 <meta property="article:tag" content="前端,程序猿,热爱生活">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/86ec66419dbe49c29a65b8bb3100ae76.png">
   
     <link rel="alternative" href="/atom.xml" title="前端导师歌谣的博客" type="application/atom+xml">
   
@@ -153,241 +161,222 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-React+hook+ts+ant design upload实现多个文件一次上传" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      React+hook+ts+ant design upload实现多个文件一次上传
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfs1458g0008zofyfqoc46jz/" class="archive-article-date">
+
+        
+        <a href="/2023/03/28/clfs1458f0006zofy7qmeby87/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfs1458g0008zofyfqoc46jz/">Taro+react+TaroUi封装一个公司库的下拉组件</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 在日常的学习生活中 我们会遇到各种各样的问题 今天在工作中就遇到了多个文件上传的时候会调用多次接口 感谢群友的帮助 想加入前端巅峰交流群可以私信我</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/86ec66419dbe49c29a65b8bb3100ae76.png" alt="在这里插入图片描述"></p>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><blockquote>
+<p>一开始不知道原因 后来在群友的帮助下 最后知道了原因<br>是onChange的原因</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上传中、完成、失败都会调用这个函数</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<h1 id="思路解答"><a href="#思路解答" class="headerlink" title="思路解答"></a>思路解答</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">群友给的demo</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">import &quot;./styles.css&quot;;</span><br><span class="line">import React, &#123; useState, useEffect, useRef &#125; from &quot;react&quot;;</span><br><span class="line">import &#123; Button, Upload &#125; from &quot;antd&quot;;</span><br><span class="line">import &#123; UploadOutlined &#125; from &quot;@ant-design/icons&quot;;</span><br><span class="line">export default function App() &#123;</span><br><span class="line">  const fileState = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList;</span><br><span class="line">    return function (list, setState) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line"></span><br><span class="line">  function beforeUpload(_, fileList) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    console.log(&quot;自定义上传&quot;, uploadFiles);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">      fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">      &lt;h1&gt;Hello CodeSandbox&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;Start editing to see some magic happen!&lt;/h2&gt;</span><br><span class="line">      &lt;Upload</span><br><span class="line">        listType=&quot;picture&quot;</span><br><span class="line">        maxCount=&#123;3&#125;</span><br><span class="line">        multiple</span><br><span class="line">        beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;Button&gt;Upload (Max: 3)&lt;/Button&gt;</span><br><span class="line">      &lt;/Upload&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/04a472d3c18f4819818c196fdff962b3.png" alt="在这里插入图片描述"></p>
+<h1 id="项目给的demo"><a href="#项目给的demo" class="headerlink" title="项目给的demo"></a>项目给的demo</h1><h2 id="upload部分"><a href="#upload部分" class="headerlink" title="upload部分"></a>upload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Upload</span><br><span class="line">                  name=&quot;file&quot;</span><br><span class="line">                  customRequest=&#123;customRequest&#125;</span><br><span class="line">                  multiple=&#123;true&#125;</span><br><span class="line">                  beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">                  headers=&#123;&#123; Authorization: getToken() || &quot;&quot; &#125;&#125;</span><br><span class="line">                &gt;</span><br><span class="line">                  &lt;Button style=&#123;&#123; width: &quot;100%&quot; &#125;&#125; icon=&#123;&lt;UploadOutlined /&gt;&#125;&gt;</span><br><span class="line">                    上传</span><br><span class="line">                  &lt;/Button&gt;</span><br><span class="line">                &lt;/Upload&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="beforeUpload部分"><a href="#beforeUpload部分" class="headerlink" title="beforeUpload部分"></a>beforeUpload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">const fileState: any = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList: any = null;</span><br><span class="line">    return function (list: any, setState: any) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">       fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  function beforeUpload(_: any, fileList: any) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const [loadingButton,setLoadingButton]=useState&lt;boolean&gt;(false)</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line">    uploadFile(&quot;manufacture/cutScheme/batchUploadDrawing&quot;, formData).then((res) =&gt; &#123;</span><br><span class="line">      if (res.code == 200) &#123;</span><br><span class="line">        setFileId(res.data.fileIdList)</span><br><span class="line">        message.success(&quot;文件上传成功&quot;)</span><br><span class="line">        setLoadingButton(false)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        message.error(res.msg)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="解析部分"><a href="#解析部分" class="headerlink" title="解析部分"></a>解析部分</h1><blockquote>
+<p>multiple多选文件</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/0cbbb8fc90944e64ad933105a06ab18d.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>return false控制只执行一次<br><img src="https://img-blog.csdnimg.cn/de2d37df69704b1ca98d435d2cc7b0b4.png" alt="在这里插入图片描述"><br>customRequest</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/e3b7651c225c4da9bf70adf567ba5c8e.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>formdata转文件格式</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>核心 hook写法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const updateFiles = (function () &#123;</span><br><span class="line">  let fileList: any = null;</span><br><span class="line">  return function (list: any, setState: any) &#123;</span><br><span class="line">    if (!fileList) &#123;</span><br><span class="line">      fileList = list;</span><br><span class="line">      setState &amp;&amp; setState(list);</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;</span><br><span class="line">      fileList,</span><br><span class="line">      reset() &#123;</span><br><span class="line">        fileList = false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 感谢生命中帮助你的每一个人 感谢山川~</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>前端导师歌谣 微信公众号前端小歌谣<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/data.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/28/clfs1458f0006zofy7qmeby87/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfs1458b0002zofy398g40wc/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2023/03/28/clfs1458j000ezofyfn1rfsee/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          前端小知识点扫盲笔记记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/28/clfs1458f0007zofyds5b7o9j/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React+antDesign封装一个tab组件(类组件)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfs1458b0002zofy398g40wc/">React+Hook+ts+antDesign实现table行编辑功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E8%A7%A3%E7%AD%94"><span class="toc-number">3.</span> <span class="toc-text">思路解答</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%99%E7%9A%84demo"><span class="toc-number">4.</span> <span class="toc-text">项目给的demo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#upload%E9%83%A8%E5%88%86"><span class="toc-number">4.1.</span> <span class="toc-text">upload部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#beforeUpload%E9%83%A8%E5%88%86"><span class="toc-number">4.2.</span> <span class="toc-text">beforeUpload部分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E9%83%A8%E5%88%86"><span class="toc-number">5.</span> <span class="toc-text">解析部分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfs1458d0004zofycxbg8qsh/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfs1458d0004zofycxbg8qsh/">React+Hook+ts+antDesign实现伪定时调用接口功能</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfs1458e0005zofyaghf317d/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfs1458e0005zofyaghf317d/">React+antDesign实现上传图片功能(类组件)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfs145880000zofy7gatcssa/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfs145880000zofy7gatcssa/">React+Hook+ts+antDesignMobile实现input自动获取功能</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfs1458c0003zofy1lbw3tzi/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfs1458c0003zofy1lbw3tzi/">React+Hook+ts+antDesign实现table增加一个合计功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfs1458k000izofy46peas54/" class="archive-article-date">
-  	<time datetime="2023-03-28T02:52:07.832Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfs1458k000izofy46peas54/">前端小知识点扫盲笔记记录5</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfs1458k000hzofyetlvhe72/" class="archive-article-date">
-  	<time datetime="2023-03-28T02:06:24.359Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfs1458k000hzofyetlvhe72/">前端小知识点扫盲笔记记录4</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -411,8 +400,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
