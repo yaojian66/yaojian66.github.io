@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023 | 前端导师歌谣的博客</title>
+  <title>前端小知识点扫盲笔记记录 | 前端导师歌谣的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分享技术 分享快乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="前端导师歌谣的博客">
-<meta property="og:url" content="http://example.com/archives/2023/index.html">
+  <meta name="description" content="前言 大家好 我是歌谣 微信公众号关注前端小歌谣带你进入前端巅峰人才交流群  MVC和MVVM &#x2F;&#x2F; 在MVVM框架下视图和模型是不能直接通信的，只能通过ViewModel进行交互，它能够监听到数据的变化，         &#x2F;&#x2F; 然后通知视图进行自动更新，而当用户操作视图时，VM也能监听到视图的变化，然后通知数据做相应改动，         &#x2F;&#x2F; 这实际上就实现了数据的双向绑定。并且V和VM可以进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端小知识点扫盲笔记记录">
+<meta property="og:url" content="http://example.com/2023/03/28/clfryoux3000f8sfy9gd52gpv/index.html">
 <meta property="og:site_name" content="前端导师歌谣的博客">
-<meta property="og:description" content="分享技术 分享快乐">
+<meta property="og:description" content="前言 大家好 我是歌谣 微信公众号关注前端小歌谣带你进入前端巅峰人才交流群  MVC和MVVM &#x2F;&#x2F; 在MVVM框架下视图和模型是不能直接通信的，只能通过ViewModel进行交互，它能够监听到数据的变化，         &#x2F;&#x2F; 然后通知视图进行自动更新，而当用户操作视图时，VM也能监听到视图的变化，然后通知数据做相应改动，         &#x2F;&#x2F; 这实际上就实现了数据的双向绑定。并且V和VM可以进">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-28T07:12:42.840Z">
+<meta property="article:modified_time" content="2023-03-28T07:12:42.840Z">
 <meta property="article:author" content="geyao">
 <meta property="article:tag" content="前端,程序猿,热爱生活">
 <meta name="twitter:card" content="summary">
@@ -153,295 +155,232 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-前端小知识点扫盲笔记记录" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端小知识点扫盲笔记记录
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clfryoux3000f8sfy9gd52gpv/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 微信公众号关注前端小歌谣带你进入前端巅峰人才交流群</p>
+</blockquote>
+<h2 id="MVC和MVVM"><a href="#MVC和MVVM" class="headerlink" title="MVC和MVVM"></a>MVC和MVVM</h2><blockquote>
+<pre><code>// 在MVVM框架下视图和模型是不能直接通信的，只能通过ViewModel进行交互，它能够监听到数据的变化，
+        // 然后通知视图进行自动更新，而当用户操作视图时，VM也能监听到视图的变化，然后通知数据做相应改动，
+        // 这实际上就实现了数据的双向绑定。并且V和VM可以进行通信。
+        // Model（模型）
+        // 模型是指代表真实状态内容的领域模型（面向对象），或指代表内容的数据访问层（以数据为中心）。
+        // View（视图）
+        // 就像在MVC和MVP模式中一样，视图是用户在屏幕上看到的结构、布局和外观（UI）。
+        // ViewModel（视图模型）
+        // 视图模型是暴露公共属性和命令的视图的抽象。MVVM没有MVC模式的控制器，也没有MVP模式的presenter，有的是一个绑定器。在视图模型中，绑定器在视图和数据绑定器之间进行通信。
+        // 低耦合:View可以独立于Model变化和修改,一个ViewModel可以绑定到不同的View上,当View变化的时候Model可以不变,当Model变化的时候View也可以不变。
+        // 可重用性: 可以把一些视图逻辑放在一个ViewModel里面,让很多View重用这段视图逻辑。
+        // 独立开发: 开发人员可以专注于业务逻辑和数据的开发,设计人员可以专注于页面的设计。
+        // MVC是应用最广泛的软件架构之一,一般MVC分为:Model(模型),View(视图),Controller(控制器)。 
+        // 这主要是基于分层的目的,让彼此的职责分开.View一般用过Controller来和Model进行联系。
+        // Controller是Model和View的协调者,View和Model不直接联系。基本都是单向联系。M和V指的意思和MVVM中的M和V意思一样。
+        // C即Controller指的是页面业务逻辑。MVC是单向通信。也就是View跟Model，必须通过Controller来承上启下。
+        // 低耦合
+        // 重用性高
+        // 生命周期成本低
+        // 部署快
+        // 可维护性高
+        // 有利软件工程化管理
+</code></pre>
+</blockquote>
+<h2 id="object-Create"><a href="#object-Create" class="headerlink" title="object.Create"></a>object.Create</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;Object.create&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //利用object.create实现继承</span><br><span class="line">    function father(name)&#123;</span><br><span class="line">      var name=&quot;geyao&quot;</span><br><span class="line">      this.name = name;</span><br><span class="line">     </span><br><span class="line">    &#125;</span><br><span class="line">    function children()&#123;</span><br><span class="line">        father.call(this)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    children.prototype=Object.create(father.prototype);</span><br><span class="line">    children.prototype.constructor=children</span><br><span class="line"></span><br><span class="line">    var geyao=new children()</span><br><span class="line">    console.log(geyao.name,&quot;geyao&quot;) //geyao</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="argument"><a href="#argument" class="headerlink" title="argument"></a>argument</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;arguments&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">            //arguments 是一个对应于传递给函数的参数的类数组对象。</span><br><span class="line">			//这边的arguments[0]等价于fn</span><br><span class="line">			var length = 10</span><br><span class="line">			function fn() &#123;</span><br><span class="line">				console.log(this.length, &#x27;length&#x27;)</span><br><span class="line">			&#125;</span><br><span class="line">			var obj = &#123;</span><br><span class="line">				length: 5,</span><br><span class="line">				method: function (fn) &#123;</span><br><span class="line">					console.log(arguments[0], &#x27;arguments&#x27;)</span><br><span class="line">					//      fn()&#123;</span><br><span class="line">					//     console.log(this.length,&quot;length&quot;);</span><br><span class="line">					//   &#125; &#x27;arguments&#x27;</span><br><span class="line">					arguments[0]()</span><br><span class="line">				&#125;,</span><br><span class="line">			&#125;</span><br><span class="line">			obj.method(fn) //1</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="class类继承"><a href="#class类继承" class="headerlink" title="class类继承"></a>class类继承</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			class Rectangle &#123;</span><br><span class="line">				// constructor</span><br><span class="line">				constructor(height, width) &#123;</span><br><span class="line">					this.height = height</span><br><span class="line">					this.width = width</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				// Getter</span><br><span class="line">				get area() &#123;</span><br><span class="line">					return this.calcArea()</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				// Method</span><br><span class="line">				calcArea() &#123;</span><br><span class="line">					return this.height * this.width</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			const rectangle = new Rectangle(10, 20)</span><br><span class="line">			console.log(rectangle.area)</span><br><span class="line">			// 输出 200</span><br><span class="line"></span><br><span class="line">			// 继承</span><br><span class="line">			class Square extends Rectangle &#123;</span><br><span class="line">				constructor(length) &#123;</span><br><span class="line">					super(length, length)</span><br><span class="line"></span><br><span class="line">					// 如果子类中存在构造函数，则需要在使用“this”之前首先调用 super()。</span><br><span class="line">					this.name = &#x27;Square&#x27;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				get area() &#123;</span><br><span class="line">					return this.height * this.width</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			const square = new Square(10)</span><br><span class="line">			console.log(square.area)</span><br><span class="line">			// 输出 100</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;constructor&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //属性的值是对函数本身的引用</span><br><span class="line"></span><br><span class="line">    function father(name)&#123;</span><br><span class="line">      this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    var gg=new father(&quot;father&quot;)</span><br><span class="line">    console.log(gg.constructor,&quot;gg&quot;)</span><br><span class="line"></span><br><span class="line">    //ƒ father(name)&#123;</span><br><span class="line">    //  this.name = name;</span><br><span class="line">   // &#125; &#x27;gg&#x27;</span><br><span class="line">  //创建自身属性的方法</span><br><span class="line">   function Parent() &#123;&#125;;</span><br><span class="line">    function CreatedConstructor() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    CreatedConstructor.prototype = Object.create(Parent.prototype);</span><br><span class="line">    //创建一个Parent的对象</span><br><span class="line">    console.log( Object.create(Parent.prototype),&quot;Parent&quot;)</span><br><span class="line">    CreatedConstructor.prototype.constructor = CreatedConstructor; // 改变指向到父级</span><br><span class="line">    CreatedConstructor.prototype.create = function create() &#123;</span><br><span class="line">      return new this.constructor();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    new CreatedConstructor().create().create(); </span><br><span class="line">    //按照父亲级别的属性进行创造</span><br><span class="line">    console.log(new CreatedConstructor().create().create(),&quot;CreatedConstructor&quot;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="cookie-session区别"><a href="#cookie-session区别" class="headerlink" title="cookie,session区别"></a>cookie,session区别</h2><blockquote>
+<p>&#x2F;&#x2F; cookie 和 session 区别<br>    &#x2F;&#x2F; cookie数据存放在浏览器中， session数据存放在服务器上<br>    &#x2F;&#x2F; cookie是不安全的， 别人可以分析存放在本地的cookie并进行cookie诈骗， 考虑到安全性能， 应尽量使用session<br>    &#x2F;&#x2F; session会在一定时间内保存在服务器上。 当访问增多时， 会比较占用服务器的性能。 考虑到服务性能， 应尽量使用cookie<br>    &#x2F;&#x2F; 单个cookie保存的数据不能超过4k， 很多浏览器都限制一个站点最多保存20个cookie<br>    &#x2F;&#x2F; cookie和session都用来存储用户信息， cookie存放于客户端有可能被窃取， 所以cookie一般用来存放不敏感的信息， 比如用户设置的网站主题， 敏感的信息用session存储， 比如用户的登录信息<br>    &#x2F;&#x2F; cookie， sessionStorage， localStorage 区别<br>    &#x2F;&#x2F; HTML5中提出了webStorage的概念， webStorage包括sessionStorage和localStorage， 只为了保存数据， 不会与服务器进行通信<br>    &#x2F;&#x2F; cookie, localStorage, sessionStorage都是在客户端保存数据， 存储数据的类型： 字符串<br>    &#x2F;&#x2F; webStorage不会随着HTTP header发送到服务器端， 所以安全性相对来说比cookie高， 不必担心截获<br>    &#x2F;&#x2F; 生命周期不同（ 见后文）， localStorage要手动清除， sessionStorage在浏览器关闭后清除<br>    &#x2F;&#x2F; 生命周期<br>    &#x2F;&#x2F; cookie： 可设置失效时间， 否则默认为关闭浏览器后消失<br>    &#x2F;&#x2F; localStorage： 除非被手动清除， 否则永久保存<br>    &#x2F;&#x2F; sessionStorage： 仅在当前网页会话下有效， 关闭页面或浏览器后就会被清除</p>
+</blockquote>
+<h2 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h2><blockquote>
+<p>&#x2F;&#x2F; 传统diff算法<br>            &#x2F;&#x2F; 虚拟DOM中的Diff算法<br>            &#x2F;&#x2F; 传统算法查找两颗树每一个节点的差异<br>            &#x2F;&#x2F; 会运行n1(dom1的节点数)*n2(dom2的节点数)次方去对比,找到差异的部分再去更新<br>            &#x2F;&#x2F; snabbdom的diff算法优化<br>            &#x2F;&#x2F;  Snbbdom根据DOM的特点对传统的diff算法做了优化<br>            &#x2F;&#x2F;  DOM操作时候很少会跨级别操作节点<br>            &#x2F;&#x2F;  只比较同级别的节点<br>            &#x2F;&#x2F; key的作用<br>            &#x2F;&#x2F; Diff操作可以更加快速<br>            &#x2F;&#x2F; Diff操作可以更加准确<br>            &#x2F;&#x2F; 避免渲染错误<br>            &#x2F;&#x2F; 不推荐使用索引作为key</p>
+</blockquote>
+<h2 id="eval使用"><a href="#eval使用" class="headerlink" title="eval使用"></a>eval使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;eval的使用&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //   eval() 函数会将传入的字符串当做 JavaScript 代码进行执行。</span><br><span class="line">  var fangfang=eval(new String(&#x27;2 + 2&#x27;)) </span><br><span class="line">  console.log(fangfang,&quot;fangfang&quot;) //String &#123; &quot;2 + 2&quot; &#125;</span><br><span class="line">  var fangfangTest=new String(&#x27;2 + 2&#x27;)</span><br><span class="line">  console.log(fangfangTest,&quot;fangfangTest&quot;) //String &#123; &quot;2 + 2&quot; &#125;</span><br><span class="line">  var geyao=eval(&#x27;2 + 2&#x27;) </span><br><span class="line">  console.log(geyao,&quot;geyao&quot;) //4</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="http1-0-2-0-3-0区别"><a href="#http1-0-2-0-3-0区别" class="headerlink" title="http1.0,2.0,3.0区别"></a>http1.0,2.0,3.0区别</h2><blockquote>
+<p>  HTTP1.0和HTTP1.1主要区别主要体现在：缓存处理，在HTTP1.0中主要使用header里的If-Modified-Since,Expires来做为缓存判断的标准，HTTP1.1则引入了更多的缓存控制策略例如Entity tag，If-Unmodified-Since, If-Match, If-None-Match等更多可供选择的缓存头来控制缓存策略。带宽优化及网络连接的使用，HTTP1.0中，存在一些浪费带宽的现象，例如客户端只是需要某个对象的一部分，而服务器却将整个对象送过来了，并且不支持断点续传功能，HTTP1.1则在请求头引入了range头域，它允许只请求资源的某个部分，即返回码是206（Partial Content)这样就方便了开发者自由的选择以便于充分利用带宽和连接。错误通知的管理，在HTTP1.1中新增了24个错误状态响应码，如409（Conflict）表示请求的资源与资源的当前状态发生冲突；410（Gone）表示服务器上的某个资源被永久性的删除。Host头处理，在HTTP1.0中认为每台服务器都绑定一个唯一的IP地址，因此，请求消息中的URL并没有传递主机名（hostname）。但随着虚拟主机技术的发展，在一台物理服务器上可以存在多个虚拟主机（Multi-homed Web Servers），并且它们共享一个IP地址。HTTP1.1的请求消息和响应消息都应支持Host头域，且请求消息中如果没有Host头域会报告一个错误（400 Bad Request）。长连接，HTTP 1.1支持长连接（PersistentConnection）和请求的流水线（Pipelining）处理，在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟，在HTTP1.1中默认开启Connection： keep-alive，一定程度上弥补了HTTP1.0每次请求都要创建连接的缺点。HTTP2.0HTTP2.0是HTTP协议自1999年HTTP1.1发布后的首个更新，主要基于SPDY协议。HTTP2.0大幅度的提高了web性能，在HTTP1.1完全语义兼容的基础上，进一步减少了网络的延迟。实现低延迟高吞吐量。对于前端开发者而言，减少了优化工作。主要体现在以下几点特性：头部压缩多路复用二进制分帧请求优先级服务器推送 </p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我是歌谣 这些都是扫盲时候的笔记 微信公众号关注前端小歌谣 学习前端知识</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>前端导师歌谣 微信公众号前端小歌谣<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/data.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfryoux2000d8sfy58r3chwq/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.841Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfryoux2000d8sfy58r3chwq/">前端小知识点扫盲笔记记录2</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/28/clfryoux3000f8sfy9gd52gpv/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfryoux3000g8sfy0rch84y2/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.841Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2023/03/28/clfryoux3000e8sfy47we21l7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          react中使用的富文本编辑器braft-editor使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/28/clfryouwy00058sfyabh44pyd/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React+antDesign封装一个tab组件(类组件)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfryoux3000g8sfy0rch84y2/">前端小知识点扫盲笔记记录3</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MVC%E5%92%8CMVVM"><span class="toc-number">1.1.</span> <span class="toc-text">MVC和MVVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#object-Create"><span class="toc-number">1.2.</span> <span class="toc-text">object.Create</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#argument"><span class="toc-number">1.3.</span> <span class="toc-text">argument</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#class%E7%B1%BB%E7%BB%A7%E6%89%BF"><span class="toc-number">1.4.</span> <span class="toc-text">class类继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#constructor-NaN"><span class="toc-number">1.5.</span> <span class="toc-text">constructor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie-session%E5%8C%BA%E5%88%AB"><span class="toc-number">1.6.</span> <span class="toc-text">cookie,session区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#diff%E7%AE%97%E6%B3%95"><span class="toc-number">1.7.</span> <span class="toc-text">diff算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#eval%E4%BD%BF%E7%94%A8"><span class="toc-number">1.8.</span> <span class="toc-text">eval使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#http1-0-2-0-3-0%E5%8C%BA%E5%88%AB"><span class="toc-number">1.9.</span> <span class="toc-text">http1.0,2.0,3.0区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfryouwz00078sfyds660mxo/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfryouwz00078sfyds660mxo/">Viewer.js实现图片预览效果</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfryoux000098sfyfmou9mli/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfryoux000098sfyfmou9mli/">ant design table实现上下行拖拽功能(类组件)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfryoux0000a8sfyelklebk8/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfryoux0000a8sfyelklebk8/">npm,cnpm,yarn简单对比笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfryoux2000c8sfy2v810pqe/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfryoux2000c8sfy2v810pqe/">react+ts+hook封装一个table分页组件(建议收藏,直接使用)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfryoux3000e8sfy47we21l7/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfryoux3000e8sfy47we21l7/">react中使用的富文本编辑器braft-editor使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfryoux3000f8sfy9gd52gpv/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfryoux3000f8sfy9gd52gpv/">前端小知识点扫盲笔记记录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfryouwy00058sfyabh44pyd/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfryouwy00058sfyabh44pyd/">React+antDesign封装一个tab组件(类组件)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clfryouwz00068sfyh5pj8apw/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clfryouwz00068sfyh5pj8apw/">React+hook+ts+ant design upload实现多个文件一次上传</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2023/page/2/">2</a><a class="extend next" rel="next" href="/archives/2023/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -465,8 +404,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
