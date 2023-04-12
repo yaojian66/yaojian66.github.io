@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | 前端导师歌谣的博客</title>
+  <title>前端小知识点扫盲笔记记录5 | 前端导师歌谣的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分享技术 分享快乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="前端导师歌谣的博客">
-<meta property="og:url" content="http://example.com/archives/page/2/index.html">
+  <meta name="description" content="前言 我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣带你进入前端巅峰交流群 今天继续对前端知识的小结  事件委托12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端小知识点扫盲笔记记录5">
+<meta property="og:url" content="http://example.com/2023/03/28/clgdaxyia000kd4fy1s6rggfl/index.html">
 <meta property="og:site_name" content="前端导师歌谣的博客">
-<meta property="og:description" content="分享技术 分享快乐">
+<meta property="og:description" content="前言 我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣带你进入前端巅峰交流群 今天继续对前端知识的小结  事件委托12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&amp;qu">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-28T02:52:07.832Z">
+<meta property="article:modified_time" content="2023-03-28T02:52:47.110Z">
 <meta property="article:author" content="geyao">
 <meta property="article:tag" content="前端,程序猿,热爱生活">
 <meta name="twitter:card" content="summary">
@@ -153,295 +155,217 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-前端小知识点扫盲笔记记录5" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端小知识点扫盲笔记记录5
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clgdaxyia000kd4fy1s6rggfl/" class="archive-article-date">
+  	<time datetime="2023-03-28T02:52:07.832Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣带你进入前端巅峰交流群 今天继续对前端知识的小结</p>
+</blockquote>
+<h1 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;事件委托&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;ul&gt;</span><br><span class="line">			&lt;li&gt;11111&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;22222&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;33333&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;44444&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;55555&lt;/li&gt;</span><br><span class="line">		&lt;/ul&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			// 事件委托的核心原理：给父节点添加侦听器， 利用事件冒泡影响每一个子节点</span><br><span class="line">			// ul有一万个li 进行事件绑定</span><br><span class="line">			// var itemli = document.getElementsByTagName(&#x27;li&#x27;)</span><br><span class="line">			// for (var i = 0; i &lt; itemli.length; i++) &#123;</span><br><span class="line">			// 	itemli[i].onclick = (function (n) &#123;</span><br><span class="line">			// 		return function () &#123;</span><br><span class="line">			// 			console.log(n + itemli[n].innerHTML)</span><br><span class="line">			// 		&#125;</span><br><span class="line">			// 	&#125;)(i)</span><br><span class="line">			// &#125;</span><br><span class="line">			var ul = document.querySelector(&#x27;ul&#x27;)</span><br><span class="line">			ul.onclick = function (e) &#123;</span><br><span class="line">				e = e || window.event //这一行及下一行是为兼容IE8及以下版本</span><br><span class="line">				var target = e.target || e.srcElement</span><br><span class="line">				if (target.tagName.toLowerCase() === &#x27;li&#x27;) &#123;</span><br><span class="line">					var li = this.querySelectorAll(&#x27;li&#x27;)</span><br><span class="line">					index = Array.prototype.indexOf.call(li, target)</span><br><span class="line">					alert(target.innerHTML + index)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			var ul = document.querySelector(&#x27;ul&#x27;);</span><br><span class="line">			ul.addEventListener(&#x27;click&#x27;, function(e) &#123;</span><br><span class="line">			    // alert(&#x27;点我应有弹框！&#x27;);</span><br><span class="line">			    // e.target 这个可以得到我们点击的对象</span><br><span class="line">			    e.target.style.backgroundColor = &#x27;pink&#x27;;</span><br><span class="line">			&#125;)</span><br><span class="line">			// 点击下面的li变红</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;事件循环&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- js的事件循环，每次读取一个任务，然后执行这个任务，执行完再继续获取下一个，</span><br><span class="line">  如果暂时没有任务，就暂停执行，等待下一个任务到来；如果在执行任务的过程中有新的任务到达</span><br><span class="line">  ，也不会中断现有任务的执行，而是添加到队列的尾部等待 --&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="从浏览器地址栏输入url"><a href="#从浏览器地址栏输入url" class="headerlink" title="从浏览器地址栏输入url"></a>从浏览器地址栏输入url</h1><blockquote>
+<pre><code>        // 1 输入 URL 后解析出协议、主机、端口、路径等信息，并构造一个 HTTP 请求。
+        // 2强缓存。
+        // 协商缓存。
+        // 3DNS 域名解析。（字节面试被虐后，是时候搞懂 DNS 了）
+        // TCP 连接。
+        // 4总是要问：为什么需要三次握手，两次不行吗？其实这是由 TCP 的自身特点可靠传输决定的。
+        // 客户端和服务端要进行可靠传输，那么就需要确认双方的接收和发送能力。第一次握手可以确认客服端的发送能力，
+        // 第二次握手，确认了服务端的发送能力和接收能力，所以第三次握手才可以确认客户端的接收能力。不然容易出现丢包的现象。
+        // 5http 请求。
+        // 6服务器处理请求并返回 HTTP 报文。
+        // 7浏览器渲染页面。
+</code></pre>
+</blockquote>
+<h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;代理模式&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    // 先申明一个奶茶妹对象</span><br><span class="line">    var TeaAndMilkGirl = function (name) &#123;</span><br><span class="line">      this.name = name;</span><br><span class="line">    &#125;;</span><br><span class="line">    // 这是京东ceo先生</span><br><span class="line">    var Ceo = function (girl) &#123;</span><br><span class="line">      this.girl = girl;</span><br><span class="line">      // 送结婚礼物 给奶茶妹</span><br><span class="line">      this.sendMarriageRing = function (ring) &#123;</span><br><span class="line">        console.log(&quot;Hi &quot; + this.girl.name + &quot;, ceo送你一个礼物：&quot; + ring);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    // 京东ceo的经纪人是代理，来代替送</span><br><span class="line">    var ProxyObj = function (girl) &#123;</span><br><span class="line">      this.girl = girl;</span><br><span class="line">      // 经纪人代理送礼物给奶茶妹</span><br><span class="line">      this.sendGift = function (gift) &#123;</span><br><span class="line">        // 代理模式负责本体对象实例化</span><br><span class="line">        (new Ceo(this.girl)).sendMarriageRing(gift);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    // 初始化</span><br><span class="line">    var proxy = new ProxyObj(new TeaAndMilkGirl(&quot;奶茶妹&quot;));</span><br><span class="line">    proxy.sendGift(&quot;结婚戒&quot;); // Hi 奶茶妹, ceo送你一个礼物：结婚戒</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="使用代理模式预加载图片"><a href="#使用代理模式预加载图片" class="headerlink" title="使用代理模式预加载图片"></a>使用代理模式预加载图片</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;使用代理模式加载图片&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var myImage = (function () &#123;</span><br><span class="line">      var imgNode = document.createElement(&quot;img&quot;);</span><br><span class="line">      document.body.appendChild(imgNode);</span><br><span class="line">      return &#123;</span><br><span class="line">        setSrc: function (src) &#123;</span><br><span class="line">          imgNode.src = src;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    // 代理模式</span><br><span class="line">    var ProxyImage = (function () &#123;</span><br><span class="line">      var img = new Image();</span><br><span class="line">      img.onload = function () &#123;</span><br><span class="line">        myImage.setSrc(this.src);</span><br><span class="line">      &#125;;</span><br><span class="line">      return &#123;</span><br><span class="line">        setSrc: function (src) &#123;</span><br><span class="line">          myImage.setSrc(&quot;http://img.lanrentuku.com/img/allimg/1212/5-121204193Q9-50.gif&quot;);</span><br><span class="line">          img.src = src;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    // 调用方式</span><br><span class="line">    ProxyImage.setSrc(&quot;https://img.alicdn.com/tps/i4/TB1b_neLXXXXXcoXFXXc8PZ9XXX-130-200.png&quot;);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="冒泡排序算法"><a href="#冒泡排序算法" class="headerlink" title="冒泡排序算法"></a>冒泡排序算法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			function bubbleSort(arr) &#123;</span><br><span class="line">				for (var i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">					for (var j = arr.length - 1; j &gt; i; j--) &#123;</span><br><span class="line">						if (arr[j] &lt; arr[j - 1]) &#123;</span><br><span class="line">							var temp = arr[j]</span><br><span class="line">							arr[j] = arr[j - 1]</span><br><span class="line">							arr[j - 1] = temp</span><br><span class="line"></span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				return arr</span><br><span class="line">			&#125;</span><br><span class="line">			var arr = [32, 55, 66, 77, 18, 20]</span><br><span class="line">			console.log(bubbleSort(arr))</span><br><span class="line">            //[18, 20, 32, 55, 66, 77]</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="删除数组中的undefine和null"><a href="#删除数组中的undefine和null" class="headerlink" title="删除数组中的undefine和null"></a>删除数组中的undefine和null</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;删除数组中的null和undefined&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function clearNullArr(arr)&#123;</span><br><span class="line">      for(var i=0; i&lt;arr.length; i++)&#123;</span><br><span class="line">        if(!arr[i]||arr[i]==&#x27;&#x27;||arr[i]===undefined)&#123;</span><br><span class="line">          arr.splice(i, 1);</span><br><span class="line">          arr.length--;</span><br><span class="line">          i--</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return arr</span><br><span class="line">    &#125;</span><br><span class="line">    var geyao=[&quot;&quot;,&quot;2&quot;,&quot;3&quot;,&quot;5&quot;,undefined,null,undefined]</span><br><span class="line">    console.log(clearNullArr(geyao))//[&quot;2&quot;,&quot;3&quot;,&quot;5&quot;]</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="删除数组的制定下标元素"><a href="#删除数组的制定下标元素" class="headerlink" title="删除数组的制定下标元素"></a>删除数组的制定下标元素</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;删除数组的指定下标元素&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">  Array.prototype.del=function(index)&#123;</span><br><span class="line">    if(isNaN(index)||index&gt;=this.length)&#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">    for(var i=0,n=0;i&lt;this.length;i++)&#123;</span><br><span class="line">      if(this[i]!=this[index])&#123;</span><br><span class="line">        this[n++]=this[i];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this.length-=1;</span><br><span class="line">    return this</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  var geyao=[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;]</span><br><span class="line">  console.log(geyao.del(1))//[&quot;1&quot;,&quot;3&quot;]</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="前端this指向问题解决方案apply"><a href="#前端this指向问题解决方案apply" class="headerlink" title="前端this指向问题解决方案apply"></a>前端this指向问题解决方案apply</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;前端this指向问题普通函数apply&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //口诀 谁调用就会指向谁 这边是普通函数 直接报错this.fang is not a function</span><br><span class="line">    var name=&quot;geyao&quot;</span><br><span class="line">      var fangfang = &#123;</span><br><span class="line">        name : &quot;fangfang&quot;,</span><br><span class="line"></span><br><span class="line">        fang: function () &#123;</span><br><span class="line">            console.log(this.name)</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        fun: function () &#123;</span><br><span class="line">            setTimeout( function () &#123;</span><br><span class="line">                this.fang()</span><br><span class="line">            &#125;.apply(this,fangfang),100);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    fangfang.fun()//fang</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 最好的种树是十年前 其次是现在 加油 歌谣</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>前端导师歌谣 微信公众号前端小歌谣<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/data.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clgdaxyi40009d4fybw82grat/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clgdaxyi40009d4fybw82grat/">npm,cnpm,yarn简单对比笔记</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/28/clgdaxyia000kd4fy1s6rggfl/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clgdaxyi6000bd4fybqlherry/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2023/03/28/clgdaxyhy0002d4fybp4egf9u/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          React+Hook+ts+antDesign实现table增加一个合计功能
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/28/clgdaxyi9000jd4fy3rw9fcah/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端小知识点扫盲笔记记录4</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clgdaxyi6000bd4fybqlherry/">react+ts+hook封装一个table分页组件(建议收藏,直接使用)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98"><span class="toc-number">2.</span> <span class="toc-text">事件委托</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="toc-number">3.</span> <span class="toc-text">事件循环</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%B0%E5%9D%80%E6%A0%8F%E8%BE%93%E5%85%A5url"><span class="toc-number">4.</span> <span class="toc-text">从浏览器地址栏输入url</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">代理模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E9%A2%84%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87"><span class="toc-number">6.</span> <span class="toc-text">使用代理模式预加载图片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text">冒泡排序算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84undefine%E5%92%8Cnull"><span class="toc-number">8.</span> <span class="toc-text">删除数组中的undefine和null</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%B6%E5%AE%9A%E4%B8%8B%E6%A0%87%E5%85%83%E7%B4%A0"><span class="toc-number">9.</span> <span class="toc-text">删除数组的制定下标元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFthis%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88apply"><span class="toc-number">10.</span> <span class="toc-text">前端this指向问题解决方案apply</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">11.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clgdaxyi7000dd4fy37leb353/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clgdaxyi7000dd4fy37leb353/">ant design table实现上下行拖拽功能(类组件)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clgdaxyi7000ed4fyct8817al/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clgdaxyi7000ed4fyct8817al/">react中使用的富文本编辑器braft-editor使用</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clgdaxyia000ld4fy51euc2y0/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clgdaxyia000ld4fy51euc2y0/">前端小知识点扫盲笔记记录</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clgdaxyi00005d4fy4nv2fjl1/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clgdaxyi00005d4fy4nv2fjl1/">React+antDesign封装一个tab组件(类组件)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clgdaxyi30007d4fye9dya6sb/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clgdaxyi30007d4fye9dya6sb/">Taro+react+TaroUi封装一个公司库的下拉组件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clgdaxyi5000ad4fy3wp54p7e/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clgdaxyi5000ad4fy3wp54p7e/">React+hook+ts+ant design upload实现多个文件一次上传</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clgdaxyhz0003d4fy2xo7ejmr/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clgdaxyhz0003d4fy2xo7ejmr/">React+antDesign实现上传图片功能(类组件)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/clgdaxyhz0004d4fy6kuo4prk/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/clgdaxyhz0004d4fy6kuo4prk/">React+Hook+ts+antDesign实现table行编辑功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -465,8 +389,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
