@@ -155,6 +155,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-React+Hook+ts+antDesign实现table增加一个合计功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/28/clgd0rtij00003cfy32pe7koi/">React+Hook+ts+antDesign实现table增加一个合计功能</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clgd0rtij00003cfy32pe7koi/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">今天继续平常的一个任务开发 今天需要给我们的ant design table增加一个合计的一个功能</span><br></pre></td></tr></table></figure>
+
+<h1 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h1><p><img src="https://img-blog.csdnimg.cn/2b7a6b55a81549fc911c9bec4d92bfec.png" alt="在这里插入图片描述"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote>
+<p>首先 我们遇到问题的思路就是要看官方api<br>通过 summary 设置总结栏。使用 Table.Summary.Cell 同步 Column 的固定状态。你可以通过配置 Table.Summary 的 fixed 属性使其固定(4.16.0 支持)。</p>
+</blockquote>
+<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">const App: React.FC = () =&gt; (</span><br><span class="line">  &lt;&gt;</span><br><span class="line">    &lt;Table</span><br><span class="line">      columns=&#123;columns&#125;</span><br><span class="line">      dataSource=&#123;data&#125;</span><br><span class="line">      pagination=&#123;false&#125;</span><br><span class="line">      bordered</span><br><span class="line">      summary=&#123;pageData =&gt; &#123;</span><br><span class="line">        let totalBorrow = 0;</span><br><span class="line">        let totalRepayment = 0;</span><br><span class="line"></span><br><span class="line">        pageData.forEach((&#123; borrow, repayment &#125;) =&gt; &#123;</span><br><span class="line">          totalBorrow += borrow;</span><br><span class="line">          totalRepayment += repayment;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        return (</span><br><span class="line">          &lt;&gt;</span><br><span class="line">            &lt;Table.Summary.Row&gt;</span><br><span class="line">              &lt;Table.Summary.Cell index=&#123;0&#125;&gt;Total&lt;/Table.Summary.Cell&gt;</span><br><span class="line">              &lt;Table.Summary.Cell index=&#123;1&#125;&gt;</span><br><span class="line">                &lt;Text type=&quot;danger&quot;&gt;&#123;totalBorrow&#125;&lt;/Text&gt;</span><br><span class="line">              &lt;/Table.Summary.Cell&gt;</span><br><span class="line">              &lt;Table.Summary.Cell index=&#123;2&#125;&gt;</span><br><span class="line">                &lt;Text&gt;&#123;totalRepayment&#125;&lt;/Text&gt;</span><br><span class="line">              &lt;/Table.Summary.Cell&gt;</span><br><span class="line">            &lt;/Table.Summary.Row&gt;</span><br><span class="line">            &lt;Table.Summary.Row&gt;</span><br><span class="line">              &lt;Table.Summary.Cell index=&#123;0&#125;&gt;Balance&lt;/Table.Summary.Cell&gt;</span><br><span class="line">              &lt;Table.Summary.Cell index=&#123;1&#125; colSpan=&#123;2&#125;&gt;</span><br><span class="line">                &lt;Text type=&quot;danger&quot;&gt;&#123;totalBorrow - totalRepayment&#125;&lt;/Text&gt;</span><br><span class="line">              &lt;/Table.Summary.Cell&gt;</span><br><span class="line">            &lt;/Table.Summary.Row&gt;</span><br><span class="line">          &lt;/&gt;</span><br><span class="line">        );</span><br><span class="line">      &#125;&#125;</span><br><span class="line">    /&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;Table dataSource=&#123;menuData.list&#125; columns=&#123;columns&#125; pagination=&#123;false&#125; </span><br><span class="line">                      summary=&#123;data =&gt; &#123;</span><br><span class="line">                        let totalCount = 0;</span><br><span class="line">                        return (</span><br><span class="line">                            &lt;&gt;</span><br><span class="line">                                &lt;Table.Summary.Row&gt;</span><br><span class="line">                                    &lt;Table.Summary.Cell index=&#123;0&#125;&gt;合计&lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                    &lt;Table.Summary.Cell index=&#123;1&#125;&gt;</span><br><span class="line">                                    &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                    &lt;Table.Summary.Cell index=&#123;2&#125;&gt;</span><br><span class="line">                                    &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                    &lt;Table.Summary.Cell index=&#123;3&#125;&gt;</span><br><span class="line">                                    &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                    &lt;Table.Summary.Cell index=&#123;4&#125;&gt;</span><br><span class="line">                                        &lt;span&gt;&#123;total&#125;&lt;/span&gt;</span><br><span class="line">                                    &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                &lt;/Table.Summary.Row&gt;</span><br><span class="line">                            &lt;/&gt;</span><br><span class="line">                        );</span><br><span class="line">                    &#125;&#125;</span><br><span class="line">                    /&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>这样就完美完成了 我是歌谣 放弃很容易 但是坚持一定很酷<br>微信公众号前端小歌谣</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/28/clgd0rtij00003cfy32pe7koi/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-React+Hook+ts+antDesignMobile实现input自动获取功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,12 +235,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgbn82oy0002q0fy2zn6h6e9/">React+Hook+ts+antDesignMobile实现input自动获取功能</a>
+      <a class="article-title" href="/2023/03/28/clgd0rtin00033cfydoctatvu/">React+Hook+ts+antDesignMobile实现input自动获取功能</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgbn82oy0002q0fy2zn6h6e9/" class="archive-article-date">
+        <a href="/2023/03/28/clgd0rtin00033cfydoctatvu/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -201,7 +274,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgbn82oy0002q0fy2zn6h6e9/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgd0rtin00033cfydoctatvu/">展开全文 >></a>
         </p>
       
 
@@ -238,12 +311,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgbn82pb000lq0fycx9x1zqv/">前端小知识点扫盲笔记记录5</a>
+      <a class="article-title" href="/2023/03/28/clgd0rtiw000j3cfyg9it3qi7/">前端小知识点扫盲笔记记录5</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgbn82pb000lq0fycx9x1zqv/" class="archive-article-date">
+        <a href="/2023/03/28/clgd0rtiw000j3cfyg9it3qi7/" class="archive-article-date">
   	<time datetime="2023-03-28T02:52:07.832Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -294,7 +367,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgbn82pb000lq0fycx9x1zqv/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgd0rtiw000j3cfyg9it3qi7/">展开全文 >></a>
         </p>
       
 
@@ -331,12 +404,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgbn82pb000mq0fycnq019de/">前端小知识点扫盲笔记记录4</a>
+      <a class="article-title" href="/2023/03/28/clgd0rtiw000k3cfydqqvelgi/">前端小知识点扫盲笔记记录4</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgbn82pb000mq0fycnq019de/" class="archive-article-date">
+        <a href="/2023/03/28/clgd0rtiw000k3cfydqqvelgi/" class="archive-article-date">
   	<time datetime="2023-03-28T02:06:24.359Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -374,7 +447,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgbn82pb000mq0fycnq019de/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgd0rtiw000k3cfydqqvelgi/">展开全文 >></a>
         </p>
       
 

@@ -155,6 +155,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端小知识点扫盲笔记记录6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/12/clgd0rtix000l3cfy1wcof86p/">前端小知识点扫盲笔记记录6</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/12/clgd0rtix000l3cfy1wcof86p/" class="archive-article-date">
+  	<time datetime="2023-04-12T01:32:53.667Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣带你进入前端巅峰交流群 今天继续对前端知识的小结</p>
+</blockquote>
+<h1 id="前端this指向问题解决方案bind"><a href="#前端this指向问题解决方案bind" class="headerlink" title="前端this指向问题解决方案bind"></a>前端this指向问题解决方案bind</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;前端this指向问题普通函数&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //口诀 谁调用就会指向谁 这边是普通函数 直接报错this.fang is not a function</span><br><span class="line">    var name=&quot;geyao&quot;</span><br><span class="line">      var fangfang = &#123;</span><br><span class="line">        name : &quot;fangfang&quot;,</span><br><span class="line"></span><br><span class="line">        fang: function () &#123;</span><br><span class="line">            console.log(this.name)</span><br><span class="line">        &#125;,</span><br><span class="line">        fun: function () &#123;</span><br><span class="line">         </span><br><span class="line">            setTimeout( function () </span><br><span class="line">                this.fang()</span><br><span class="line">            &#125;.bind(fangfang)(),100);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    fangfang.fun()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="前端this指向问题解决方案call"><a href="#前端this指向问题解决方案call" class="headerlink" title="前端this指向问题解决方案call"></a>前端this指向问题解决方案call</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;前端this指向问题普通函数&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //口诀 谁调用就会指向谁 这边是普通函数 直接报错this.fang is not a function</span><br><span class="line">    var name=&quot;geyao&quot;</span><br><span class="line">      var fangfang = &#123;</span><br><span class="line">        name : &quot;fangfang&quot;,</span><br><span class="line"></span><br><span class="line">        fang: function () &#123;</span><br><span class="line">            console.log(this.name)</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        fun: function () &#123;</span><br><span class="line">           </span><br><span class="line">            setTimeout( function () &#123;</span><br><span class="line">                this.fang()</span><br><span class="line">            &#125;.call(this,fangfang),100);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    fangfang.fun()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="前端this指向问题解决方案this"><a href="#前端this指向问题解决方案this" class="headerlink" title="前端this指向问题解决方案this"></a>前端this指向问题解决方案this</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;前端this指向问题普通函数&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //口诀 谁调用就会指向谁 这边是普通函数 直接报错this.fang is not a function</span><br><span class="line">    var name=&quot;geyao&quot;</span><br><span class="line">      var fangfang = &#123;</span><br><span class="line">        name : &quot;fangfang&quot;,</span><br><span class="line"></span><br><span class="line">        fang: function () &#123;</span><br><span class="line">            console.log(this.name)</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        fun: function () &#123;</span><br><span class="line">            _this=this</span><br><span class="line">            setTimeout( function () &#123;</span><br><span class="line">                _this.fang()</span><br><span class="line">            &#125;,100);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    fangfang.fun()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="前端this指向问题解决方案箭头函数"><a href="#前端this指向问题解决方案箭头函数" class="headerlink" title="前端this指向问题解决方案箭头函数"></a>前端this指向问题解决方案箭头函数</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;前端this指向问题普通函数&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //口诀 谁调用就会指向谁 这边是普通函数 直接报错this.fang is not a function</span><br><span class="line">    var name = &quot;geyao&quot;</span><br><span class="line">    var fangfang = &#123;</span><br><span class="line">      name: &quot;fangfang&quot;,</span><br><span class="line"></span><br><span class="line">      fang: function () &#123;</span><br><span class="line">        console.log(this.name)</span><br><span class="line">      &#125;,</span><br><span class="line">      fun: function () &#123;</span><br><span class="line">        setTimeout(() =&gt; &#123;</span><br><span class="line">          this.fang()</span><br><span class="line">        &#125;, 100);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    fangfang.fun()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="前端原型和原型链"><a href="#前端原型和原型链" class="headerlink" title="前端原型和原型链"></a>前端原型和原型链</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;前端原型和原型链&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			//构造函数</span><br><span class="line">			// 实例成员： 实例成员就是在构造函数内部，通过this添加的成员。实例成员只能通过实例化的对象来访问。</span><br><span class="line"></span><br><span class="line">			// 静态成员： 在构造函数本身上添加的成员，只能通过构造函数来访问</span><br><span class="line">			</span><br><span class="line">			function Animai(name, age) &#123;</span><br><span class="line">				this.name = name</span><br><span class="line">				this.age = age</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			Animai.length = &#x27;2m&#x27;</span><br><span class="line">			let dog = new Animai(&#x27;小狗&#x27;, &#x27;4&#x27;)</span><br><span class="line">			console.log(dog, &#x27;dog&#x27;)</span><br><span class="line">			//Animai &#123;name: &#x27;小狗&#x27;, age: &#x27;4&#x27;&#125; &#x27;dog&#x27;</span><br><span class="line"></span><br><span class="line">			let cat = new Animai(&#x27;小猫&#x27;, &#x27;5&#x27;)</span><br><span class="line">			console.log(cat, &#x27;cat&#x27;)</span><br><span class="line">			//Animai &#123;name: &#x27;小猫&#x27;, age: &#x27;5&#x27;&#125;</span><br><span class="line"></span><br><span class="line">			console.log(dog.length, &#x27;length&#x27;)</span><br><span class="line">			console.log(Animai.length, &#x27;length&#x27;)</span><br><span class="line">			//undefined &#x27;length&#x27;</span><br><span class="line">			// Animai 2</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="前端基本数据类型"><a href="#前端基本数据类型" class="headerlink" title="前端基本数据类型"></a>前端基本数据类型</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;前端基本数据类型&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function test()&#123;</span><br><span class="line">      console.log(1)</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(test,&quot;test&quot;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="设计模式单体模式"><a href="#设计模式单体模式" class="headerlink" title="设计模式单体模式"></a>设计模式单体模式</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;单体模式&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    // 单体模式 只能实例化一次 每次返回的实例是同一对象</span><br><span class="line">    var Singleton = function (name) &#123;</span><br><span class="line">      this.name = name;</span><br><span class="line">    &#125;;</span><br><span class="line">    Singleton.prototype.getName = function () &#123;</span><br><span class="line">      return this.name;</span><br><span class="line">    &#125;</span><br><span class="line">    // 获取实例对象</span><br><span class="line">    var getInstance = (function () &#123;</span><br><span class="line">      var instance = null;</span><br><span class="line">      return function (name) &#123;</span><br><span class="line">        console.log(name,&quot;name&quot;)</span><br><span class="line">        //如果实例不存在 重新新加个实例</span><br><span class="line">        if (!instance) &#123;</span><br><span class="line">          instance = new Singleton(name);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        return instance;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    // 测试单体模式的实例</span><br><span class="line">    var a = getInstance(&quot;aa&quot;);</span><br><span class="line">    var b = getInstance(&quot;bb&quot;);</span><br><span class="line">    console.log(a,&quot;a&quot;) //aa</span><br><span class="line">    console.log(b,&quot;b&quot;) //aa</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 最好的种树是十年前 其次是现在 加油 歌谣</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/12/clgd0rtix000l3cfy1wcof86p/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-springboot+vue搭建前后端项目实现员工的增删改查" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,12 +239,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/11/clgbn82p9000gq0fycrvj8hl3/">springboot+vue搭建前后端项目实现员工的增删改查</a>
+      <a class="article-title" href="/2023/04/11/clgd0rtit000e3cfy0rhq0e9j/">springboot+vue搭建前后端项目实现员工的增删改查</a>
     </h1>
   
 
         
-        <a href="/2023/04/11/clgbn82p9000gq0fycrvj8hl3/" class="archive-article-date">
+        <a href="/2023/04/11/clgd0rtit000e3cfy0rhq0e9j/" class="archive-article-date">
   	<time datetime="2023-04-11T02:21:17.866Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-11</time>
 </a>
         
@@ -203,7 +280,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/11/clgbn82p9000gq0fycrvj8hl3/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/11/clgd0rtit000e3cfy0rhq0e9j/">展开全文 >></a>
         </p>
       
 
@@ -240,12 +317,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/07/clgbn82pa000iq0fy1m8heert/">再次接触老朋友react+ant design table合并单元格</a>
+      <a class="article-title" href="/2023/04/07/clgd0rtix000m3cfygsxa3ir9/">再次接触老朋友react+ant design table合并单元格</a>
     </h1>
   
 
         
-        <a href="/2023/04/07/clgbn82pa000iq0fy1m8heert/" class="archive-article-date">
+        <a href="/2023/04/07/clgd0rtix000m3cfygsxa3ir9/" class="archive-article-date">
   	<time datetime="2023-04-07T07:55:11.929Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-07</time>
 </a>
         
@@ -307,7 +384,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/07/clgbn82pa000iq0fy1m8heert/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/07/clgd0rtix000m3cfygsxa3ir9/">展开全文 >></a>
         </p>
       
 
@@ -344,12 +421,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/05/clgbn82pe000oq0fy9jth9tr2/">记录一次艰难的云服务器部署前后端项目springBoot+mybatis+vue(两天解决的前后端跨域问题多种方式)</a>
+      <a class="article-title" href="/2023/04/05/clgd0rtiy000n3cfy8e0cfdte/">记录一次艰难的云服务器部署前后端项目springBoot+mybatis+vue(两天解决的前后端跨域问题多种方式)</a>
     </h1>
   
 
         
-        <a href="/2023/04/05/clgbn82pe000oq0fy9jth9tr2/" class="archive-article-date">
+        <a href="/2023/04/05/clgd0rtiy000n3cfy8e0cfdte/" class="archive-article-date">
   	<time datetime="2023-04-05T06:22:10.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-05</time>
 </a>
         
@@ -442,7 +519,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/05/clgbn82pe000oq0fy9jth9tr2/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/05/clgd0rtiy000n3cfy8e0cfdte/">展开全文 >></a>
         </p>
       
 
@@ -479,12 +556,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/05/clgbn82p9000hq0fy2tzxcngy/">前后端springboot+vue+实现部门的增删改功能记录</a>
+      <a class="article-title" href="/2023/04/05/clgd0rtiv000h3cfye4m79tnj/">前后端springboot+vue+实现部门的增删改功能记录</a>
     </h1>
   
 
         
-        <a href="/2023/04/05/clgbn82p9000hq0fy2tzxcngy/" class="archive-article-date">
+        <a href="/2023/04/05/clgd0rtiv000h3cfye4m79tnj/" class="archive-article-date">
   	<time datetime="2023-04-05T04:23:11.349Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-05</time>
 </a>
         
@@ -517,7 +594,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/05/clgbn82p9000hq0fy2tzxcngy/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/05/clgd0rtiv000h3cfye4m79tnj/">展开全文 >></a>
         </p>
       
 
@@ -554,12 +631,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/04/clgbn82p6000bq0fy9bc150ho/">docker部署前后端项目在云服务器记录</a>
+      <a class="article-title" href="/2023/04/04/clgd0rtiy000o3cfycwg9ggl8/">docker部署前后端项目在云服务器记录</a>
     </h1>
   
 
         
-        <a href="/2023/04/04/clgbn82p6000bq0fy9bc150ho/" class="archive-article-date">
+        <a href="/2023/04/04/clgd0rtiy000o3cfycwg9ggl8/" class="archive-article-date">
   	<time datetime="2023-04-04T12:20:45.183Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-04</time>
 </a>
         
@@ -601,7 +678,85 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/04/clgbn82p6000bq0fy9bc150ho/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/04/clgd0rtiy000o3cfycwg9ggl8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-前端小知识点扫盲笔记记录2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/28/clgd0rtiu000g3cfybs049v8c/">前端小知识点扫盲笔记记录2</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clgd0rtiu000g3cfybs049v8c/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.841Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 今天继续进行前端知识的一些总结 想加入前端巅峰交流群私信我</p>
+</blockquote>
+<h1 id="innerHTML和innerText的使用"><a href="#innerHTML和innerText的使用" class="headerlink" title="innerHTML和innerText的使用"></a>innerHTML和innerText的使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;innerHTML和innerText的使用220313&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;geyao&quot;&gt;&lt;p&gt;geyao&lt;/p&gt;&lt;p&gt;fangfang&lt;/p&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">       var geyao= document.getElementById(&quot;geyao&quot;)</span><br><span class="line">       console.log(geyao,&quot;geyao&quot;)</span><br><span class="line">       var innerHtml=geyao.innerHTML</span><br><span class="line">       var innerText=geyao.innerText</span><br><span class="line">       console.log(innerHtml,&quot;innerHtml&quot;)</span><br><span class="line">       console.log(innerText,&quot;innerText&quot;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="instanceOf"><a href="#instanceOf" class="headerlink" title="instanceOf"></a>instanceOf</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;instanceOf&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			var simpleStr = &#x27;我是歌谣&#x27;</span><br><span class="line">			var myString = new String()</span><br><span class="line">			var newStr = new String(&#x27;我是方方&#x27;)</span><br><span class="line">			var myDate = new Date()</span><br><span class="line">			var myObj = &#123;&#125;</span><br><span class="line">			var myNonObj = Object.create(null)</span><br><span class="line">			simpleStr instanceof String // 返回 false, 非对象实例，因此返回 false</span><br><span class="line">			myString instanceof String // 返回 true</span><br><span class="line">			newStr instanceof String // 返回 true</span><br><span class="line">			myString instanceof Object // 返回 true</span><br><span class="line">			myObj instanceof Object // 返回 true, 尽管原型没有定义</span><br><span class="line">			;(&#123;&#125; instanceof Object) // 返回 true, 同上</span><br><span class="line">			myNonObj instanceof Object // 返回 false, 一种创建非 Object 实例的对象的方法</span><br><span class="line">			myString instanceof Date //返回 false</span><br><span class="line">			myDate instanceof Date // 返回 true</span><br><span class="line">			myDate instanceof Object // 返回 true</span><br><span class="line">			myDate instanceof String // 返回 false</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="javacript实现面向对象和继承机制"><a href="#javacript实现面向对象和继承机制" class="headerlink" title="javacript实现面向对象和继承机制"></a>javacript实现面向对象和继承机制</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;javascript面向对象和继承机制&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        //javascript面向对象和继承机制</span><br><span class="line">        function MyObject()&#123;</span><br><span class="line">            this.name=&quot;myObject&quot;</span><br><span class="line">            this.type=&quot;class&quot;</span><br><span class="line">            this.methodA=function()&#123;</span><br><span class="line">                console.log(this.name)</span><br><span class="line">            &#125;</span><br><span class="line">            this.methodB=function()&#123;</span><br><span class="line">                return this.type</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="javascript实现数组升序"><a href="#javascript实现数组升序" class="headerlink" title="javascript实现数组升序"></a>javascript实现数组升序</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var arr=[2,3,5,1,15,8,12,11,7]</span><br><span class="line">        function des(a,b)&#123;</span><br><span class="line">            return a-b</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(arr.sort(des))</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="javascript实现继承"><a href="#javascript实现继承" class="headerlink" title="javascript实现继承"></a>javascript实现继承</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;实现继承与多态&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function parentClass() &#123;</span><br><span class="line">      //私人变量</span><br><span class="line">      var x=&quot;我是私人变量&quot;</span><br><span class="line">      //私人方法</span><br><span class="line">      function method() &#123;</span><br><span class="line">        console.log(&quot;我是私人方法&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">      //公共变量</span><br><span class="line">      this.x=&quot;我是公共变量&quot;</span><br><span class="line">      //公共方法</span><br><span class="line">      this.method=function() &#123;</span><br><span class="line">        console.log(x)</span><br><span class="line">        console.log(this.x)</span><br><span class="line">        method()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    parentClass.prototype.method1=function() &#123;</span><br><span class="line">      console.log(&quot;我是父级的原型方法&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    parentClass.staticMethod=function()&#123;</span><br><span class="line">      console.log(&quot;我是父级的静态方法&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="js数据类型"><a href="#js数据类型" class="headerlink" title="js数据类型"></a>js数据类型</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;js数据类型&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			// 原始数据类型</span><br><span class="line">			// number</span><br><span class="line">			// string</span><br><span class="line">			// boolean</span><br><span class="line">			// null</span><br><span class="line">			// undefined</span><br><span class="line">			// symbol(ES6)</span><br><span class="line">			// bigint(ES10)</span><br><span class="line">			// 引用数据类型</span><br><span class="line">			// object</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="js的继承关系"><a href="#js的继承关系" class="headerlink" title="js的继承关系"></a>js的继承关系</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    oldObject=function()&#123;</span><br><span class="line">      this.a=&quot;我是歌谣&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    //赋值出一个新对象</span><br><span class="line">    newObject=function()&#123;</span><br><span class="line">      newObject.b=&quot;属性2&quot;</span><br><span class="line">      newObject.function=function()&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    var geyao=new newObject()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="less-sass-scss区别"><a href="#less-sass-scss区别" class="headerlink" title="less,sass,scss区别"></a>less,sass,scss区别</h1><blockquote>
+<p>&#x2F;&#x2F; less, sass, scss都是css预处理语言（ 也是对应的文件后缀名）， 它们的语法功能比css更强大。<br>    &#x2F;&#x2F; 预处理语言使用是： 开发时用预处理语言， 在打包上线时， 用webpack再配合loader工具给转成css（ Cascading Style Sheets） 给浏览器使用。<br>    &#x2F;&#x2F; scss 的基本语法：<br>    &#x2F;&#x2F; 1. 可以使用$来标识变量（ 可以将常用的样式标记成变量， 后续复用即可， 方便维护）<br>    &#x2F;&#x2F; 2. 嵌套语法（ 和less语法相同）<br>    &#x2F;&#x2F; 3. &amp; 父选择器(跟less语法相同)<br>    &#x2F;&#x2F; 假如你想针对某个特定子元素 进行设置<br>    &#x2F;&#x2F; 4. 模块化<br>    &#x2F;&#x2F; 可以将需要的变量定义在一个新的js文件中， 需要使用的样式文件直接引入即可</p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣学习前端知识</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/28/clgd0rtiu000g3cfybs049v8c/">展开全文 >></a>
         </p>
       
 
@@ -638,12 +793,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgbn82pa000kq0fy64pl8s5f/">前端小知识点扫盲笔记记录3</a>
+      <a class="article-title" href="/2023/03/28/clgd0rtiv000i3cfy4ceue11l/">前端小知识点扫盲笔记记录3</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgbn82pa000kq0fy64pl8s5f/" class="archive-article-date">
+        <a href="/2023/03/28/clgd0rtiv000i3cfy4ceue11l/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.841Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -683,85 +838,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgbn82pa000kq0fy64pl8s5f/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端小知识点扫盲笔记记录2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgbn82pd000nq0fy7jtn1w11/">前端小知识点扫盲笔记记录2</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/clgbn82pd000nq0fy7jtn1w11/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.841Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>大家好 我是歌谣 今天继续进行前端知识的一些总结 想加入前端巅峰交流群私信我</p>
-</blockquote>
-<h1 id="innerHTML和innerText的使用"><a href="#innerHTML和innerText的使用" class="headerlink" title="innerHTML和innerText的使用"></a>innerHTML和innerText的使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;innerHTML和innerText的使用220313&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;geyao&quot;&gt;&lt;p&gt;geyao&lt;/p&gt;&lt;p&gt;fangfang&lt;/p&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">       var geyao= document.getElementById(&quot;geyao&quot;)</span><br><span class="line">       console.log(geyao,&quot;geyao&quot;)</span><br><span class="line">       var innerHtml=geyao.innerHTML</span><br><span class="line">       var innerText=geyao.innerText</span><br><span class="line">       console.log(innerHtml,&quot;innerHtml&quot;)</span><br><span class="line">       console.log(innerText,&quot;innerText&quot;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="instanceOf"><a href="#instanceOf" class="headerlink" title="instanceOf"></a>instanceOf</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;instanceOf&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			var simpleStr = &#x27;我是歌谣&#x27;</span><br><span class="line">			var myString = new String()</span><br><span class="line">			var newStr = new String(&#x27;我是方方&#x27;)</span><br><span class="line">			var myDate = new Date()</span><br><span class="line">			var myObj = &#123;&#125;</span><br><span class="line">			var myNonObj = Object.create(null)</span><br><span class="line">			simpleStr instanceof String // 返回 false, 非对象实例，因此返回 false</span><br><span class="line">			myString instanceof String // 返回 true</span><br><span class="line">			newStr instanceof String // 返回 true</span><br><span class="line">			myString instanceof Object // 返回 true</span><br><span class="line">			myObj instanceof Object // 返回 true, 尽管原型没有定义</span><br><span class="line">			;(&#123;&#125; instanceof Object) // 返回 true, 同上</span><br><span class="line">			myNonObj instanceof Object // 返回 false, 一种创建非 Object 实例的对象的方法</span><br><span class="line">			myString instanceof Date //返回 false</span><br><span class="line">			myDate instanceof Date // 返回 true</span><br><span class="line">			myDate instanceof Object // 返回 true</span><br><span class="line">			myDate instanceof String // 返回 false</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="javacript实现面向对象和继承机制"><a href="#javacript实现面向对象和继承机制" class="headerlink" title="javacript实现面向对象和继承机制"></a>javacript实现面向对象和继承机制</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;javascript面向对象和继承机制&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        //javascript面向对象和继承机制</span><br><span class="line">        function MyObject()&#123;</span><br><span class="line">            this.name=&quot;myObject&quot;</span><br><span class="line">            this.type=&quot;class&quot;</span><br><span class="line">            this.methodA=function()&#123;</span><br><span class="line">                console.log(this.name)</span><br><span class="line">            &#125;</span><br><span class="line">            this.methodB=function()&#123;</span><br><span class="line">                return this.type</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="javascript实现数组升序"><a href="#javascript实现数组升序" class="headerlink" title="javascript实现数组升序"></a>javascript实现数组升序</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var arr=[2,3,5,1,15,8,12,11,7]</span><br><span class="line">        function des(a,b)&#123;</span><br><span class="line">            return a-b</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(arr.sort(des))</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="javascript实现继承"><a href="#javascript实现继承" class="headerlink" title="javascript实现继承"></a>javascript实现继承</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;实现继承与多态&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function parentClass() &#123;</span><br><span class="line">      //私人变量</span><br><span class="line">      var x=&quot;我是私人变量&quot;</span><br><span class="line">      //私人方法</span><br><span class="line">      function method() &#123;</span><br><span class="line">        console.log(&quot;我是私人方法&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">      //公共变量</span><br><span class="line">      this.x=&quot;我是公共变量&quot;</span><br><span class="line">      //公共方法</span><br><span class="line">      this.method=function() &#123;</span><br><span class="line">        console.log(x)</span><br><span class="line">        console.log(this.x)</span><br><span class="line">        method()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    parentClass.prototype.method1=function() &#123;</span><br><span class="line">      console.log(&quot;我是父级的原型方法&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    parentClass.staticMethod=function()&#123;</span><br><span class="line">      console.log(&quot;我是父级的静态方法&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="js数据类型"><a href="#js数据类型" class="headerlink" title="js数据类型"></a>js数据类型</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;js数据类型&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			// 原始数据类型</span><br><span class="line">			// number</span><br><span class="line">			// string</span><br><span class="line">			// boolean</span><br><span class="line">			// null</span><br><span class="line">			// undefined</span><br><span class="line">			// symbol(ES6)</span><br><span class="line">			// bigint(ES10)</span><br><span class="line">			// 引用数据类型</span><br><span class="line">			// object</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="js的继承关系"><a href="#js的继承关系" class="headerlink" title="js的继承关系"></a>js的继承关系</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    oldObject=function()&#123;</span><br><span class="line">      this.a=&quot;我是歌谣&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    //赋值出一个新对象</span><br><span class="line">    newObject=function()&#123;</span><br><span class="line">      newObject.b=&quot;属性2&quot;</span><br><span class="line">      newObject.function=function()&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    var geyao=new newObject()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="less-sass-scss区别"><a href="#less-sass-scss区别" class="headerlink" title="less,sass,scss区别"></a>less,sass,scss区别</h1><blockquote>
-<p>&#x2F;&#x2F; less, sass, scss都是css预处理语言（ 也是对应的文件后缀名）， 它们的语法功能比css更强大。<br>    &#x2F;&#x2F; 预处理语言使用是： 开发时用预处理语言， 在打包上线时， 用webpack再配合loader工具给转成css（ Cascading Style Sheets） 给浏览器使用。<br>    &#x2F;&#x2F; scss 的基本语法：<br>    &#x2F;&#x2F; 1. 可以使用$来标识变量（ 可以将常用的样式标记成变量， 后续复用即可， 方便维护）<br>    &#x2F;&#x2F; 2. 嵌套语法（ 和less语法相同）<br>    &#x2F;&#x2F; 3. &amp; 父选择器(跟less语法相同)<br>    &#x2F;&#x2F; 假如你想针对某个特定子元素 进行设置<br>    &#x2F;&#x2F; 4. 模块化<br>    &#x2F;&#x2F; 可以将需要的变量定义在一个新的js文件中， 需要使用的样式文件直接引入即可</p>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣学习前端知识</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgbn82pd000nq0fy7jtn1w11/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgd0rtiv000i3cfy4ceue11l/">展开全文 >></a>
         </p>
       
 
@@ -798,12 +875,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgbn82p30008q0fy7aowfwd2/">Viewer.js实现图片预览效果</a>
+      <a class="article-title" href="/2023/03/28/clgd0rtio00053cfy270qgb3j/">Viewer.js实现图片预览效果</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgbn82p30008q0fy7aowfwd2/" class="archive-article-date">
+        <a href="/2023/03/28/clgd0rtio00053cfy270qgb3j/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -838,7 +915,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgbn82p30008q0fy7aowfwd2/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgd0rtio00053cfy270qgb3j/">展开全文 >></a>
         </p>
       
 
@@ -868,19 +945,19 @@
 
 
   
-    <article id="post-ant design table实现上下行拖拽功能(类组件)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-react中使用的富文本编辑器braft-editor使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgbn82p4000aq0fy73hc1jsl/">ant design table实现上下行拖拽功能(类组件)</a>
+      <a class="article-title" href="/2023/03/28/clgd0rtiq00093cfy72k67my4/">react中使用的富文本编辑器braft-editor使用</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgbn82p4000aq0fy73hc1jsl/" class="archive-article-date">
+        <a href="/2023/03/28/clgd0rtiq00093cfy72k67my4/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -888,135 +965,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>最好的种树是十年前,其次是现在。歌谣 每天一个前端小知识 提醒你改好好学习了 知乎博主 csdn博主 b站博主  放弃很容易但是坚持一定很酷     我是歌谣 喜欢就一键三连咯 你得点赞是对歌谣最大的鼓励 微信公众号关注前端小歌谣</p>
-</blockquote>
-<h1 id="起始"><a href="#起始" class="headerlink" title="起始"></a>起始</h1><blockquote>
-<p>首先刚开始知道要书写一个这样的功能我的内心是比较崩溃的 完全没有思路<br>然后就打开官网的文档进行观看</p>
-</blockquote>
-<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><blockquote>
-<p>一开始准备写 打开官网的一个文档是4.0的 看起来也是一脸的蒙蔽<br>接着找到3的一个文档</p>
-</blockquote>
-<h1 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Table &#125; from &#x27;antd&#x27;;</span><br><span class="line">import &#123; DndProvider, DragSource, DropTarget &#125; from &#x27;react-dnd&#x27;;</span><br><span class="line">import &#123; HTML5Backend &#125; from &#x27;react-dnd-html5-backend&#x27;;</span><br><span class="line">import update from &#x27;immutability-helper&#x27;;</span><br><span class="line"> </span><br><span class="line">let dragingIndex = -1;</span><br><span class="line"> </span><br><span class="line">class BodyRow extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; isOver, connectDragSource, connectDropTarget, moveRow, ...restProps &#125; = this.props;</span><br><span class="line">    const style = &#123; ...restProps.style, cursor: &#x27;move&#x27; &#125;;</span><br><span class="line"> </span><br><span class="line">    let &#123; className &#125; = restProps;</span><br><span class="line">    if (isOver) &#123;</span><br><span class="line">      if (restProps.index &gt; dragingIndex) &#123;</span><br><span class="line">        className += &#x27; drop-over-downward&#x27;;</span><br><span class="line">      &#125;</span><br><span class="line">      if (restProps.index &lt; dragingIndex) &#123;</span><br><span class="line">        className += &#x27; drop-over-upward&#x27;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    return connectDragSource(</span><br><span class="line">      connectDropTarget(&lt;tr &#123;...restProps&#125; className=&#123;className&#125; style=&#123;style&#125; /&gt;),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">const rowSource = &#123;</span><br><span class="line">  beginDrag(props) &#123;</span><br><span class="line">    dragingIndex = props.index;</span><br><span class="line">    return &#123;</span><br><span class="line">      index: props.index,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">const rowTarget = &#123;</span><br><span class="line">  drop(props, monitor) &#123;</span><br><span class="line">    const dragIndex = monitor.getItem().index;</span><br><span class="line">    const hoverIndex = props.index;</span><br><span class="line"> </span><br><span class="line">    // Don&#x27;t replace items with themselves</span><br><span class="line">    if (dragIndex === hoverIndex) &#123;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    // Time to actually perform the action</span><br><span class="line">    props.moveRow(dragIndex, hoverIndex);</span><br><span class="line"> </span><br><span class="line">    // Note: we&#x27;re mutating the monitor item here!</span><br><span class="line">    // Generally it&#x27;s better to avoid mutations,</span><br><span class="line">    // but it&#x27;s good here for the sake of performance</span><br><span class="line">    // to avoid expensive index searches.</span><br><span class="line">    monitor.getItem().index = hoverIndex;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">const DragableBodyRow = DropTarget(&#x27;row&#x27;, rowTarget, (connect, monitor) =&gt; (&#123;</span><br><span class="line">  connectDropTarget: connect.dropTarget(),</span><br><span class="line">  isOver: monitor.isOver(),</span><br><span class="line">&#125;))(</span><br><span class="line">  DragSource(&#x27;row&#x27;, rowSource, connect =&gt; (&#123;</span><br><span class="line">    connectDragSource: connect.dragSource(),</span><br><span class="line">  &#125;))(BodyRow),</span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line">const columns = [</span><br><span class="line">  &#123;</span><br><span class="line">    title: &#x27;Name&#x27;,</span><br><span class="line">    dataIndex: &#x27;name&#x27;,</span><br><span class="line">    key: &#x27;name&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    title: &#x27;Age&#x27;,</span><br><span class="line">    dataIndex: &#x27;age&#x27;,</span><br><span class="line">    key: &#x27;age&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    title: &#x27;Address&#x27;,</span><br><span class="line">    dataIndex: &#x27;address&#x27;,</span><br><span class="line">    key: &#x27;address&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"> </span><br><span class="line">class DragSortingTable extends React.Component &#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    data: [</span><br><span class="line">      &#123;</span><br><span class="line">        key: &#x27;1&#x27;,</span><br><span class="line">        name: &#x27;John Brown&#x27;,</span><br><span class="line">        age: 32,</span><br><span class="line">        address: &#x27;New York No. 1 Lake Park&#x27;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        key: &#x27;2&#x27;,</span><br><span class="line">        name: &#x27;Jim Green&#x27;,</span><br><span class="line">        age: 42,</span><br><span class="line">        address: &#x27;London No. 1 Lake Park&#x27;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        key: &#x27;3&#x27;,</span><br><span class="line">        name: &#x27;Joe Black&#x27;,</span><br><span class="line">        age: 32,</span><br><span class="line">        address: &#x27;Sidney No. 1 Lake Park&#x27;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;;</span><br><span class="line"> </span><br><span class="line">  components = &#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">      row: DragableBodyRow,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"> </span><br><span class="line">  moveRow = (dragIndex, hoverIndex) =&gt; &#123;</span><br><span class="line">    const &#123; data &#125; = this.state;</span><br><span class="line">    const dragRow = data[dragIndex];</span><br><span class="line"> </span><br><span class="line">    this.setState(</span><br><span class="line">      update(this.state, &#123;</span><br><span class="line">        data: &#123;</span><br><span class="line">          $splice: [[dragIndex, 1], [hoverIndex, 0, dragRow]],</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;),</span><br><span class="line">    );</span><br><span class="line">  &#125;;</span><br><span class="line"> </span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;DndProvider backend=&#123;HTML5Backend&#125;&gt;</span><br><span class="line">        &lt;Table</span><br><span class="line">          columns=&#123;columns&#125;</span><br><span class="line">          dataSource=&#123;this.state.data&#125;</span><br><span class="line">          components=&#123;this.components&#125;</span><br><span class="line">          onRow=&#123;(record, index) =&gt; (&#123;</span><br><span class="line">            index,</span><br><span class="line">            moveRow: this.moveRow,</span><br><span class="line">          &#125;)&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;/DndProvider&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">ReactDOM.render(&lt;DragSortingTable /&gt;, mountNode);</span><br><span class="line">#components-table-demo-drag-sorting tr.drop-over-downward td &#123;</span><br><span class="line">  border-bottom: 2px dashed #1890ff;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">#components-table-demo-drag-sorting tr.drop-over-upward td &#123;</span><br><span class="line">  border-top: 2px dashed #1890ff;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这是官网的示例 那么我们如何实现呢</p>
-</blockquote>
-<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><blockquote>
-<p>第一步 引入第一个类</p>
-</blockquote>
-<blockquote>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/82fed612409949d6aeedc1fe6bf38d15~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-</blockquote>
-<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><blockquote>
-<p>找准数据</p>
-</blockquote>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e012293c04c84510a0ac8ba04b488614~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h2 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h2><blockquote>
-<p>进行数据的一个赋值我这边是dva.js赋值<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1ee9a8cb98574ffdaa5229bbcd305e0f~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-</blockquote>
-<h2 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h2><blockquote>
-<p>回调或者确定按钮处理数据（这边是确定按钮处理值然后调接口）</p>
-</blockquote>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6d98e0eb785949e9ae8aa0a7040bc041~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c43a9fd05957405cae1c7b2702ca6ee4~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h2 id="拖拽后"><a href="#拖拽后" class="headerlink" title="拖拽后"></a>拖拽后</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0f2c79e752004748aa0fcd614491b5b6~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
-<p>人生本是一场修行 且行且珍惜</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgbn82p4000aq0fy73hc1jsl/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-npm,cnpm,yarn简单对比笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgbn82p7000dq0fyeikg2x53/">npm,cnpm,yarn简单对比笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/clgbn82p7000dq0fyeikg2x53/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>我是歌谣 放弃很容易 但是坚持一定很酷微信公众号前端小歌谣</p>
-</blockquote>
+        <p><strong>目录</strong></p>
+<p><a href="#%E5%89%8D%E8%A8%80">前言</a></p>
+<p><a href="#%E5%AF%BC%E8%AF%AD">导语</a></p>
+<p><a href="#%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF">解决思路</a></p>
+<p><a href="#%E6%80%BB%E7%BB%93">总结</a></p>
+<hr>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>在前端的vue的项目中 不免会安装较多的文件依赖 对于常规安装依赖 我知道的方式有两种npm和yarn</p>
+<p>我是歌谣 我有个兄弟 巅峰的时候排名c站总榜19 叫前端小歌谣 曾经我花了三年的时间创作了他 现在我要用五年的时间超越他 今天又是接近兄弟的一天人生难免坎坷 大不了从头再来 歌谣的意志是永恒的 放弃很容易 但是坚持一定很酷</p>
 </blockquote>
-<h2 id="1npm"><a href="#1npm" class="headerlink" title="1npm"></a>1npm</h2><h3 id="1-1定义"><a href="#1-1定义" class="headerlink" title="1.1定义"></a>1.1定义</h3><blockquote>
-<p>npm: Nodejs下的包管理器。</p>
+<h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
+<p>歌谣 歌谣 项目中需要使用富文本的编辑器 你有什么推荐吗</p>
 </blockquote>
-<h3 id="1-2-安装"><a href="#1-2-安装" class="headerlink" title="1.2 安装"></a>1.2 安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">安装node环境</span><br><span class="line">直接node官网安装一下</span><br></pre></td></tr></table></figure>
-<h3 id="1-3-下载地址"><a href="#1-3-下载地址" class="headerlink" title="1.3 下载地址"></a>1.3 下载地址</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">下载安装好之后直接下一步下一步安装</span><br><span class="line">安装后之后直接</span><br><span class="line">node -v查看当前版本’</span><br><span class="line">根据自己需要的版本安装</span><br></pre></td></tr></table></figure>
-<h3 id="1-4配置地址"><a href="#1-4配置地址" class="headerlink" title="1.4配置地址"></a>1.4配置地址</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">设置环境地址设置缓存地址</span><br><span class="line">npm config set prefix “D:\nodejs\xxxxxxx”</span><br><span class="line">npm config set cache “D:\nodejs\xxxxxxxx”</span><br><span class="line"></span><br><span class="line">设置淘宝镜像</span><br><span class="line">npm config set registry=http://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<h3 id="1-5开始使用"><a href="#1-5开始使用" class="headerlink" title="1.5开始使用"></a>1.5开始使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone</span><br><span class="line">npm install</span><br><span class="line">npm run serve</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-<h2 id="2cnpm"><a href="#2cnpm" class="headerlink" title="2cnpm"></a>2cnpm</h2><h3 id="2-1安装"><a href="#2-1安装" class="headerlink" title="2.1安装"></a>2.1安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<h3 id="2-2验证"><a href="#2-2验证" class="headerlink" title="2.2验证"></a>2.2验证</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm -v</span><br></pre></td></tr></table></figure>
-<h2 id="3yarn"><a href="#3yarn" class="headerlink" title="3yarn"></a>3yarn</h2><h3 id="3-1定义"><a href="#3-1定义" class="headerlink" title="3.1定义"></a>3.1定义</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“Yarn是由Facebook、Google、Exponent 和 Tilde 联合推出了一个新的 JS 包管理工具 ，正如官方文档中写的，Yarn 是为了弥补 npm 的一些缺陷而出现的。”</span><br></pre></td></tr></table></figure>
-<h3 id="3-2安装"><a href="#3-2安装" class="headerlink" title="3.2安装"></a>3.2安装</h3><blockquote>
-<p>npm install -g yarn</p>
-</blockquote>
-<h3 id="3-3安装"><a href="#3-3安装" class="headerlink" title="3.3安装"></a>3.3安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn --version</span><br></pre></td></tr></table></figure>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/92c7138b29d748d4a3991f9b5e55485a~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bb63462a1ea8425ebd0c2c3a4f6ed429~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>第一步安装依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#使用yarn安装     yarn add braft-editor</span><br><span class="line"></span><br><span class="line">#使用npm安装    npm install braft-editor --save</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-4使用"><a href="#3-4使用" class="headerlink" title="3.4使用"></a>3.4使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone</span><br><span class="line">yarn install</span><br><span class="line">yarn run serve</span><br><span class="line">yarn run dev</span><br></pre></td></tr></table></figure>
+<p><img src="/" title="点击并拖拽以移动"></p>
+<p>第二步 封装子组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#x27;react&#x27;</span><br><span class="line">import BraftEditor from &#x27;braft-editor&#x27;;</span><br><span class="line">import &#x27;braft-editor/dist/index.css&#x27;;</span><br><span class="line">//音频接口方法</span><br><span class="line">import &#123; xxxxx &#125; from &#x27;@/services/common/upload&#x27;;</span><br><span class="line">class BaseRichText extends Component &#123;</span><br><span class="line">  myUploadFn = async (parame) =&gt; &#123;</span><br><span class="line">    const &#123; dispatch, handleFetchUrl &#125; = this.props;</span><br><span class="line">    const formData = new FormData();</span><br><span class="line">    formData.append(&#x27;file&#x27;, parame.file);</span><br><span class="line">    formData.append(&#x27;fileCode&#x27;, &#x27;PIC&#x27;);</span><br><span class="line">    const res = await xxxxx(formData);</span><br><span class="line">    parame.success(&#123;</span><br><span class="line">      url: res.data,</span><br><span class="line">      meta: &#123;</span><br><span class="line"></span><br><span class="line">        loop: false, // 指定音视频是否循环播放</span><br><span class="line">        autoPlay: false, // 指定音视频是否自动播放</span><br><span class="line">        controls: false, // 指定音视频是否显示控制栏</span><br><span class="line">        // poster: &#x27;http://xxx/xx.png&#x27;, // 指定视频播放器的封面</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; editorState, handleEditorChange, height = 640, </span><br><span class="line">style, ...reset &#125; = this.props;</span><br><span class="line">    return (</span><br><span class="line">      &lt;BraftEditor</span><br><span class="line">        value=&#123;editorState&#125;</span><br><span class="line">        onChange=&#123;handleEditorChange&#125;</span><br><span class="line">        style=&#123;style&#125;</span><br><span class="line">        contentStyle=&#123;&#123; height, boxShadow: &#x27;inset 0 1px 3px</span><br><span class="line"> rgba(0,0,0,.1)&#x27; &#125;&#125;</span><br><span class="line">        &#123;...reset&#125;</span><br><span class="line">        media=&#123;&#123; uploadFn: this.myUploadFn &#125;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export default BaseRichText;</span><br></pre></td></tr></table></figure>
 
-<h2 id="4总结"><a href="#4总结" class="headerlink" title="4总结"></a>4总结</h2><h3 id="4-1npm缺点"><a href="#4-1npm缺点" class="headerlink" title="4.1npm缺点"></a>4.1npm缺点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.速度慢：npm 按照队列执行安装每个 package，只有当前 package 安装完成之后，才会进行后面的安装。</span><br><span class="line">2.同一个项目，npm 安装的时候无法保持一致性，由于 package.json 文件中版本号的特点，下面三个版本号在安装的时候代表不同的含义：</span><br><span class="line">“5.0.3”, //安装指定的5.0.3版本</span><br><span class="line">“~5.0.3”, //安装5.0.X中的最新版本</span><br><span class="line">“^5.0.3” //安装5.X.X中的最新版本</span><br><span class="line">3.npm 安装的时候，一个包抛出错误，npm 会继续下载安装包，而且因为 npm 会把所有的日志输出到终端，有关错误包的错误信息就会淹没在 npm 打印的警告中，你甚至不会发现错误的产生。</span><br></pre></td></tr></table></figure>
+<p><img src="/" title="点击并拖拽以移动"></p>
+<p>第三步 引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;BaseRichText height=&#123;360&#125; handleEditorChange=&#123;this.handleEditorChange&#125; /&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-2yarn的优点对比"><a href="#4-2yarn的优点对比" class="headerlink" title="4.2yarn的优点对比"></a>4.2yarn的优点对比</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yarn 的优点：</span><br><span class="line"></span><br><span class="line">1.速度快：yarn 执行 package 的安装时，会同步执行所有任务，提高了性能；如果已经安装过某一个包，yarn 再次安装此包时无需互联网，直接安装本地缓存的依赖项。</span><br><span class="line">2.安装版本统一。</span><br><span class="line">3.更简洁的输出，默认情况下，只打印必要的输出信息。</span><br><span class="line">4.更好的语义化：如 yarn add/remove</span><br></pre></td></tr></table></figure>
+<p><img src="/" title="点击并拖拽以移动"></p>
+<p>第四部 回调</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">handleEditorChange = (editorState) =&gt; &#123;</span><br><span class="line">   console.log(editorState, &#x27;editorState&#x27;);</span><br><span class="line">   this.setState(&#123; activityRule: editorState &#125;);</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">个人的话 现在启动项目对yarn使用好感的 启动项目不会产生什么bug问题</span><br></pre></td></tr></table></figure>
+<p><img src="/" title="点击并拖拽以移动"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
-<p>我是歌谣 放弃很容易 但是坚持一定很酷 想加入前端巅峰人才交流群私信我</p>
+<p>要点1 处理数据分别用xxx.toHtml（）转化和BraftEditor.createEditorState（xxxx）反转化</p>
+<p>要点2 回调可以实时返回当前值 及时存储</p>
 </blockquote>
+<p>​</p>
 
       
 
@@ -1029,7 +1012,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgbn82p7000dq0fyeikg2x53/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgd0rtiq00093cfy72k67my4/">展开全文 >></a>
         </p>
       
 
