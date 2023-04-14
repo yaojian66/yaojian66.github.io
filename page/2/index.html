@@ -155,6 +155,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端小知识点扫盲笔记记录3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/28/clgfxchw1000jc8fyf4634sh5/">前端小知识点扫盲笔记记录3</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clgfxchw1000jc8fyf4634sh5/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.841Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣带你进入前端巅峰交流群 今天继续对前端知识的小结</p>
+</blockquote>
+<h1 id="localStorage-和-sessionStorage"><a href="#localStorage-和-sessionStorage" class="headerlink" title="localStorage 和 sessionStorage"></a>localStorage 和 sessionStorage</h1><blockquote>
+<p>cookie 本身用于浏览器和 server 通讯。 被“借用”到本地存储来的。 可用<br>        document.cookie &#x3D; ‘…’ 来修改。 其缺点： 存储大小限制为 4KB。 http<br>        请求时需要发送到服务端，增加请求数量。 只能用 document.cookie &#x3D; ‘…’<br>        来修改，太过简陋。 2、localStorage 和 sessionStorage HTML5<br>        专门为存储来设计的，最大可存 5M。 API 简单易用， setItem getItem。<br>        不会随着 http 请求被发送到服务端。 它们的区别： localStorage<br>        数据会永久存储，除非代码删除或手动删除。 sessionStorage<br>        数据只存在于当前会话，浏览器关闭则清空。 一般用 localStorage 会多一些</p>
+</blockquote>
+<h1 id="objectDefineProperty"><a href="#objectDefineProperty" class="headerlink" title="objectDefineProperty"></a>objectDefineProperty</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">// 三个参数（属性所在的对象，你要操作的属性，被操作的属性的特性）</span><br><span class="line">      //   var geyao = &#123;</span><br><span class="line">      //     sex: &quot;男&quot;,</span><br><span class="line">      //     age: 18,</span><br><span class="line">      //   &#125;;</span><br><span class="line">      //   console.log(geyao,&quot;geyao1&quot;)</span><br><span class="line"></span><br><span class="line">      //   Object.defineProperty(geyao, &quot;sex&quot;, &#123;</span><br><span class="line"></span><br><span class="line">      //     get: function () &#123;</span><br><span class="line">      //       console.log(&quot;读取时,get被触发&quot;);</span><br><span class="line"></span><br><span class="line">      //       return this.sex</span><br><span class="line">      //     &#125;,</span><br><span class="line">      //     set: function (value) &#123;</span><br><span class="line">      //       console.log(value,&quot;value&quot;);</span><br><span class="line">      //      this.sex=value</span><br><span class="line">      //     &#125;,</span><br><span class="line"></span><br><span class="line">      //   &#125;);</span><br><span class="line">      //   console.log(geyao.sex,&quot;geyao2&quot;)</span><br><span class="line">      function getObj() &#123;</span><br><span class="line">        let obj = &#123;</span><br><span class="line">            sex:&quot;男&quot;,</span><br><span class="line">            age:18</span><br><span class="line">        &#125;;</span><br><span class="line">        let val = &quot;&quot;; //此处val是安全的,外部是无法修改的</span><br><span class="line">        let o = Object.defineProperty(obj, &quot;key&quot;, &#123;</span><br><span class="line">          configurable: true,</span><br><span class="line">          enumerable: true,</span><br><span class="line">          get: function () &#123;</span><br><span class="line">            return val || 0;</span><br><span class="line">          &#125;,</span><br><span class="line">          set: function (n) &#123;</span><br><span class="line">            val = n;</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">        return o; //每个对象都是新的</span><br><span class="line">      &#125;</span><br><span class="line">      let aa = getObj();</span><br><span class="line">      console.log(aa.sex); //返回性别</span><br></pre></td></tr></table></figure>
+
+<h1 id="objectDefinePropertytest"><a href="#objectDefinePropertytest" class="headerlink" title="objectDefinePropertytest"></a>objectDefinePropertytest</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      //</span><br><span class="line">      let geyao = &#123;</span><br><span class="line">        name: &quot;歌谣&quot;,</span><br><span class="line">        age: 18,</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      function definereactive(data, key, val) &#123;</span><br><span class="line">        Object.defineProperty(data, key, &#123;</span><br><span class="line">          enumerable: true,</span><br><span class="line">          configurable: true,</span><br><span class="line">          get: function () &#123;</span><br><span class="line">            console.log(&quot;有人在读取我&quot;);</span><br><span class="line">            return val;</span><br><span class="line">          &#125;,</span><br><span class="line">          set: function (newVal) &#123;</span><br><span class="line">            if (val == newVal) &#123;</span><br><span class="line">              console.log(&quot;我没有变化&quot;);</span><br><span class="line">              return;</span><br><span class="line">            &#125;</span><br><span class="line">            console.log(&quot;我变化了 我的天呀&quot;);</span><br><span class="line">            val = newVal;</span><br><span class="line">          </span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">      &#125;</span><br><span class="line">      console.log(&quot;--------------1&quot;);</span><br><span class="line">      console.log(definereactive(geyao, &quot;age&quot;, 18));</span><br><span class="line">      console.log(&quot;--------------1&quot;);</span><br><span class="line">      console.log(&quot;--------------2&quot;);</span><br><span class="line">      geyao.age = 19;</span><br><span class="line">      console.log(geyao,&quot;geyao&quot;)</span><br><span class="line">      console.log(&quot;--------------2&quot;);</span><br><span class="line">      console.log(&quot;--------------3&quot;);</span><br><span class="line">      console.log(definereactive(geyao, &quot;age&quot;));</span><br><span class="line">      console.log(&quot;--------------3&quot;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;slice&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var fangfang=[&quot;geyao&quot;,&quot;fangfang&quot;,&quot;huahua&quot;,&quot;mingming&quot;]</span><br><span class="line">    //arr.slice([begin[, end]])</span><br><span class="line">    var fangfangTest=fangfang.slice(1)</span><br><span class="line">    //从第一位进行截取</span><br><span class="line">    console.log(fangfangTest,&quot;fangfangTest&quot;) // [ &quot;fangfang&quot;, &quot;huahua&quot;, &quot;mingming&quot; ]</span><br><span class="line">    //截取数组的二到四位</span><br><span class="line">    var fangfangList=fangfang.slice(2,4)</span><br><span class="line">    console.log(fangfangList,&quot;fangfangList&quot;) //[  &quot;huahua&quot;, &quot;mingming&quot; ]</span><br><span class="line">    //截取数组的第一位到倒数第二个元素</span><br><span class="line">    var fangfangHH=fangfang.slice(1,-1)</span><br><span class="line">    console.log(fangfangHH,&quot;fangfangHH&quot;) //[ &quot;fangfang&quot;,&quot;huahua&quot;]</span><br><span class="line"></span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;Symbol&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			const symbol1 = Symbol()</span><br><span class="line">			const symbol2 = Symbol(42)</span><br><span class="line">			const symbol3 = Symbol(&#x27;foo&#x27;)</span><br><span class="line">			console.log(typeof symbol1)</span><br><span class="line">			// expected output: &quot;symbol&quot;</span><br><span class="line">			console.log(symbol2 === 42)</span><br><span class="line">			// expected output: false</span><br><span class="line">			console.log(symbol3.toString())</span><br><span class="line">			// expected output: &quot;Symbol(foo)&quot;</span><br><span class="line">			console.log(Symbol(&#x27;foo&#x27;) === Symbol(&#x27;foo&#x27;))</span><br><span class="line">			// expected output: false</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="this指向小练习"><a href="#this指向小练习" class="headerlink" title="this指向小练习"></a>this指向小练习</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;this指向&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    window.val = 1;</span><br><span class="line">    var json = &#123;</span><br><span class="line">      val: 10,</span><br><span class="line">      dbl: function () &#123;</span><br><span class="line">        this.val *= 2;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    json.dbl(); </span><br><span class="line">    console.log(json.val,&quot;jsonval&quot;)//20</span><br><span class="line">    console.log(window.val,&quot;winval&quot;)//1</span><br><span class="line">    var dbl = json.dbl;</span><br><span class="line">   </span><br><span class="line">    dbl();</span><br><span class="line">    console.log(json.val,&quot;jsonval&quot;)//20</span><br><span class="line">    console.log(window.val,&quot;winval&quot;)//2</span><br><span class="line">    json.dbl.call(window);</span><br><span class="line">    console.log(json.val,&quot;jsonval&quot;)//20</span><br><span class="line">    console.log(window.val,&quot;winval&quot;)//4</span><br><span class="line">    console.log(window.val + json.val); //24</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="this指向问题"><a href="#this指向问题" class="headerlink" title="this指向问题"></a>this指向问题</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;this指向&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function foo() &#123;</span><br><span class="line">  console.log(this.a)</span><br><span class="line">&#125;</span><br><span class="line">var a = 1</span><br><span class="line">foo() //1</span><br><span class="line"></span><br><span class="line">const obj = &#123;</span><br><span class="line">  a: 2,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;</span><br><span class="line">obj.foo()//2 </span><br><span class="line"></span><br><span class="line">const c = new foo()//undefined</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="typeOf"><a href="#typeOf" class="headerlink" title="typeOf"></a>typeOf</h1><blockquote>
+<p> &#x2F;&#x2F;typeof：能判断所有值类型，函数。不可对 null、对象、数组进行精确判断，因为都返回 object<br>            &#x2F;&#x2F; console.log(typeof undefined) &#x2F;&#x2F; undefined<br>            &#x2F;&#x2F; console.log(typeof 2) &#x2F;&#x2F; number<br>            &#x2F;&#x2F; console.log(typeof true) &#x2F;&#x2F; boolean<br>            &#x2F;&#x2F; console.log(typeof ‘str’) &#x2F;&#x2F; string<br>            &#x2F;&#x2F; console.log(typeof Symbol(‘foo’)) &#x2F;&#x2F; symbol<br>            &#x2F;&#x2F; console.log(typeof 2172141653n) &#x2F;&#x2F; bigint<br>            &#x2F;&#x2F; console.log(typeof function () {}) &#x2F;&#x2F; function<br>            &#x2F;&#x2F; &#x2F;&#x2F; 不能判别<br>            &#x2F;&#x2F; console.log(typeof []) &#x2F;&#x2F; object<br>            &#x2F;&#x2F; console.log(typeof {}) &#x2F;&#x2F; object<br>            &#x2F;&#x2F; console.log(typeof null) &#x2F;&#x2F; object</p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 最好的种树是十年前 其次是现在 加油 歌谣</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/28/clgfxchw1000jc8fyf4634sh5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-npm,cnpm,yarn简单对比笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,12 +244,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgdaxyi40009d4fybw82grat/">npm,cnpm,yarn简单对比笔记</a>
+      <a class="article-title" href="/2023/03/28/clgfxchvu0008c8fy6u5f194o/">npm,cnpm,yarn简单对比笔记</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgdaxyi40009d4fybw82grat/" class="archive-article-date">
+        <a href="/2023/03/28/clgfxchvu0008c8fy6u5f194o/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -218,7 +300,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgdaxyi40009d4fybw82grat/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgfxchvu0008c8fy6u5f194o/">展开全文 >></a>
         </p>
       
 
@@ -255,12 +337,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgdaxyi6000bd4fybqlherry/">react+ts+hook封装一个table分页组件(建议收藏,直接使用)</a>
+      <a class="article-title" href="/2023/03/28/clgfxchvw000ac8fyckla8ofv/">react+ts+hook封装一个table分页组件(建议收藏,直接使用)</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgdaxyi6000bd4fybqlherry/" class="archive-article-date">
+        <a href="/2023/03/28/clgfxchvw000ac8fyckla8ofv/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -314,7 +396,104 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgdaxyi6000bd4fybqlherry/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgfxchvw000ac8fyckla8ofv/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-react中使用的富文本编辑器braft-editor使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/28/clgfxchvx000bc8fy1ubcdhmq/">react中使用的富文本编辑器braft-editor使用</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clgfxchvx000bc8fy1ubcdhmq/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>目录</strong></p>
+<p><a href="#%E5%89%8D%E8%A8%80">前言</a></p>
+<p><a href="#%E5%AF%BC%E8%AF%AD">导语</a></p>
+<p><a href="#%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF">解决思路</a></p>
+<p><a href="#%E6%80%BB%E7%BB%93">总结</a></p>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>我是歌谣 我有个兄弟 巅峰的时候排名c站总榜19 叫前端小歌谣 曾经我花了三年的时间创作了他 现在我要用五年的时间超越他 今天又是接近兄弟的一天人生难免坎坷 大不了从头再来 歌谣的意志是永恒的 放弃很容易 但是坚持一定很酷</p>
+</blockquote>
+<h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
+<p>歌谣 歌谣 项目中需要使用富文本的编辑器 你有什么推荐吗</p>
+</blockquote>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/92c7138b29d748d4a3991f9b5e55485a~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bb63462a1ea8425ebd0c2c3a4f6ed429~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>第一步安装依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#使用yarn安装     yarn add braft-editor</span><br><span class="line"></span><br><span class="line">#使用npm安装    npm install braft-editor --save</span><br></pre></td></tr></table></figure>
+
+<p><img src="/" title="点击并拖拽以移动"></p>
+<p>第二步 封装子组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#x27;react&#x27;</span><br><span class="line">import BraftEditor from &#x27;braft-editor&#x27;;</span><br><span class="line">import &#x27;braft-editor/dist/index.css&#x27;;</span><br><span class="line">//音频接口方法</span><br><span class="line">import &#123; xxxxx &#125; from &#x27;@/services/common/upload&#x27;;</span><br><span class="line">class BaseRichText extends Component &#123;</span><br><span class="line">  myUploadFn = async (parame) =&gt; &#123;</span><br><span class="line">    const &#123; dispatch, handleFetchUrl &#125; = this.props;</span><br><span class="line">    const formData = new FormData();</span><br><span class="line">    formData.append(&#x27;file&#x27;, parame.file);</span><br><span class="line">    formData.append(&#x27;fileCode&#x27;, &#x27;PIC&#x27;);</span><br><span class="line">    const res = await xxxxx(formData);</span><br><span class="line">    parame.success(&#123;</span><br><span class="line">      url: res.data,</span><br><span class="line">      meta: &#123;</span><br><span class="line"></span><br><span class="line">        loop: false, // 指定音视频是否循环播放</span><br><span class="line">        autoPlay: false, // 指定音视频是否自动播放</span><br><span class="line">        controls: false, // 指定音视频是否显示控制栏</span><br><span class="line">        // poster: &#x27;http://xxx/xx.png&#x27;, // 指定视频播放器的封面</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; editorState, handleEditorChange, height = 640, </span><br><span class="line">style, ...reset &#125; = this.props;</span><br><span class="line">    return (</span><br><span class="line">      &lt;BraftEditor</span><br><span class="line">        value=&#123;editorState&#125;</span><br><span class="line">        onChange=&#123;handleEditorChange&#125;</span><br><span class="line">        style=&#123;style&#125;</span><br><span class="line">        contentStyle=&#123;&#123; height, boxShadow: &#x27;inset 0 1px 3px</span><br><span class="line"> rgba(0,0,0,.1)&#x27; &#125;&#125;</span><br><span class="line">        &#123;...reset&#125;</span><br><span class="line">        media=&#123;&#123; uploadFn: this.myUploadFn &#125;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export default BaseRichText;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/" title="点击并拖拽以移动"></p>
+<p>第三步 引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;BaseRichText height=&#123;360&#125; handleEditorChange=&#123;this.handleEditorChange&#125; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/" title="点击并拖拽以移动"></p>
+<p>第四部 回调</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">handleEditorChange = (editorState) =&gt; &#123;</span><br><span class="line">   console.log(editorState, &#x27;editorState&#x27;);</span><br><span class="line">   this.setState(&#123; activityRule: editorState &#125;);</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/" title="点击并拖拽以移动"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>要点1 处理数据分别用xxx.toHtml（）转化和BraftEditor.createEditorState（xxxx）反转化</p>
+<p>要点2 回调可以实时返回当前值 及时存储</p>
+</blockquote>
+<p>​</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/28/clgfxchvx000bc8fy1ubcdhmq/">展开全文 >></a>
         </p>
       
 
@@ -351,12 +530,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgdaxyi7000dd4fy37leb353/">ant design table实现上下行拖拽功能(类组件)</a>
+      <a class="article-title" href="/2023/03/28/clgfxchvy000cc8fyhzsm8lp2/">ant design table实现上下行拖拽功能(类组件)</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgdaxyi7000dd4fy37leb353/" class="archive-article-date">
+        <a href="/2023/03/28/clgfxchvy000cc8fyhzsm8lp2/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -412,104 +591,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgdaxyi7000dd4fy37leb353/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-react中使用的富文本编辑器braft-editor使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgdaxyi7000ed4fyct8817al/">react中使用的富文本编辑器braft-editor使用</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/clgdaxyi7000ed4fyct8817al/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>目录</strong></p>
-<p><a href="#%E5%89%8D%E8%A8%80">前言</a></p>
-<p><a href="#%E5%AF%BC%E8%AF%AD">导语</a></p>
-<p><a href="#%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF">解决思路</a></p>
-<p><a href="#%E6%80%BB%E7%BB%93">总结</a></p>
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>我是歌谣 我有个兄弟 巅峰的时候排名c站总榜19 叫前端小歌谣 曾经我花了三年的时间创作了他 现在我要用五年的时间超越他 今天又是接近兄弟的一天人生难免坎坷 大不了从头再来 歌谣的意志是永恒的 放弃很容易 但是坚持一定很酷</p>
-</blockquote>
-<h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
-<p>歌谣 歌谣 项目中需要使用富文本的编辑器 你有什么推荐吗</p>
-</blockquote>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/92c7138b29d748d4a3991f9b5e55485a~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bb63462a1ea8425ebd0c2c3a4f6ed429~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
-<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>第一步安装依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#使用yarn安装     yarn add braft-editor</span><br><span class="line"></span><br><span class="line">#使用npm安装    npm install braft-editor --save</span><br></pre></td></tr></table></figure>
-
-<p><img src="/" title="点击并拖拽以移动"></p>
-<p>第二步 封装子组件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#x27;react&#x27;</span><br><span class="line">import BraftEditor from &#x27;braft-editor&#x27;;</span><br><span class="line">import &#x27;braft-editor/dist/index.css&#x27;;</span><br><span class="line">//音频接口方法</span><br><span class="line">import &#123; xxxxx &#125; from &#x27;@/services/common/upload&#x27;;</span><br><span class="line">class BaseRichText extends Component &#123;</span><br><span class="line">  myUploadFn = async (parame) =&gt; &#123;</span><br><span class="line">    const &#123; dispatch, handleFetchUrl &#125; = this.props;</span><br><span class="line">    const formData = new FormData();</span><br><span class="line">    formData.append(&#x27;file&#x27;, parame.file);</span><br><span class="line">    formData.append(&#x27;fileCode&#x27;, &#x27;PIC&#x27;);</span><br><span class="line">    const res = await xxxxx(formData);</span><br><span class="line">    parame.success(&#123;</span><br><span class="line">      url: res.data,</span><br><span class="line">      meta: &#123;</span><br><span class="line"></span><br><span class="line">        loop: false, // 指定音视频是否循环播放</span><br><span class="line">        autoPlay: false, // 指定音视频是否自动播放</span><br><span class="line">        controls: false, // 指定音视频是否显示控制栏</span><br><span class="line">        // poster: &#x27;http://xxx/xx.png&#x27;, // 指定视频播放器的封面</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; editorState, handleEditorChange, height = 640, </span><br><span class="line">style, ...reset &#125; = this.props;</span><br><span class="line">    return (</span><br><span class="line">      &lt;BraftEditor</span><br><span class="line">        value=&#123;editorState&#125;</span><br><span class="line">        onChange=&#123;handleEditorChange&#125;</span><br><span class="line">        style=&#123;style&#125;</span><br><span class="line">        contentStyle=&#123;&#123; height, boxShadow: &#x27;inset 0 1px 3px</span><br><span class="line"> rgba(0,0,0,.1)&#x27; &#125;&#125;</span><br><span class="line">        &#123;...reset&#125;</span><br><span class="line">        media=&#123;&#123; uploadFn: this.myUploadFn &#125;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export default BaseRichText;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/" title="点击并拖拽以移动"></p>
-<p>第三步 引入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;BaseRichText height=&#123;360&#125; handleEditorChange=&#123;this.handleEditorChange&#125; /&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/" title="点击并拖拽以移动"></p>
-<p>第四部 回调</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">handleEditorChange = (editorState) =&gt; &#123;</span><br><span class="line">   console.log(editorState, &#x27;editorState&#x27;);</span><br><span class="line">   this.setState(&#123; activityRule: editorState &#125;);</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/" title="点击并拖拽以移动"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
-<p>要点1 处理数据分别用xxx.toHtml（）转化和BraftEditor.createEditorState（xxxx）反转化</p>
-<p>要点2 回调可以实时返回当前值 及时存储</p>
-</blockquote>
-<p>​</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgdaxyi7000ed4fyct8817al/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgfxchvy000cc8fyhzsm8lp2/">展开全文 >></a>
         </p>
       
 
@@ -546,12 +628,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgdaxyia000ld4fy51euc2y0/">前端小知识点扫盲笔记记录</a>
+      <a class="article-title" href="/2023/03/28/clgfxchw0000gc8fyeu4jchk2/">前端小知识点扫盲笔记记录</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgdaxyia000ld4fy51euc2y0/" class="archive-article-date">
+        <a href="/2023/03/28/clgfxchw0000gc8fyeu4jchk2/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -617,7 +699,84 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgdaxyia000ld4fy51euc2y0/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgfxchw0000gc8fyeu4jchk2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Viewer.js实现图片预览效果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/28/clgfxchw0000hc8fyhsd34q02/">Viewer.js实现图片预览效果</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clgfxchw0000hc8fyhsd34q02/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 今天要说的是一个需求图片可以实现一个预览的结果最近涉及一个移动端项目需要把其中的图片变成可预览的图片<br>听学弟说 可以利用viewer进行实现首先我们需要做的就是先写一个简单demo<br>先实现其中的效果 2021年的事情了</p>
+</blockquote>
+<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/08880b828d9743deadc3baee198451ca~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h2 id="基本案例"><a href="#基本案例" class="headerlink" title="基本案例"></a>基本案例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot;</span><br><span class="line">          content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/bootstrap@4/dist/css/bootstrap.min.css&quot; crossorigin=&quot;anonymous&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/viewer.css&quot;&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;!--./images/thumbnails/tibet-1.jpg--&gt;</span><br><span class="line">&lt;div id=&quot;galley&quot;&gt;</span><br><span class="line">    &lt;ul id=&quot;images1&quot; class=&quot;img-list&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;!--二--&gt;</span><br><span class="line"> &lt;!--   &lt;ul id=&quot;image2&quot; class=&quot;img-list&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;--&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/jquery@3/dist/jquery.slim.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./js/viewer.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = function()&#123;</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;galley&#x27;), &#123;&#125;);</span><br><span class="line">        //</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;image2&#x27;), &#123;</span><br><span class="line">            url: &#x27;data-imgurl&#x27;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目实现部分"><a href="#项目实现部分" class="headerlink" title="项目实现部分"></a>项目实现部分</h2><blockquote>
+<p>看一下效果预览点击的时候就可以进行一个效果的预览操作了<br>同样 三步走第一步引入第二步注意结构第三步效果演示</p>
+</blockquote>
+<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">      &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;col-lg-12&quot;&gt;</span><br><span class="line">            &lt;div id=&quot;allmap&quot;&gt;</span><br><span class="line">​</span><br><span class="line">                &lt;img src=&quot;images/867.png&quot; data-imgurl=&quot;images/867.png&quot; alt=&quot;&quot; style=&quot;width: 100%&quot;&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">​</span><br><span class="line">​</span><br><span class="line">&lt;!--公共尾部--&gt;</span><br><span class="line">&lt;div class=&quot;footer&quot;&gt;&lt;/div&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;js/aos.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;js/viewer.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">​</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = function()&#123;</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;allmap&#x27;), &#123;&#125;);</span><br><span class="line">        //</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;image2&#x27;), &#123;</span><br><span class="line">            url: &#x27;data-imgurl&#x27;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    //DOM加载完成之后执行函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b0225be808fc4b158036435c4acbb668~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>2021年的时候当时是对官网项目的维护 微信公众号关注前端小歌谣带你进入前端巅峰交流群</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/28/clgfxchw0000hc8fyhsd34q02/">展开全文 >></a>
         </p>
       
 
@@ -654,12 +813,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgdaxyi00005d4fy4nv2fjl1/">React+antDesign封装一个tab组件(类组件)</a>
+      <a class="article-title" href="/2023/03/28/clgfxchvr0003c8fyaixxe5r8/">React+antDesign封装一个tab组件(类组件)</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgdaxyi00005d4fy4nv2fjl1/" class="archive-article-date">
+        <a href="/2023/03/28/clgfxchvr0003c8fyaixxe5r8/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -718,7 +877,105 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgdaxyi00005d4fy4nv2fjl1/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgfxchvr0003c8fyaixxe5r8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-React+hook+ts+ant design upload实现多个文件一次上传" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/28/clgfxchvs0005c8fy37od85rl/">React+hook+ts+ant design upload实现多个文件一次上传</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clgfxchvs0005c8fy37od85rl/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 在日常的学习生活中 我们会遇到各种各样的问题 今天在工作中就遇到了多个文件上传的时候会调用多次接口 感谢群友的帮助 想加入前端巅峰交流群可以私信我</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/86ec66419dbe49c29a65b8bb3100ae76.png" alt="在这里插入图片描述"></p>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><blockquote>
+<p>一开始不知道原因 后来在群友的帮助下 最后知道了原因<br>是onChange的原因</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上传中、完成、失败都会调用这个函数</span><br></pre></td></tr></table></figure>
+
+<h1 id="思路解答"><a href="#思路解答" class="headerlink" title="思路解答"></a>思路解答</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">群友给的demo</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">import &quot;./styles.css&quot;;</span><br><span class="line">import React, &#123; useState, useEffect, useRef &#125; from &quot;react&quot;;</span><br><span class="line">import &#123; Button, Upload &#125; from &quot;antd&quot;;</span><br><span class="line">import &#123; UploadOutlined &#125; from &quot;@ant-design/icons&quot;;</span><br><span class="line">export default function App() &#123;</span><br><span class="line">  const fileState = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList;</span><br><span class="line">    return function (list, setState) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line"></span><br><span class="line">  function beforeUpload(_, fileList) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    console.log(&quot;自定义上传&quot;, uploadFiles);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">      fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">      &lt;h1&gt;Hello CodeSandbox&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;Start editing to see some magic happen!&lt;/h2&gt;</span><br><span class="line">      &lt;Upload</span><br><span class="line">        listType=&quot;picture&quot;</span><br><span class="line">        maxCount=&#123;3&#125;</span><br><span class="line">        multiple</span><br><span class="line">        beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;Button&gt;Upload (Max: 3)&lt;/Button&gt;</span><br><span class="line">      &lt;/Upload&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/04a472d3c18f4819818c196fdff962b3.png" alt="在这里插入图片描述"></p>
+<h1 id="项目给的demo"><a href="#项目给的demo" class="headerlink" title="项目给的demo"></a>项目给的demo</h1><h2 id="upload部分"><a href="#upload部分" class="headerlink" title="upload部分"></a>upload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Upload</span><br><span class="line">                  name=&quot;file&quot;</span><br><span class="line">                  customRequest=&#123;customRequest&#125;</span><br><span class="line">                  multiple=&#123;true&#125;</span><br><span class="line">                  beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">                  headers=&#123;&#123; Authorization: getToken() || &quot;&quot; &#125;&#125;</span><br><span class="line">                &gt;</span><br><span class="line">                  &lt;Button style=&#123;&#123; width: &quot;100%&quot; &#125;&#125; icon=&#123;&lt;UploadOutlined /&gt;&#125;&gt;</span><br><span class="line">                    上传</span><br><span class="line">                  &lt;/Button&gt;</span><br><span class="line">                &lt;/Upload&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="beforeUpload部分"><a href="#beforeUpload部分" class="headerlink" title="beforeUpload部分"></a>beforeUpload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">const fileState: any = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList: any = null;</span><br><span class="line">    return function (list: any, setState: any) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">       fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  function beforeUpload(_: any, fileList: any) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const [loadingButton,setLoadingButton]=useState&lt;boolean&gt;(false)</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line">    uploadFile(&quot;manufacture/cutScheme/batchUploadDrawing&quot;, formData).then((res) =&gt; &#123;</span><br><span class="line">      if (res.code == 200) &#123;</span><br><span class="line">        setFileId(res.data.fileIdList)</span><br><span class="line">        message.success(&quot;文件上传成功&quot;)</span><br><span class="line">        setLoadingButton(false)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        message.error(res.msg)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="解析部分"><a href="#解析部分" class="headerlink" title="解析部分"></a>解析部分</h1><blockquote>
+<p>multiple多选文件</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/0cbbb8fc90944e64ad933105a06ab18d.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>return false控制只执行一次<br><img src="https://img-blog.csdnimg.cn/de2d37df69704b1ca98d435d2cc7b0b4.png" alt="在这里插入图片描述"><br>customRequest</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/e3b7651c225c4da9bf70adf567ba5c8e.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>formdata转文件格式</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>核心 hook写法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const updateFiles = (function () &#123;</span><br><span class="line">  let fileList: any = null;</span><br><span class="line">  return function (list: any, setState: any) &#123;</span><br><span class="line">    if (!fileList) &#123;</span><br><span class="line">      fileList = list;</span><br><span class="line">      setState &amp;&amp; setState(list);</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;</span><br><span class="line">      fileList,</span><br><span class="line">      reset() &#123;</span><br><span class="line">        fileList = false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 感谢生命中帮助你的每一个人 感谢山川~</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/28/clgfxchvs0005c8fy37od85rl/">展开全文 >></a>
         </p>
       
 
@@ -755,12 +1012,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgdaxyi30007d4fye9dya6sb/">Taro+react+TaroUi封装一个公司库的下拉组件</a>
+      <a class="article-title" href="/2023/03/28/clgfxchvz000ec8fygbzahlwo/">Taro+react+TaroUi封装一个公司库的下拉组件</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgdaxyi30007d4fye9dya6sb/" class="archive-article-date">
+        <a href="/2023/03/28/clgfxchvz000ec8fygbzahlwo/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -857,274 +1114,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgdaxyi30007d4fye9dya6sb/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React+hook+ts+ant design upload实现多个文件一次上传" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgdaxyi5000ad4fy3wp54p7e/">React+hook+ts+ant design upload实现多个文件一次上传</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/clgdaxyi5000ad4fy3wp54p7e/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>大家好 我是歌谣 在日常的学习生活中 我们会遇到各种各样的问题 今天在工作中就遇到了多个文件上传的时候会调用多次接口 感谢群友的帮助 想加入前端巅峰交流群可以私信我</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/86ec66419dbe49c29a65b8bb3100ae76.png" alt="在这里插入图片描述"></p>
-<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><blockquote>
-<p>一开始不知道原因 后来在群友的帮助下 最后知道了原因<br>是onChange的原因</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上传中、完成、失败都会调用这个函数</span><br></pre></td></tr></table></figure>
-
-<h1 id="思路解答"><a href="#思路解答" class="headerlink" title="思路解答"></a>思路解答</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">群友给的demo</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">import &quot;./styles.css&quot;;</span><br><span class="line">import React, &#123; useState, useEffect, useRef &#125; from &quot;react&quot;;</span><br><span class="line">import &#123; Button, Upload &#125; from &quot;antd&quot;;</span><br><span class="line">import &#123; UploadOutlined &#125; from &quot;@ant-design/icons&quot;;</span><br><span class="line">export default function App() &#123;</span><br><span class="line">  const fileState = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList;</span><br><span class="line">    return function (list, setState) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line"></span><br><span class="line">  function beforeUpload(_, fileList) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    console.log(&quot;自定义上传&quot;, uploadFiles);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">      fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">      &lt;h1&gt;Hello CodeSandbox&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;Start editing to see some magic happen!&lt;/h2&gt;</span><br><span class="line">      &lt;Upload</span><br><span class="line">        listType=&quot;picture&quot;</span><br><span class="line">        maxCount=&#123;3&#125;</span><br><span class="line">        multiple</span><br><span class="line">        beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;Button&gt;Upload (Max: 3)&lt;/Button&gt;</span><br><span class="line">      &lt;/Upload&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/04a472d3c18f4819818c196fdff962b3.png" alt="在这里插入图片描述"></p>
-<h1 id="项目给的demo"><a href="#项目给的demo" class="headerlink" title="项目给的demo"></a>项目给的demo</h1><h2 id="upload部分"><a href="#upload部分" class="headerlink" title="upload部分"></a>upload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Upload</span><br><span class="line">                  name=&quot;file&quot;</span><br><span class="line">                  customRequest=&#123;customRequest&#125;</span><br><span class="line">                  multiple=&#123;true&#125;</span><br><span class="line">                  beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">                  headers=&#123;&#123; Authorization: getToken() || &quot;&quot; &#125;&#125;</span><br><span class="line">                &gt;</span><br><span class="line">                  &lt;Button style=&#123;&#123; width: &quot;100%&quot; &#125;&#125; icon=&#123;&lt;UploadOutlined /&gt;&#125;&gt;</span><br><span class="line">                    上传</span><br><span class="line">                  &lt;/Button&gt;</span><br><span class="line">                &lt;/Upload&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="beforeUpload部分"><a href="#beforeUpload部分" class="headerlink" title="beforeUpload部分"></a>beforeUpload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">const fileState: any = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList: any = null;</span><br><span class="line">    return function (list: any, setState: any) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">       fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  function beforeUpload(_: any, fileList: any) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const [loadingButton,setLoadingButton]=useState&lt;boolean&gt;(false)</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line">    uploadFile(&quot;manufacture/cutScheme/batchUploadDrawing&quot;, formData).then((res) =&gt; &#123;</span><br><span class="line">      if (res.code == 200) &#123;</span><br><span class="line">        setFileId(res.data.fileIdList)</span><br><span class="line">        message.success(&quot;文件上传成功&quot;)</span><br><span class="line">        setLoadingButton(false)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        message.error(res.msg)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="解析部分"><a href="#解析部分" class="headerlink" title="解析部分"></a>解析部分</h1><blockquote>
-<p>multiple多选文件</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/0cbbb8fc90944e64ad933105a06ab18d.png" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>return false控制只执行一次<br><img src="https://img-blog.csdnimg.cn/de2d37df69704b1ca98d435d2cc7b0b4.png" alt="在这里插入图片描述"><br>customRequest</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/e3b7651c225c4da9bf70adf567ba5c8e.png" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>formdata转文件格式</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>核心 hook写法</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const updateFiles = (function () &#123;</span><br><span class="line">  let fileList: any = null;</span><br><span class="line">  return function (list: any, setState: any) &#123;</span><br><span class="line">    if (!fileList) &#123;</span><br><span class="line">      fileList = list;</span><br><span class="line">      setState &amp;&amp; setState(list);</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;</span><br><span class="line">      fileList,</span><br><span class="line">      reset() &#123;</span><br><span class="line">        fileList = false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>我是歌谣 感谢生命中帮助你的每一个人 感谢山川~</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgdaxyi5000ad4fy3wp54p7e/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React+antDesign实现上传图片功能(类组件)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgdaxyhz0003d4fy2xo7ejmr/">React+antDesign实现上传图片功能(类组件)</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/clgdaxyhz0003d4fy2xo7ejmr/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><em><strong>本文正在参加 人工智能创作者扶持计划</strong></em></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>大家好 我是歌谣 今天继续给大家带来工作中实战部分的一些代码的封装和认识</p>
-</blockquote>
-<h2 id="需求实现"><a href="#需求实现" class="headerlink" title="需求实现"></a>需求实现</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1可以支持上传最多九张图片</span><br><span class="line">2图片支持预览 替换 删除</span><br><span class="line">3支持自定义上传文件大小 格式 未上传提示</span><br></pre></td></tr></table></figure>
-<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6eda44cc609e4a329fb6c9d9ddd631a3~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h2 id="子组件封装"><a href="#子组件封装" class="headerlink" title="子组件封装"></a>子组件封装</h2><h3 id="UploadImage组件"><a href="#UploadImage组件" class="headerlink" title="UploadImage组件"></a>UploadImage组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br></pre></td><td class="code"><pre><span class="line"> * @Description: 公共上传图片</span><br><span class="line"> * @param &#123;Array&#125; type 图片格式。默认类型为png，jpeg</span><br><span class="line"> * @param &#123;Number&#125; size 图片限制大小 默认大小为8M</span><br><span class="line"> * @param &#123;String&#125; errorTypeMsg 图片格式错误文字提示</span><br><span class="line"> * @param &#123;String&#125; errorTypeMsg 图片大小错误文字提示</span><br><span class="line"> * @param &#123;Function&#125; handleFetchUrl 选中图片后回调函数</span><br><span class="line"> * @param &#123;String&#125; uploadUrl 上传图片请求的url，默认为admin/fileUpload</span><br><span class="line"> * @param &#123;String&#125; iconText 按钮文字</span><br><span class="line"> * @param &#123;Object&#125; style 样式</span><br><span class="line"> * @param &#123;String&#125; value 当前图片地址</span><br><span class="line"> </span><br><span class="line"> */</span><br><span class="line">import React, &#123; Component &#125; from &#x27;react&#x27;;</span><br><span class="line">import &#123; Tooltip, Upload, Icon, message, Modal, Divider, Spin &#125; from &#x27;antd&#x27;;</span><br><span class="line">import styles from &#x27;./index.less&#x27;;</span><br><span class="line">import &#123; fileUpload &#125; from &#x27;@/services/common/upload&#x27;;</span><br><span class="line"> </span><br><span class="line">export default class UploadImage extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      visible: false,</span><br><span class="line">      shadow: false,</span><br><span class="line">      loading: false,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  componentWillMount() &#123;</span><br><span class="line">    this.props.onRef &amp;&amp; this.props.onRef(this);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  /**</span><br><span class="line">   * @description: 上传前格式大小等校验</span><br><span class="line">   */</span><br><span class="line">  beforeUpload = (file) =&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @description: 父组件传入的参数</span><br><span class="line">     * @param &#123;Array&#125; type 图片格式。默认类型为png，jpeg</span><br><span class="line">     * @param &#123;Number&#125; size 图片限制大小 默认大小为8M</span><br><span class="line">     * @param &#123;String&#125; errorTypeMsg 图片格式错误文字提示</span><br><span class="line">     * @param &#123;String&#125; errorSizeMsg 图片大小错误文字提示</span><br><span class="line">     * @param &#123;Function&#125; checkSize 文件大小校验方式</span><br><span class="line">     */</span><br><span class="line">    let &#123;</span><br><span class="line">      type = [&#x27;image/jpeg&#x27;, &#x27;image/png&#x27;, &#x27;image/gif&#x27;],</span><br><span class="line">      size,</span><br><span class="line">      errorTypeMsg,</span><br><span class="line">      errorSizeMsg,</span><br><span class="line">      checkSize,</span><br><span class="line">    &#125; = this.props;</span><br><span class="line">    size ? (size = size) : (size = 8);</span><br><span class="line">    if (checkSize) &#123;</span><br><span class="line">      size = checkSize(file.type);</span><br><span class="line">    &#125;</span><br><span class="line">    const isJpgOrPng = type.includes(file.type);</span><br><span class="line">    if (!isJpgOrPng) &#123;</span><br><span class="line">      message.error(</span><br><span class="line">        errorTypeMsg || &#x27;图片/视频格式错误！请上传jpeg/png/gif格式图片或avi/mp4格式视频&#x27;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">    const isLt8M = file.size &lt; size * 1024 * 1024;</span><br><span class="line">    if (!isLt8M) &#123;</span><br><span class="line">      message.error(errorSizeMsg || &#x27;图片/视频大小限制&#x27; + size + &#x27;M!&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    return isJpgOrPng &amp;&amp; isLt8M;</span><br><span class="line">  &#125;;</span><br><span class="line"> </span><br><span class="line">  handleUpload = (&#123; file &#125;) =&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @description:</span><br><span class="line">     * @param &#123;Function&#125; handleFetchUrl 选中图片后回调函数</span><br><span class="line">     * @param &#123;String&#125; uploadUrl 上传图片请求的url，默认为admin/fileUpload</span><br><span class="line">     */</span><br><span class="line">    const &#123; dispatch, uploadUrl, handleFetchUrl &#125; = this.props;</span><br><span class="line">    const formData = new FormData();</span><br><span class="line">    formData.append(&#x27;file&#x27;, file);</span><br><span class="line">    formData.append(&#x27;fileCode&#x27;, &#x27;PIC&#x27;);</span><br><span class="line">    this.setState(&#123; loading: true &#125;);</span><br><span class="line">    const upload = async (record) =&gt; &#123;</span><br><span class="line">      let upUrl = uploadUrl || fileUpload;</span><br><span class="line">      try &#123;</span><br><span class="line">        const response = await upUrl(formData);</span><br><span class="line">        if (response.returnCode === 0) &#123;</span><br><span class="line">          if (handleFetchUrl &amp;&amp; typeof handleFetchUrl === &#x27;function&#x27;) &#123;</span><br><span class="line">            handleFetchUrl(response.data, file.type);</span><br><span class="line">          &#125;</span><br><span class="line">          message.success(&#x27;上传成功&#x27;);</span><br><span class="line">          //上传成功的回调</span><br><span class="line">          this.props.handleUploadImage &amp;&amp; this.props.handleUploadImage();</span><br><span class="line">        &#125;</span><br><span class="line">        this.setState(&#123; loading: false &#125;);</span><br><span class="line">      &#125; catch (error) &#123;</span><br><span class="line">        console.log(error, &#x27;error&#x27;);</span><br><span class="line">        this.setState(&#123; loading: false &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    upload();</span><br><span class="line">    // dispatch(&#123;</span><br><span class="line">    //   type: uploadUrl || &#x27;admin/fileUpload&#x27;,</span><br><span class="line">    //   payload: formData,</span><br><span class="line">    //   callback: (response) =&gt; &#123;</span><br><span class="line">    //     if (response.returnCode === 0) &#123;</span><br><span class="line">    //       if (handleFetchUrl &amp;&amp; typeof handleFetchUrl === &#x27;function&#x27;) &#123;</span><br><span class="line">    //         handleFetchUrl(response.data, file.type);</span><br><span class="line">    //       &#125;</span><br><span class="line">    //       message.success(&#x27;上传成功&#x27;);</span><br><span class="line">    //     &#125;</span><br><span class="line">    //   &#125;,</span><br><span class="line">    // &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"> </span><br><span class="line">  /**</span><br><span class="line">   * @description: 改变visible</span><br><span class="line">   * @param &#123;*&#125;</span><br><span class="line">   */</span><br><span class="line">  handleSetVisible = (val, event) =&gt; &#123;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      visible: val,</span><br><span class="line">    &#125;);</span><br><span class="line">    if (event) &#123;</span><br><span class="line">      event.stopPropagation();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"> </span><br><span class="line">  /**</span><br><span class="line">   * @description: 改变image上的阴影显示</span><br><span class="line">   */</span><br><span class="line">  setShadow = (val) =&gt; &#123;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      shadow: val,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"> </span><br><span class="line">  /**</span><br><span class="line">   * @description: 删除图片</span><br><span class="line">   */</span><br><span class="line">  handleDeleteImg = (event) =&gt; &#123;</span><br><span class="line">    const &#123; dispatch, uploadUrl, handleFetchUrl &#125; = this.props;</span><br><span class="line">    handleFetchUrl(&#x27;&#x27;);</span><br><span class="line">    if (event) &#123;</span><br><span class="line">      //函数删除的回调</span><br><span class="line">      this.props.onHandleDelete &amp;&amp; this.props.onHandleDelete();</span><br><span class="line">      event.stopPropagation();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"> </span><br><span class="line">  render() &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @description:</span><br><span class="line">     * @param &#123;String&#125; iconText 按钮文字</span><br><span class="line">     * @param &#123;Object&#125; style 样式</span><br><span class="line">     * @param &#123;String&#125; value 内容</span><br><span class="line">     * @param &#123;String&#125; fileType 文件类型  img/video</span><br><span class="line">     * @param &#123;String&#125; backgroundImg 背景图，如果是video，缩略图中显示背景图，弹窗大图中显示video</span><br><span class="line">     * @param &#123;String&#125; showDelete 是否显示删除按钮，showDelete=delete 不显示</span><br><span class="line">     * @param &#123;Number&#125; size 图片大小单位M,默认8</span><br><span class="line">     */</span><br><span class="line">    const &#123;</span><br><span class="line">      iconText,</span><br><span class="line">      style,</span><br><span class="line">      value,</span><br><span class="line">      fileType,</span><br><span class="line">      backgroundImg,</span><br><span class="line">      disabled,</span><br><span class="line">      infoText,</span><br><span class="line">      showDelete,</span><br><span class="line">      size,</span><br><span class="line">      errorSizeMsg,</span><br><span class="line">      errorTypeMsg,</span><br><span class="line">    &#125; = this.props;</span><br><span class="line">    console.log(iconText)</span><br><span class="line">    const &#123; visible, shadow, loading &#125; = this.state;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div className=&#123;styles.ContentBox&#125;&gt;</span><br><span class="line">        &lt;Spin spinning=&#123;loading&#125;&gt;</span><br><span class="line">          &lt;Upload</span><br><span class="line">            listType=&quot;picture-card&quot;</span><br><span class="line">            showUploadList=&#123;false&#125;</span><br><span class="line">            customRequest=&#123;this.handleUpload&#125;</span><br><span class="line">            beforeUpload=&#123;this.beforeUpload&#125;</span><br><span class="line">            disabled=&#123;disabled&#125;</span><br><span class="line">          &gt;</span><br><span class="line">            &#123;value ? (</span><br><span class="line">              &lt;div</span><br><span class="line">                className=&#123;styles.imgContent&#125;</span><br><span class="line">                style=&#123;&#123;</span><br><span class="line">                  width: 150,</span><br><span class="line">                  height: 150,</span><br><span class="line">                  display: &#x27;flex&#x27;,</span><br><span class="line">                  flexDirection: &#x27;column&#x27;,</span><br><span class="line">                  alignItems: &#x27;center&#x27;,</span><br><span class="line">                  justifyContent: &#x27;center&#x27;,</span><br><span class="line">                  ...style,</span><br><span class="line">                &#125;&#125;</span><br><span class="line">                onMouseOver=&#123;() =&gt; this.setShadow(true)&#125;</span><br><span class="line">                onMouseLeave=&#123;() =&gt; this.setShadow(false)&#125;</span><br><span class="line">              &gt;</span><br><span class="line">                &#123;(fileType === &#x27;img&#x27; || !fileType) &amp;&amp; (</span><br><span class="line">                  &lt;img</span><br><span class="line">                    alt=&#123;iconText&#125;</span><br><span class="line">                    src=&#123;value&#125;</span><br><span class="line">                    style=&#123;&#123;</span><br><span class="line">                      maxWidth: (style &amp;&amp; style.width &amp;&amp; style.width) || 150,</span><br><span class="line">                      maxHeight: (style &amp;&amp; style.height &amp;&amp; style.height) || 150,</span><br><span class="line">                    &#125;&#125;</span><br><span class="line">                  /&gt;</span><br><span class="line">                )&#125;</span><br><span class="line">                &#123;fileType === &#x27;video&#x27; &amp;&amp; (</span><br><span class="line">                  &lt;img</span><br><span class="line">                    alt=&#123;iconText&#125;</span><br><span class="line">                    src=&#123;backgroundImg&#125;</span><br><span class="line">                    style=&#123;&#123;</span><br><span class="line">                      maxWidth: (style &amp;&amp; style.width &amp;&amp; style.width) || 150,</span><br><span class="line">                      maxHeight: (style &amp;&amp; style.height &amp;&amp; style.height) || 150,</span><br><span class="line">                    &#125;&#125;</span><br><span class="line">                  /&gt;</span><br><span class="line">                )&#125;</span><br><span class="line">                &#123;shadow &amp;&amp; (</span><br><span class="line">                  &lt;div className=&#123;styles.imgShadow&#125;&gt;</span><br><span class="line">                    &lt;div</span><br><span class="line">                      className=&#123;styles.shadowDiv&#125;</span><br><span class="line">                      onClick=&#123;(event) =&gt; &#123;</span><br><span class="line">                        event.stopPropagation();</span><br><span class="line">                      &#125;&#125;</span><br><span class="line">                    /&gt;</span><br><span class="line">                    &lt;div className=&#123;styles.shadowDiv&#125;&gt;</span><br><span class="line">                      &lt;Tooltip title=&quot;放大&quot;&gt;</span><br><span class="line">                        &lt;Icon</span><br><span class="line">                          type=&quot;zoom-in&quot;</span><br><span class="line">                          onClick=&#123;(event) =&gt; &#123;</span><br><span class="line">                            this.handleSetVisible(true, event);</span><br><span class="line">                          &#125;&#125;</span><br><span class="line">                        /&gt;</span><br><span class="line">                      &lt;/Tooltip&gt;</span><br><span class="line">                      &lt;Divider type=&quot;vertical&quot; style=&#123;&#123; width: 2 &#125;&#125; /&gt;</span><br><span class="line">                      &lt;Tooltip title=&quot;替换&quot;&gt;</span><br><span class="line">                        &lt;Icon type=&quot;upload&quot; /&gt;</span><br><span class="line">                      &lt;/Tooltip&gt;</span><br><span class="line"> </span><br><span class="line">                      &#123;!disabled &amp;&amp; showDelete != &#x27;delete&#x27; &amp;&amp; (</span><br><span class="line">                        &lt;&gt;</span><br><span class="line">                          &lt;Divider type=&quot;vertical&quot; style=&#123;&#123; width: 2 &#125;&#125; /&gt;</span><br><span class="line">                          &lt;Tooltip title=&quot;删除&quot;&gt;</span><br><span class="line">                            &lt;Icon</span><br><span class="line">                              type=&quot;delete&quot;</span><br><span class="line">                              onClick=&#123;(event) =&gt; &#123;</span><br><span class="line">                                this.handleDeleteImg(event);</span><br><span class="line">                              &#125;&#125;</span><br><span class="line">                            /&gt;</span><br><span class="line">                          &lt;/Tooltip&gt;</span><br><span class="line">                        &lt;/&gt;</span><br><span class="line">                      )&#125;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                    &lt;div</span><br><span class="line">                      className=&#123;styles.shadowDiv&#125;</span><br><span class="line">                      onClick=&#123;(event) =&gt; &#123;</span><br><span class="line">                        event.stopPropagation();</span><br><span class="line">                      &#125;&#125;</span><br><span class="line">                    /&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line">                )&#125;</span><br><span class="line">              &lt;/div&gt;</span><br><span class="line">            ) : (</span><br><span class="line">              &lt;div</span><br><span class="line">                style=&#123;&#123;</span><br><span class="line">                  width: 150,</span><br><span class="line">                  height: 150,</span><br><span class="line">                  display: &#x27;flex&#x27;,</span><br><span class="line">                  flexDirection: &#x27;column&#x27;,</span><br><span class="line">                  alignItems: &#x27;center&#x27;,</span><br><span class="line">                  justifyContent: &#x27;center&#x27;,</span><br><span class="line">                  ...style,</span><br><span class="line">                &#125;&#125;</span><br><span class="line">              &gt;</span><br><span class="line">                &lt;Icon type=&quot;plus&quot; /&gt;</span><br><span class="line">                &lt;div className=&quot;ant-upload-text&quot; </span><br><span class="line">style=&#123;&#123; marginTop: 14, whiteSpace: &#x27;normal&#x27; &#125;&#125;&gt;</span><br><span class="line">                  &#123;iconText || &#x27;上传图片&#x27;&#125;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">              &lt;/div&gt;</span><br><span class="line">            )&#125;</span><br><span class="line">          &lt;/Upload&gt;</span><br><span class="line">          &lt;div style=&#123;&#123; color: &#x27;#666&#x27;, </span><br><span class="line">fontSize: &#x27;12px&#x27;, lineHeight: &#x27;12px&#x27;, textAlign: &#x27;center&#x27; &#125;&#125;&gt;</span><br><span class="line">            &#123;infoText ? infoText : &#x27;&#x27;&#125;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">          &lt;Modal</span><br><span class="line">            maskClosable=&#123;false&#125;</span><br><span class="line">            maskClosable=&#123;false&#125;</span><br><span class="line">            visible=&#123;visible&#125;</span><br><span class="line">            footer=&#123;null&#125;</span><br><span class="line">            onCancel=&#123;() =&gt; this.handleSetVisible(false)&#125;</span><br><span class="line">          &gt;</span><br><span class="line">            &#123;(fileType === &#x27;img&#x27; || !fileType) &amp;&amp; (</span><br><span class="line">              &lt;img</span><br><span class="line">                alt=&#123;iconText&#125;</span><br><span class="line">                style=&#123;&#123;</span><br><span class="line">                  width: 476,</span><br><span class="line">                &#125;&#125;</span><br><span class="line">                src=&#123;value&#125;</span><br><span class="line">              /&gt;</span><br><span class="line">            )&#125;</span><br><span class="line">            &#123;fileType === &#x27;video&#x27; &amp;&amp; (</span><br><span class="line">              &lt;video</span><br><span class="line">                alt=&#123;iconText&#125;</span><br><span class="line">                style=&#123;&#123;</span><br><span class="line">                  width: 476,</span><br><span class="line">                &#125;&#125;</span><br><span class="line">                src=&#123;value&#125;</span><br><span class="line">                controls</span><br><span class="line">              /&gt;</span><br><span class="line">            )&#125;</span><br><span class="line">          &lt;/Modal&gt;</span><br><span class="line">        &lt;/Spin&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>fileUpload为接口调用<br>export function fileUpload(params) {<br>return request({ url: <code>xxxxxxxx</code>, method: ‘form’, params }); }</p>
-</blockquote>
-<h2 id="BaseUploadImage组件"><a href="#BaseUploadImage组件" class="headerlink" title="BaseUploadImage组件"></a>BaseUploadImage组件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br></pre></td><td class="code"><pre><span class="line"> * @Description: 公共上传图片</span><br><span class="line"> * @param &#123;Array&#125; type 图片格式。默认类型为png，jpeg</span><br><span class="line"> * @param &#123;Number&#125; size 图片限制大小 默认大小为8M</span><br><span class="line"> * @param &#123;String&#125; errorTypeMsg 图片格式错误文字提示</span><br><span class="line"> * @param &#123;String&#125; errorTypeMsg 图片大小错误文字提示</span><br><span class="line"> * @param &#123;Function&#125; handleFetchUrl 选中图片后回调函数，目前只在单选中有，适配旧版本</span><br><span class="line"> * @param &#123;String&#125; uploadUrl 上传图片请求的url，默认为admin/fileUpload</span><br><span class="line"> * @param &#123;String&#125; iconText 按钮文字</span><br><span class="line"> * @param &#123;Object&#125; style 样式</span><br><span class="line"> * @param &#123;String&#125; value 当前图片地址</span><br><span class="line"> * @param &#123;Boolean&#125; multiple 是否多选</span><br><span class="line"> *  * *@param &#123;String&#125; showDelete 是否显示删除按钮，showDelete=0 不显示</span><br><span class="line"> * * @param &#123;Number&#125; size 图片大小单位M</span><br><span class="line"> </span><br><span class="line"> */</span><br><span class="line">import React, &#123; Component &#125; from &#x27;react&#x27;;</span><br><span class="line">import &#123; Tooltip, Upload, Icon, message, Modal, Divider &#125; from &#x27;antd&#x27;;</span><br><span class="line">import styles from &#x27;./index.less&#x27;;</span><br><span class="line">import UploadImage from &#x27;./upload.js&#x27;;</span><br><span class="line"> </span><br><span class="line">export default class BaseUploadImage extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      imgList: (props.multiple ? props.value : [props.value]) || [&#x27;&#x27;],</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  componentWillMount() &#123;</span><br><span class="line">    this.props.onRef &amp;&amp; this.props.onRef(this);</span><br><span class="line">    window.up = this;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  /**</span><br><span class="line">   * @description: 父组件传入的默认值发生改变时，更改图片的默认显示</span><br><span class="line">   * @param &#123;*&#125; nextProps 最新的props</span><br><span class="line">   */</span><br><span class="line">  componentWillReceiveProps(nextProps) &#123;</span><br><span class="line">    const &#123;</span><br><span class="line">      props: &#123; multiple, maxCount = 9 &#125;,</span><br><span class="line">    &#125; = this;</span><br><span class="line">    const &#123; value &#125; = nextProps;</span><br><span class="line">    let imgList;</span><br><span class="line">    if (nextProps.value !== this.props.value) &#123;</span><br><span class="line">      if (multiple) &#123;</span><br><span class="line">        imgList = value;</span><br><span class="line">        if (value &amp;&amp; value.length &amp;&amp; value.length &lt; maxCount) &#123;</span><br><span class="line">          imgList.push(&#x27;&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        imgList = [value];</span><br><span class="line">      &#125;</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        imgList: imgList || [&#x27;&#x27;],</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  /**</span><br><span class="line">   * @description: 上传图片回调</span><br><span class="line">   * @param &#123;*&#125; val 上传图片后服务器返回的值</span><br><span class="line">   * @param &#123;*&#125; index 上传的图片index，多选时用</span><br><span class="line">   */</span><br><span class="line">  handleSetImg = (val, index) =&gt; &#123;</span><br><span class="line">    const &#123; multiple, maxCount = 9 &#125; = this.props;</span><br><span class="line">    const &#123; imgList &#125; = this.state;</span><br><span class="line">    if (multiple) &#123;</span><br><span class="line">      if (!val &amp;&amp; imgList.length &gt; 0) &#123;</span><br><span class="line">        if (imgList.length === maxCount) &#123;</span><br><span class="line">          imgList.push(&#x27;&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">        imgList.splice(index, 1);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        imgList[index] = val;</span><br><span class="line">        if (maxCount &gt; imgList.length) &#123;</span><br><span class="line">          imgList.push(&#x27;&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        imgList,</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.setState(&#123; imgList: [val] &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  handleChange = () =&gt; &#123;</span><br><span class="line">    this.props.handleDeleteImg &amp;&amp; this.props.handleDeleteImg();</span><br><span class="line">  &#125;;</span><br><span class="line">  handleUploadImg = () =&gt; &#123;</span><br><span class="line">    console.log(22222);</span><br><span class="line">    this.props.handleUpload &amp;&amp; this.props.handleUpload();</span><br><span class="line">  &#125;;</span><br><span class="line">  /**</span><br><span class="line">   * @description: 获取当前上传成功的图片</span><br><span class="line">   * @return &#123;*&#125; 当前上传成功的图片</span><br><span class="line">   */</span><br><span class="line">  getActiveImg = () =&gt; &#123;</span><br><span class="line">    const &#123; multiple, maxCount = 9 &#125; = this.props;</span><br><span class="line">    const &#123; imgList &#125; = this.state;</span><br><span class="line">    if (multiple) &#123;</span><br><span class="line">      //因为多选的时候，如果没有上传到最大可上传限度，会多出一条数据，所以如果上传数量小于maxCount，需要删掉最尾的一条数据</span><br><span class="line">      if (maxCount === imgList.length &amp;&amp; imgList[imgList.length - 1]) &#123;</span><br><span class="line">        return imgList;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        return imgList.slice(0, imgList.length - 1);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return imgList &amp;&amp; imgList[0];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"> </span><br><span class="line">  render() &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @description:</span><br><span class="line">     * @param &#123;Boolean&#125; multiple 是否多选</span><br><span class="line">     * @param &#123;Number&#125; maxCount 多选时，最多可以上传几个</span><br><span class="line">     */</span><br><span class="line">    const &#123;</span><br><span class="line">      multiple,</span><br><span class="line">      maxCount = 9,</span><br><span class="line">      iconText,</span><br><span class="line">      style,</span><br><span class="line">      fileType,</span><br><span class="line">      backgroundImg,</span><br><span class="line">      disabled,</span><br><span class="line">      infoText,</span><br><span class="line">      dispatch,</span><br><span class="line">      showDelete,</span><br><span class="line">      size,</span><br><span class="line">      errorSizeMsg,</span><br><span class="line">      errorTypeMsg,</span><br><span class="line">    &#125; = this.props;</span><br><span class="line">    const &#123; imgList &#125; = this.state;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div className=&#123;styles.ContentBox&#125;&gt;</span><br><span class="line">        &#123;multiple &amp;&amp; (imgList &amp;&amp; typeof imgList === &#x27;object&#x27; &amp;&amp; imgList.length &gt; 0) ? (</span><br><span class="line">          imgList.map((item, index) =&gt; &#123;</span><br><span class="line">            console.log(item);</span><br><span class="line">            return (</span><br><span class="line">              maxCount &gt;= index &amp;&amp; (</span><br><span class="line">                &lt;UploadImage</span><br><span class="line">                  onHandleDelete=&#123;() =&gt; &#123;</span><br><span class="line">                    this.handleChange();</span><br><span class="line">                  &#125;&#125;</span><br><span class="line">                  handleUploadImage=&#123;() =&gt; &#123;</span><br><span class="line">                    this.handleUploadImg();</span><br><span class="line">                  &#125;&#125;</span><br><span class="line">                  iconText=&#123;iconText&#125;</span><br><span class="line">                  style=&#123;style&#125;</span><br><span class="line">                  fileType=&#123;fileType&#125;</span><br><span class="line">                  backgroundImg=&#123;backgroundImg&#125;</span><br><span class="line">                  disabled=&#123;disabled&#125;</span><br><span class="line">                  infoText=&#123;infoText&#125;</span><br><span class="line">                  key=&#123;index&#125;</span><br><span class="line">                  dispatch=&#123;dispatch&#125;</span><br><span class="line">                  value=&#123;item&#125;</span><br><span class="line">                  showDelete=&#123;showDelete&#125;</span><br><span class="line">                  size=&#123;size&#125;</span><br><span class="line">                  errorTypeMsg=&#123;errorTypeMsg&#125;</span><br><span class="line">                  errorSizeMsg=&#123;errorSizeMsg&#125;</span><br><span class="line">                  handleFetchUrl=&#123;</span><br><span class="line">                    this.props.handleFetchUrl || ((val) =&gt; this.handleSetImg(val, index))</span><br><span class="line">                  &#125;</span><br><span class="line">                /&gt;</span><br><span class="line">              )</span><br><span class="line">            );</span><br><span class="line">          &#125;)</span><br><span class="line">        ) : (</span><br><span class="line">          &lt;UploadImage</span><br><span class="line">            onHandleDelete=&#123;() =&gt; &#123;</span><br><span class="line">              this.handleChange();</span><br><span class="line">            &#125;&#125;</span><br><span class="line">            handleUploadImage=&#123;() =&gt; &#123;</span><br><span class="line">              this.handleUploadImg();</span><br><span class="line">            &#125;&#125;</span><br><span class="line">            iconText=&#123;iconText&#125;</span><br><span class="line">            style=&#123;style&#125;</span><br><span class="line">            fileType=&#123;fileType&#125;</span><br><span class="line">            backgroundImg=&#123;backgroundImg&#125;</span><br><span class="line">            disabled=&#123;disabled&#125;</span><br><span class="line">            infoText=&#123;infoText&#125;</span><br><span class="line">            dispatch=&#123;dispatch&#125;</span><br><span class="line">            value=&#123;imgList[0]&#125;</span><br><span class="line">            showDelete=&#123;showDelete&#125;</span><br><span class="line">            size=&#123;size&#125;</span><br><span class="line">            errorTypeMsg=&#123;errorTypeMsg&#125;</span><br><span class="line">            errorSizeMsg=&#123;errorSizeMsg&#125;</span><br><span class="line">            handleFetchUrl=&#123;this.props.handleFetchUrl || ((val) =&gt; this.handleSetImg(val))&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">        )&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="样式文件index-less"><a href="#样式文件index-less" class="headerlink" title="样式文件index.less"></a>样式文件index.less</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">.ContentBox &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  .imgContent &#123;</span><br><span class="line">    padding: 8px;</span><br><span class="line">    position: relative;</span><br><span class="line">    display: flex;</span><br><span class="line">    justify-content: center;</span><br><span class="line">    align-items: center;</span><br><span class="line">    .imgShadow &#123;</span><br><span class="line">      width: 100%;</span><br><span class="line">      height: 100%;</span><br><span class="line">      position: absolute;</span><br><span class="line">      background: rgba(0,0,0,0.5);</span><br><span class="line">      .shadowDiv &#123;</span><br><span class="line">        height: 33.3333333%;</span><br><span class="line">        display:flex;</span><br><span class="line">        justify-content: space-around;</span><br><span class="line">        color: #fff;</span><br><span class="line">        align-items: center;</span><br><span class="line">        font-size: 18px;</span><br><span class="line">        padding: 0 10px;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="父组件引用"><a href="#父组件引用" class="headerlink" title="父组件引用"></a>父组件引用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Form.Item label=&quot;上传图片&quot;&gt;</span><br><span class="line">          &lt;BaseUploadImage</span><br><span class="line">            onRef=&#123;(ref) =&gt; &#123;</span><br><span class="line">              this.upload = ref;</span><br><span class="line">            &#125;&#125;</span><br><span class="line">            value=&#123;this.state.themeImgPath&#125;</span><br><span class="line">            multiple</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;/Form.Item&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
-<p>我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣带你进入前端巅峰交流群</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgdaxyhz0003d4fy2xo7ejmr/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React+Hook+ts+antDesign实现table行编辑功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgdaxyhz0004d4fy6kuo4prk/">React+Hook+ts+antDesign实现table行编辑功能</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/clgdaxyhz0004d4fy6kuo4prk/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>大家好 我是歌谣 今天要说的是ant design实现表格行编辑的功能  考虑问题的时候我们需要多看官方的api</p>
-</blockquote>
-<h1 id="开发开始"><a href="#开发开始" class="headerlink" title="开发开始"></a>开发开始</h1><blockquote>
-<p>紧接着我们对照着api进行开发 首先加一个table</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;Table</span><br><span class="line">                    onChange=&#123;onTableChange&#125;</span><br><span class="line">                       rowKey=&quot;id&quot;</span><br><span class="line">                       components=&#123;components&#125;</span><br><span class="line">                       rowClassName=&#123;() =&gt; &#x27;editable-row&#x27;&#125;</span><br><span class="line">                       bordered</span><br><span class="line">                       dataSource=&#123;menuData.list&#125;</span><br><span class="line">                       pagination=&#123;&#123;</span><br><span class="line">                           pageSizeOptions: [&#x27;5&#x27;, &#x27;10&#x27;, &#x27;20&#x27;, &#x27;50&#x27;],</span><br><span class="line">                           </span><br><span class="line">                           total: menuData?.page.dataTotal,</span><br><span class="line">                           showTotal: () =&gt; &#123;</span><br><span class="line">                               return &#x27;共 &#x27; + menuData?.page.dataTotal + &#x27; 条记录&#x27;;</span><br><span class="line">                           &#125;,</span><br><span class="line">                       &#125;&#125;</span><br><span class="line">                       columns=&#123;columns as ColumnTypes&#125;</span><br><span class="line">                       rowSelection=&#123;rowSelection&#125;</span><br><span class="line"></span><br><span class="line">                   /&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="对component进行定义"><a href="#对component进行定义" class="headerlink" title="对component进行定义"></a>对component进行定义</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const components = &#123;</span><br><span class="line">       body: &#123;</span><br><span class="line">           row: EditableRow,</span><br><span class="line">           cell: EditableCell,</span><br><span class="line">       &#125;,</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="对-EditableRow进行定义"><a href="#对-EditableRow进行定义" class="headerlink" title="对 EditableRow进行定义"></a>对 EditableRow进行定义</h1><blockquote>
-<p>参照官网api引入对应的依赖</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const EditableContext = React.createContext&lt;FormInstance&lt;any&gt; | null&gt;(null);</span><br><span class="line"></span><br><span class="line">const EditableRow: React.FC&lt;EditableRowProps&gt; = (&#123; index, ...props &#125;) =&gt; &#123;</span><br><span class="line">    const [form] = Form.useForm();</span><br><span class="line">    return (</span><br><span class="line">        &lt;Form form=&#123;form&#125; component=&#123;false&#125;&gt;</span><br><span class="line">            &lt;EditableContext.Provider value=&#123;form&#125;&gt;</span><br><span class="line">                &lt;tr &#123;...props&#125; /&gt;</span><br><span class="line">            &lt;/EditableContext.Provider&gt;</span><br><span class="line">        &lt;/Form&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="对EditableCell进行定义"><a href="#对EditableCell进行定义" class="headerlink" title="对EditableCell进行定义"></a>对EditableCell进行定义</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">const EditableCell: React.FC&lt;EditableCellProps&gt; = (&#123;</span><br><span class="line">    title,</span><br><span class="line">    editable,</span><br><span class="line">    children,</span><br><span class="line">    dataIndex,</span><br><span class="line">    record,</span><br><span class="line">    handleSave,</span><br><span class="line">    ...restProps</span><br><span class="line">&#125;) =&gt; &#123;</span><br><span class="line">    const [editing, setEditing] = useState(false);</span><br><span class="line">    const inputRef = useRef&lt;InputRef&gt;(null);</span><br><span class="line">    const form = useContext(EditableContext)!;</span><br><span class="line"></span><br><span class="line">    useEffect(() =&gt; &#123;</span><br><span class="line">        if (editing) &#123;</span><br><span class="line">            inputRef.current!.focus();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, [editing]);</span><br><span class="line"></span><br><span class="line">    const toggleEdit = () =&gt; &#123;</span><br><span class="line">        setEditing(!editing);</span><br><span class="line">        form.setFieldsValue(&#123; [dataIndex]: record[dataIndex] &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    const save = async () =&gt; &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            const values = await form.validateFields();</span><br><span class="line">            toggleEdit();</span><br><span class="line">            handleSave(&#123; ...record, ...values &#125;);</span><br><span class="line">        &#125; catch (errInfo) &#123;</span><br><span class="line">            console.log(&#x27;Save failed:&#x27;, errInfo);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    let childNode = children;</span><br><span class="line"></span><br><span class="line">    if (editable) &#123;</span><br><span class="line">        childNode = editing ? (</span><br><span class="line">            &lt;Form.Item</span><br><span class="line">                style=&#123;&#123; margin: 0 &#125;&#125;</span><br><span class="line">                name=&#123;dataIndex&#125;</span><br><span class="line">                rules=&#123;[</span><br><span class="line">                    &#123;</span><br><span class="line">                        required: true,</span><br><span class="line">                        message: `$&#123;title&#125;不能为空`,</span><br><span class="line">                    &#125;,</span><br><span class="line">                ]&#125;</span><br><span class="line">            &gt;</span><br><span class="line"></span><br><span class="line">                &lt;Input ref=&#123;inputRef&#125; onPressEnter=&#123;save&#125; onBlur=&#123;save&#125; /&gt;</span><br><span class="line">            &lt;/Form.Item&gt;</span><br><span class="line">        ) : (</span><br><span class="line">            &lt;div className=&quot;editable-cell-value-wrap&quot; style=&#123;&#123; paddingRight: 24 &#125;&#125; onClick=&#123;toggleEdit&#125;&gt;</span><br><span class="line">                &#123;children&#125;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return &lt;td &#123;...restProps&#125;&gt;&#123;childNode&#125;&lt;/td&gt;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="handleSave进行定义"><a href="#handleSave进行定义" class="headerlink" title="handleSave进行定义"></a>handleSave进行定义</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">const handleSave = (row: any) =&gt; &#123;</span><br><span class="line">      // console.log(batchUpdateSizeList)</span><br><span class="line">      batchUpdateSizeList([&#123;</span><br><span class="line">          id: row.id,</span><br><span class="line">          size: row.sizeName</span><br><span class="line">      &#125;])</span><br><span class="line">          .unwrap()</span><br><span class="line">          .then((response: any) =&gt; &#123;</span><br><span class="line">              if (response.code === 200) &#123;</span><br><span class="line">                  message.success(&quot;操作成功&quot;)</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;);</span><br><span class="line">      const newData: any = [...menuData.list];</span><br><span class="line">      const index = newData.findIndex((item: any) =&gt; row?.id == item.id);</span><br><span class="line">      const item = newData[index];</span><br><span class="line">      newData.splice(index, 1, &#123;</span><br><span class="line">          ...item,</span><br><span class="line">          ...row,</span><br><span class="line">      &#125;);</span><br><span class="line">      setMenuData(&#123;</span><br><span class="line">          list: newData, page: &#123;</span><br><span class="line">              dataTotal: menuData.page.dataTotal,</span><br><span class="line">              size: menuData.page.size,</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>handleSave中的数据是核心 利用当前行数据的回调可以处理数据和接口 完成当前行的更新</p>
-</blockquote>
-<h1 id="对表头column的设置"><a href="#对表头column的设置" class="headerlink" title="对表头column的设置"></a>对表头column的设置</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const columns = defaultColumns.map(col =&gt; &#123;</span><br><span class="line">       if (!col.editable) &#123;</span><br><span class="line">           return col;</span><br><span class="line">       &#125;</span><br><span class="line">       return &#123;</span><br><span class="line">           ...col,</span><br><span class="line">           onCell: (record: any) =&gt; (&#123;</span><br><span class="line">               record,</span><br><span class="line">               editable: col.editable,</span><br><span class="line">               dataIndex: col.dataIndex,</span><br><span class="line">               title: col.title,</span><br><span class="line">               handleSave,</span><br><span class="line">           &#125;),</span><br><span class="line">       &#125;;</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="对默认column的设置"><a href="#对默认column的设置" class="headerlink" title="对默认column的设置"></a>对默认column的设置</h1><blockquote>
-<p>以上是对column函数数据处理的讲解 接下来设置defaultColumn数据的设置 对可以操作的属性editable变为true即可</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">const defaultColumns: (ColumnTypes[number] &amp; &#123; editable?: boolean; dataIndex: string &#125;)[] = [</span><br><span class="line">        &#123;</span><br><span class="line">            title: &#x27;颜色&#x27;,</span><br><span class="line">            dataIndex: &#x27;colorName&#x27;,</span><br><span class="line">            editable: false,</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            title: &#x27;尺码&#x27;,</span><br><span class="line">            dataIndex: &#x27;sizeName&#x27;,</span><br><span class="line">            editable: true,</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            title: &#x27;扎号&#x27;,</span><br><span class="line">            dataIndex: &#x27;lotCode&#x27;,</span><br><span class="line">            editable: false,</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            title: &#x27;床号&#x27;,</span><br><span class="line">            dataIndex: &#x27;bedCode&#x27;,</span><br><span class="line">            editable: false,</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            title: &#x27;床次&#x27;,</span><br><span class="line">            dataIndex: &#x27;bedSeq&#x27;,</span><br><span class="line">            editable: false,</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            title: &#x27;每扎数量&#x27;,</span><br><span class="line">            dataIndex: &#x27;lotCount&#x27;,</span><br><span class="line">            editable: false,</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            title: &#x27;缸号&#x27;,</span><br><span class="line">            dataIndex: &#x27;batchCode&#x27;,</span><br><span class="line">            editable: false,</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            title: &#x27;裁片名称&#x27;,</span><br><span class="line">            dataIndex: &#x27;cuttingName&#x27;,</span><br><span class="line">            editable: false,</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            title: &#x27;结果&#x27;,</span><br><span class="line">            dataIndex: &#x27;result&#x27;,</span><br><span class="line">            editable: false,</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            title: &#x27;操作&#x27;,</span><br><span class="line">            dataIndex: &#x27;operation&#x27;,</span><br><span class="line">            render: (_, record: any) =&gt;</span><br><span class="line"></span><br><span class="line">                &lt;a onClick=&#123;() =&gt; handlePrintData(_, record)&#125;&gt;打印&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">    ];</span><br></pre></td></tr></table></figure>
-<h1 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h1><p><img src="https://img-blog.csdnimg.cn/fab9804293134ac5a328a2d07d0cf2ce.png" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>双击即可进行编辑操作 这个问题相对还是非常简单的 对照官网的案例进行修改即可 我是歌谣 微信公众号前端小歌谣 谢谢你的一键三联</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgdaxyhz0004d4fy6kuo4prk/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgfxchvz000ec8fygbzahlwo/">展开全文 >></a>
         </p>
       
 
