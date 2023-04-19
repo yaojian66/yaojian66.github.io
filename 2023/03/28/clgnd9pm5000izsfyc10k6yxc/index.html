@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | 前端导师歌谣的博客</title>
+  <title>前端小知识点扫盲笔记记录2 | 前端导师歌谣的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分享技术 分享快乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="前端导师歌谣的博客">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="前言 大家好 我是歌谣 今天继续进行前端知识的一些总结 想加入前端巅峰交流群私信我  innerHTML和innerText的使用1234567891011121314151617181920&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端小知识点扫盲笔记记录2">
+<meta property="og:url" content="http://example.com/2023/03/28/clgnd9pm5000izsfyc10k6yxc/index.html">
 <meta property="og:site_name" content="前端导师歌谣的博客">
-<meta property="og:description" content="分享技术 分享快乐">
+<meta property="og:description" content="前言 大家好 我是歌谣 今天继续进行前端知识的一些总结 想加入前端巅峰交流群私信我  innerHTML和innerText的使用1234567891011121314151617181920&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&amp;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-28T07:12:42.841Z">
+<meta property="article:modified_time" content="2023-03-28T07:12:42.841Z">
 <meta property="article:author" content="geyao">
 <meta property="article:tag" content="前端,程序猿,热爱生活">
 <meta name="twitter:card" content="summary">
@@ -153,295 +155,202 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-前端小知识点扫盲笔记记录2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端小知识点扫盲笔记记录2
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clgnd9pm5000izsfyc10k6yxc/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.841Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 今天继续进行前端知识的一些总结 想加入前端巅峰交流群私信我</p>
+</blockquote>
+<h1 id="innerHTML和innerText的使用"><a href="#innerHTML和innerText的使用" class="headerlink" title="innerHTML和innerText的使用"></a>innerHTML和innerText的使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;innerHTML和innerText的使用220313&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;geyao&quot;&gt;&lt;p&gt;geyao&lt;/p&gt;&lt;p&gt;fangfang&lt;/p&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">       var geyao= document.getElementById(&quot;geyao&quot;)</span><br><span class="line">       console.log(geyao,&quot;geyao&quot;)</span><br><span class="line">       var innerHtml=geyao.innerHTML</span><br><span class="line">       var innerText=geyao.innerText</span><br><span class="line">       console.log(innerHtml,&quot;innerHtml&quot;)</span><br><span class="line">       console.log(innerText,&quot;innerText&quot;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="instanceOf"><a href="#instanceOf" class="headerlink" title="instanceOf"></a>instanceOf</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;instanceOf&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			var simpleStr = &#x27;我是歌谣&#x27;</span><br><span class="line">			var myString = new String()</span><br><span class="line">			var newStr = new String(&#x27;我是方方&#x27;)</span><br><span class="line">			var myDate = new Date()</span><br><span class="line">			var myObj = &#123;&#125;</span><br><span class="line">			var myNonObj = Object.create(null)</span><br><span class="line">			simpleStr instanceof String // 返回 false, 非对象实例，因此返回 false</span><br><span class="line">			myString instanceof String // 返回 true</span><br><span class="line">			newStr instanceof String // 返回 true</span><br><span class="line">			myString instanceof Object // 返回 true</span><br><span class="line">			myObj instanceof Object // 返回 true, 尽管原型没有定义</span><br><span class="line">			;(&#123;&#125; instanceof Object) // 返回 true, 同上</span><br><span class="line">			myNonObj instanceof Object // 返回 false, 一种创建非 Object 实例的对象的方法</span><br><span class="line">			myString instanceof Date //返回 false</span><br><span class="line">			myDate instanceof Date // 返回 true</span><br><span class="line">			myDate instanceof Object // 返回 true</span><br><span class="line">			myDate instanceof String // 返回 false</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="javacript实现面向对象和继承机制"><a href="#javacript实现面向对象和继承机制" class="headerlink" title="javacript实现面向对象和继承机制"></a>javacript实现面向对象和继承机制</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;javascript面向对象和继承机制&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        //javascript面向对象和继承机制</span><br><span class="line">        function MyObject()&#123;</span><br><span class="line">            this.name=&quot;myObject&quot;</span><br><span class="line">            this.type=&quot;class&quot;</span><br><span class="line">            this.methodA=function()&#123;</span><br><span class="line">                console.log(this.name)</span><br><span class="line">            &#125;</span><br><span class="line">            this.methodB=function()&#123;</span><br><span class="line">                return this.type</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="javascript实现数组升序"><a href="#javascript实现数组升序" class="headerlink" title="javascript实现数组升序"></a>javascript实现数组升序</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var arr=[2,3,5,1,15,8,12,11,7]</span><br><span class="line">        function des(a,b)&#123;</span><br><span class="line">            return a-b</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(arr.sort(des))</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="javascript实现继承"><a href="#javascript实现继承" class="headerlink" title="javascript实现继承"></a>javascript实现继承</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;实现继承与多态&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function parentClass() &#123;</span><br><span class="line">      //私人变量</span><br><span class="line">      var x=&quot;我是私人变量&quot;</span><br><span class="line">      //私人方法</span><br><span class="line">      function method() &#123;</span><br><span class="line">        console.log(&quot;我是私人方法&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">      //公共变量</span><br><span class="line">      this.x=&quot;我是公共变量&quot;</span><br><span class="line">      //公共方法</span><br><span class="line">      this.method=function() &#123;</span><br><span class="line">        console.log(x)</span><br><span class="line">        console.log(this.x)</span><br><span class="line">        method()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    parentClass.prototype.method1=function() &#123;</span><br><span class="line">      console.log(&quot;我是父级的原型方法&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    parentClass.staticMethod=function()&#123;</span><br><span class="line">      console.log(&quot;我是父级的静态方法&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="js数据类型"><a href="#js数据类型" class="headerlink" title="js数据类型"></a>js数据类型</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;js数据类型&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			// 原始数据类型</span><br><span class="line">			// number</span><br><span class="line">			// string</span><br><span class="line">			// boolean</span><br><span class="line">			// null</span><br><span class="line">			// undefined</span><br><span class="line">			// symbol(ES6)</span><br><span class="line">			// bigint(ES10)</span><br><span class="line">			// 引用数据类型</span><br><span class="line">			// object</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="js的继承关系"><a href="#js的继承关系" class="headerlink" title="js的继承关系"></a>js的继承关系</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    oldObject=function()&#123;</span><br><span class="line">      this.a=&quot;我是歌谣&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    //赋值出一个新对象</span><br><span class="line">    newObject=function()&#123;</span><br><span class="line">      newObject.b=&quot;属性2&quot;</span><br><span class="line">      newObject.function=function()&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    var geyao=new newObject()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="less-sass-scss区别"><a href="#less-sass-scss区别" class="headerlink" title="less,sass,scss区别"></a>less,sass,scss区别</h1><blockquote>
+<p>&#x2F;&#x2F; less, sass, scss都是css预处理语言（ 也是对应的文件后缀名）， 它们的语法功能比css更强大。<br>    &#x2F;&#x2F; 预处理语言使用是： 开发时用预处理语言， 在打包上线时， 用webpack再配合loader工具给转成css（ Cascading Style Sheets） 给浏览器使用。<br>    &#x2F;&#x2F; scss 的基本语法：<br>    &#x2F;&#x2F; 1. 可以使用$来标识变量（ 可以将常用的样式标记成变量， 后续复用即可， 方便维护）<br>    &#x2F;&#x2F; 2. 嵌套语法（ 和less语法相同）<br>    &#x2F;&#x2F; 3. &amp; 父选择器(跟less语法相同)<br>    &#x2F;&#x2F; 假如你想针对某个特定子元素 进行设置<br>    &#x2F;&#x2F; 4. 模块化<br>    &#x2F;&#x2F; 可以将需要的变量定义在一个新的js文件中， 需要使用的样式文件直接引入即可</p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣学习前端知识</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>前端导师歌谣 微信公众号前端小歌谣<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/data.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/19/clgnd9pm9000ozsfy2dzs34in/" class="archive-article-date">
-  	<time datetime="2023-04-19T07:19:45.144Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/19/clgnd9pm9000ozsfy2dzs34in/">前端小知识点扫盲笔记记录9</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/28/clgnd9pm5000izsfyc10k6yxc/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/19/clgnd9pma000qzsfy6tx68nd4/" class="archive-article-date">
-  	<time datetime="2023-04-19T06:47:35.884Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-19</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2023/04/04/clgnd9plz0007zsfy25kt2mme/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          docker部署前后端项目在云服务器记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/28/clgnd9pm6000kzsfy2a6tepst/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端小知识点扫盲笔记记录3</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/19/clgnd9pma000qzsfy6tx68nd4/">原生table实现矩阵展示打勾功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#innerHTML%E5%92%8CinnerText%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">innerHTML和innerText的使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#instanceOf"><span class="toc-number">3.</span> <span class="toc-text">instanceOf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#javacript%E5%AE%9E%E7%8E%B0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF%E6%9C%BA%E5%88%B6"><span class="toc-number">4.</span> <span class="toc-text">javacript实现面向对象和继承机制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript%E5%AE%9E%E7%8E%B0%E6%95%B0%E7%BB%84%E5%8D%87%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text">javascript实现数组升序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF"><span class="toc-number">6.</span> <span class="toc-text">javascript实现继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.</span> <span class="toc-text">js数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#js%E7%9A%84%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="toc-number">8.</span> <span class="toc-text">js的继承关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#less-sass-scss%E5%8C%BA%E5%88%AB"><span class="toc-number">9.</span> <span class="toc-text">less,sass,scss区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">10.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/14/clgnd9pm8000nzsfyhjgqejdd/" class="archive-article-date">
-  	<time datetime="2023-04-14T02:19:12.357Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-14</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/14/clgnd9pm8000nzsfyhjgqejdd/">前端小知识点扫盲笔记记录8</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/14/clgnd9pm3000ezsfyfs84gale/" class="archive-article-date">
-  	<time datetime="2023-04-14T02:06:54.870Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/14/clgnd9pm3000ezsfyfs84gale/">springBoot+vue实现登录操作和JWT验证</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/12/clgnd9pmb000tzsfyev781ydh/" class="archive-article-date">
-  	<time datetime="2023-04-12T06:16:02.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/clgnd9pmb000tzsfyev781ydh/">前端小知识点扫盲笔记记录7</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/12/clgnd9pm7000mzsfy248m15p8/" class="archive-article-date">
-  	<time datetime="2023-04-12T01:32:53.667Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/clgnd9pm7000mzsfy248m15p8/">前端小知识点扫盲笔记记录6</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/11/clgnd9pm2000czsfyciam19io/" class="archive-article-date">
-  	<time datetime="2023-04-11T02:21:17.866Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/11/clgnd9pm2000czsfyciam19io/">springboot+vue搭建前后端项目实现员工的增删改查</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/07/clgnd9pm6000jzsfy9f2xcbvf/" class="archive-article-date">
-  	<time datetime="2023-04-07T07:55:11.929Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/07/clgnd9pm6000jzsfy9f2xcbvf/">再次接触老朋友react+ant design table合并单元格</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/05/clgnd9pm9000pzsfy524ybada/" class="archive-article-date">
-  	<time datetime="2023-04-05T06:22:10.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/05/clgnd9pm9000pzsfy524ybada/">记录一次艰难的云服务器部署前后端项目springBoot+mybatis+vue(两天解决的前后端跨域问题多种方式)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/05/clgnd9pma000rzsfyfwry6sfj/" class="archive-article-date">
-  	<time datetime="2023-04-05T04:23:11.349Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/05/clgnd9pma000rzsfyfwry6sfj/">前后端springboot+vue+实现部门的增删改功能记录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -465,8 +374,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

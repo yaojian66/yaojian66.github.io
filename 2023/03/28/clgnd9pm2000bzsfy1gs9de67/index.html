@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | 前端导师歌谣的博客</title>
+  <title>Viewer.js实现图片预览效果 | 前端导师歌谣的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分享技术 分享快乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="前端导师歌谣的博客">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="前言 大家好 我是歌谣 今天要说的是一个需求图片可以实现一个预览的结果最近涉及一个移动端项目需要把其中的图片变成可预览的图片听学弟说 可以利用viewer进行实现首先我们需要做的就是先写一个简单demo先实现其中的效果 2021年的事情了  实现效果 基本案例1234567891011121314151617181920212223242526272829303132333435363738394">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Viewer.js实现图片预览效果">
+<meta property="og:url" content="http://example.com/2023/03/28/clgnd9pm2000bzsfy1gs9de67/index.html">
 <meta property="og:site_name" content="前端导师歌谣的博客">
-<meta property="og:description" content="分享技术 分享快乐">
+<meta property="og:description" content="前言 大家好 我是歌谣 今天要说的是一个需求图片可以实现一个预览的结果最近涉及一个移动端项目需要把其中的图片变成可预览的图片听学弟说 可以利用viewer进行实现首先我们需要做的就是先写一个简单demo先实现其中的效果 2021年的事情了  实现效果 基本案例1234567891011121314151617181920212223242526272829303132333435363738394">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/08880b828d9743deadc3baee198451ca~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b0225be808fc4b158036435c4acbb668~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="article:published_time" content="2023-03-28T07:12:42.840Z">
+<meta property="article:modified_time" content="2023-03-28T07:12:42.840Z">
 <meta property="article:author" content="geyao">
 <meta property="article:tag" content="前端,程序猿,热爱生活">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/08880b828d9743deadc3baee198451ca~tplv-k3u1fbpfcp-zoom-1.image">
   
     <link rel="alternative" href="/atom.xml" title="前端导师歌谣的博客" type="application/atom+xml">
   
@@ -153,295 +158,201 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Viewer.js实现图片预览效果" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Viewer.js实现图片预览效果
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clgnd9pm2000bzsfy1gs9de67/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 今天要说的是一个需求图片可以实现一个预览的结果最近涉及一个移动端项目需要把其中的图片变成可预览的图片<br>听学弟说 可以利用viewer进行实现首先我们需要做的就是先写一个简单demo<br>先实现其中的效果 2021年的事情了</p>
+</blockquote>
+<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/08880b828d9743deadc3baee198451ca~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h2 id="基本案例"><a href="#基本案例" class="headerlink" title="基本案例"></a>基本案例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot;</span><br><span class="line">          content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/bootstrap@4/dist/css/bootstrap.min.css&quot; crossorigin=&quot;anonymous&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/viewer.css&quot;&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;!--./images/thumbnails/tibet-1.jpg--&gt;</span><br><span class="line">&lt;div id=&quot;galley&quot;&gt;</span><br><span class="line">    &lt;ul id=&quot;images1&quot; class=&quot;img-list&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;!--二--&gt;</span><br><span class="line"> &lt;!--   &lt;ul id=&quot;image2&quot; class=&quot;img-list&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;img src=&quot;./images/thumbnails/tibet-1.jpg&quot; data-imgurl=&quot;./images/thumbnails/tibet-1.jpg&quot;/&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;--&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/jquery@3/dist/jquery.slim.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./js/viewer.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = function()&#123;</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;galley&#x27;), &#123;&#125;);</span><br><span class="line">        //</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;image2&#x27;), &#123;</span><br><span class="line">            url: &#x27;data-imgurl&#x27;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目实现部分"><a href="#项目实现部分" class="headerlink" title="项目实现部分"></a>项目实现部分</h2><blockquote>
+<p>看一下效果预览点击的时候就可以进行一个效果的预览操作了<br>同样 三步走第一步引入第二步注意结构第三步效果演示</p>
+</blockquote>
+<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">      &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;col-lg-12&quot;&gt;</span><br><span class="line">            &lt;div id=&quot;allmap&quot;&gt;</span><br><span class="line">​</span><br><span class="line">                &lt;img src=&quot;images/867.png&quot; data-imgurl=&quot;images/867.png&quot; alt=&quot;&quot; style=&quot;width: 100%&quot;&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">​</span><br><span class="line">​</span><br><span class="line">&lt;!--公共尾部--&gt;</span><br><span class="line">&lt;div class=&quot;footer&quot;&gt;&lt;/div&gt;</span><br><span class="line">​</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;js/aos.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;js/viewer.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">​</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = function()&#123;</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;allmap&#x27;), &#123;&#125;);</span><br><span class="line">        //</span><br><span class="line">        var viewer = new Viewer(document.getElementById(&#x27;image2&#x27;), &#123;</span><br><span class="line">            url: &#x27;data-imgurl&#x27;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    //DOM加载完成之后执行函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b0225be808fc4b158036435c4acbb668~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>2021年的时候当时是对官网项目的维护 微信公众号关注前端小歌谣带你进入前端巅峰交流群</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>前端导师歌谣 微信公众号前端小歌谣<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/data.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/19/clgnd9pm9000ozsfy2dzs34in/" class="archive-article-date">
-  	<time datetime="2023-04-19T07:19:45.144Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/19/clgnd9pm9000ozsfy2dzs34in/">前端小知识点扫盲笔记记录9</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/28/clgnd9pm2000bzsfy1gs9de67/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/19/clgnd9pma000qzsfy6tx68nd4/" class="archive-article-date">
-  	<time datetime="2023-04-19T06:47:35.884Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-19</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2023/03/28/clgnd9pm00008zsfyex1x1kqz/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ant design table实现上下行拖拽功能(类组件)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/28/clgnd9pm3000dzsfy8p4veigq/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">react+ts+hook封装一个table分页组件(建议收藏,直接使用)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/19/clgnd9pma000qzsfy6tx68nd4/">原生table实现矩阵展示打勾功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="toc-number">1.1.</span> <span class="toc-text">实现效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A1%88%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">基本案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0%E9%83%A8%E5%88%86"><span class="toc-number">1.3.</span> <span class="toc-text">项目实现部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E9%83%A8%E5%88%86"><span class="toc-number">1.4.</span> <span class="toc-text">代码部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">1.5.</span> <span class="toc-text">结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.6.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/14/clgnd9pm8000nzsfyhjgqejdd/" class="archive-article-date">
-  	<time datetime="2023-04-14T02:19:12.357Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-14</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/14/clgnd9pm8000nzsfyhjgqejdd/">前端小知识点扫盲笔记记录8</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/14/clgnd9pm3000ezsfyfs84gale/" class="archive-article-date">
-  	<time datetime="2023-04-14T02:06:54.870Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/14/clgnd9pm3000ezsfyfs84gale/">springBoot+vue实现登录操作和JWT验证</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/12/clgnd9pmb000tzsfyev781ydh/" class="archive-article-date">
-  	<time datetime="2023-04-12T06:16:02.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/clgnd9pmb000tzsfyev781ydh/">前端小知识点扫盲笔记记录7</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/12/clgnd9pm7000mzsfy248m15p8/" class="archive-article-date">
-  	<time datetime="2023-04-12T01:32:53.667Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/clgnd9pm7000mzsfy248m15p8/">前端小知识点扫盲笔记记录6</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/11/clgnd9pm2000czsfyciam19io/" class="archive-article-date">
-  	<time datetime="2023-04-11T02:21:17.866Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/11/clgnd9pm2000czsfyciam19io/">springboot+vue搭建前后端项目实现员工的增删改查</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/07/clgnd9pm6000jzsfy9f2xcbvf/" class="archive-article-date">
-  	<time datetime="2023-04-07T07:55:11.929Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/07/clgnd9pm6000jzsfy9f2xcbvf/">再次接触老朋友react+ant design table合并单元格</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/05/clgnd9pm9000pzsfy524ybada/" class="archive-article-date">
-  	<time datetime="2023-04-05T06:22:10.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/05/clgnd9pm9000pzsfy524ybada/">记录一次艰难的云服务器部署前后端项目springBoot+mybatis+vue(两天解决的前后端跨域问题多种方式)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/05/clgnd9pma000rzsfyfwry6sfj/" class="archive-article-date">
-  	<time datetime="2023-04-05T04:23:11.349Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/05/clgnd9pma000rzsfyfwry6sfj/">前后端springboot+vue+实现部门的增删改功能记录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -465,8 +376,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
