@@ -155,19 +155,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-React+antDesign封装一个tab组件(类组件)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-React+hook+ts+ant design upload实现多个文件一次上传" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgnd9ply0006zsfyfp9geunq/">React+antDesign封装一个tab组件(类组件)</a>
+      <a class="article-title" href="/2023/03/28/clgoq1to90006fwfyd64u4dk9/">React+hook+ts+ant design upload实现多个文件一次上传</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgnd9ply0006zsfyfp9geunq/" class="archive-article-date">
+        <a href="/2023/03/28/clgoq1to90006fwfyd64u4dk9/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -175,45 +175,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>我是歌谣 放弃很容易 但是坚持一定很酷 喜欢我就一键三连哈 微信公众号关注前端小歌谣 在我们的工作生活中 每次学习一个框架我们就不免要封装组件 而具备封装一个完美组件的能力 我称之为”优秀”</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 在日常的学习生活中 我们会遇到各种各样的问题 今天在工作中就遇到了多个文件上传的时候会调用多次接口 感谢群友的帮助 想加入前端巅峰交流群可以私信我</p>
 </blockquote>
-<h2 id="简单的父子组件"><a href="#简单的父子组件" class="headerlink" title="简单的父子组件"></a>简单的父子组件</h2><h3 id="父组件"><a href="#父组件" class="headerlink" title="父组件"></a>父组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Geyao/&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="子组件"><a href="#子组件" class="headerlink" title="子组件"></a>子组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#x27;react&#x27;;</span><br><span class="line">class GeYao extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    console.log(this, &#x27;this&#x27;);</span><br><span class="line">    console.log(this.props, &#x27;props&#x27;);</span><br><span class="line">    console.log(this.state, &#x27;state&#x27;);</span><br><span class="line">    return &lt;div&gt;我是歌谣&lt;/div&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default GeYao;</span><br></pre></td></tr></table></figure>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d1528e1a8ecb4c4e9bb6b086653460bc~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h2 id="需求介绍"><a href="#需求介绍" class="headerlink" title="需求介绍"></a>需求介绍</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">需要做一个类似于这样的tab切换的组件</span><br></pre></td></tr></table></figure>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b6c43322228d4dada56a869c5e295606~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/86ec66419dbe49c29a65b8bb3100ae76.png" alt="在这里插入图片描述"></p>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><blockquote>
+<p>一开始不知道原因 后来在群友的帮助下 最后知道了原因<br>是onChange的原因</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上传中、完成、失败都会调用这个函数</span><br></pre></td></tr></table></figure>
+
+<h1 id="思路解答"><a href="#思路解答" class="headerlink" title="思路解答"></a>思路解答</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">群友给的demo</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">import &quot;./styles.css&quot;;</span><br><span class="line">import React, &#123; useState, useEffect, useRef &#125; from &quot;react&quot;;</span><br><span class="line">import &#123; Button, Upload &#125; from &quot;antd&quot;;</span><br><span class="line">import &#123; UploadOutlined &#125; from &quot;@ant-design/icons&quot;;</span><br><span class="line">export default function App() &#123;</span><br><span class="line">  const fileState = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList;</span><br><span class="line">    return function (list, setState) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line"></span><br><span class="line">  function beforeUpload(_, fileList) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    console.log(&quot;自定义上传&quot;, uploadFiles);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">      fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">      &lt;h1&gt;Hello CodeSandbox&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;Start editing to see some magic happen!&lt;/h2&gt;</span><br><span class="line">      &lt;Upload</span><br><span class="line">        listType=&quot;picture&quot;</span><br><span class="line">        maxCount=&#123;3&#125;</span><br><span class="line">        multiple</span><br><span class="line">        beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;Button&gt;Upload (Max: 3)&lt;/Button&gt;</span><br><span class="line">      &lt;/Upload&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/04a472d3c18f4819818c196fdff962b3.png" alt="在这里插入图片描述"></p>
+<h1 id="项目给的demo"><a href="#项目给的demo" class="headerlink" title="项目给的demo"></a>项目给的demo</h1><h2 id="upload部分"><a href="#upload部分" class="headerlink" title="upload部分"></a>upload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Upload</span><br><span class="line">                  name=&quot;file&quot;</span><br><span class="line">                  customRequest=&#123;customRequest&#125;</span><br><span class="line">                  multiple=&#123;true&#125;</span><br><span class="line">                  beforeUpload=&#123;beforeUpload&#125;</span><br><span class="line">                  headers=&#123;&#123; Authorization: getToken() || &quot;&quot; &#125;&#125;</span><br><span class="line">                &gt;</span><br><span class="line">                  &lt;Button style=&#123;&#123; width: &quot;100%&quot; &#125;&#125; icon=&#123;&lt;UploadOutlined /&gt;&#125;&gt;</span><br><span class="line">                    上传</span><br><span class="line">                  &lt;/Button&gt;</span><br><span class="line">                &lt;/Upload&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="beforeUpload部分"><a href="#beforeUpload部分" class="headerlink" title="beforeUpload部分"></a>beforeUpload部分</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">const fileState: any = useRef();</span><br><span class="line">  const [uploadFiles, setUploadFiles] = useState([]);</span><br><span class="line">  const updateFiles = (function () &#123;</span><br><span class="line">    let fileList: any = null;</span><br><span class="line">    return function (list: any, setState: any) &#123;</span><br><span class="line">      if (!fileList) &#123;</span><br><span class="line">        fileList = list;</span><br><span class="line">        setState &amp;&amp; setState(list);</span><br><span class="line">      &#125;</span><br><span class="line">      return &#123;</span><br><span class="line">        fileList,</span><br><span class="line">        reset() &#123;</span><br><span class="line">          fileList = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)();</span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    if (uploadFiles.length &gt; 0) &#123;</span><br><span class="line">      customRequest();</span><br><span class="line">       fileState.current.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [uploadFiles]);</span><br><span class="line">  function beforeUpload(_: any, fileList: any) &#123;</span><br><span class="line">    fileState.current = updateFiles(fileList, setUploadFiles);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  const [loadingButton,setLoadingButton]=useState&lt;boolean&gt;(false)</span><br><span class="line">  const customRequest = () =&gt; &#123;</span><br><span class="line">    let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line">    uploadFile(&quot;manufacture/cutScheme/batchUploadDrawing&quot;, formData).then((res) =&gt; &#123;</span><br><span class="line">      if (res.code == 200) &#123;</span><br><span class="line">        setFileId(res.data.fileIdList)</span><br><span class="line">        message.success(&quot;文件上传成功&quot;)</span><br><span class="line">        setLoadingButton(false)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        message.error(res.msg)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="解析部分"><a href="#解析部分" class="headerlink" title="解析部分"></a>解析部分</h1><blockquote>
+<p>multiple多选文件</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/0cbbb8fc90944e64ad933105a06ab18d.png" alt="在这里插入图片描述"></p>
 <blockquote>
-<p>备注:一个简单的区分方法是，this.props 表示那些一旦定义，就不再改变的特性，而 this.state 是会随着用户互动而产生变化的特性。这时候 我们想着这样的数据格式必须给个数组<br> 然后父组件绑定值</p>
+<p>return false控制只执行一次<br><img src="https://img-blog.csdnimg.cn/de2d37df69704b1ca98d435d2cc7b0b4.png" alt="在这里插入图片描述"><br>customRequest</p>
 </blockquote>
-<h2 id="变化1"><a href="#变化1" class="headerlink" title="变化1"></a>变化1</h2><h3 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const tabs = [</span><br><span class="line">    &#123; key: &#x27;&#x27;, value: &#x27;全部&#x27; &#125;,</span><br><span class="line">    &#123; key: &#x27;1&#x27;, value: &#x27;已审核&#x27; &#125;,</span><br><span class="line">    &#123; key: &#x27;2&#x27;, value: &#x27;未审核&#x27; &#125;,</span><br><span class="line">  ];</span><br></pre></td></tr></table></figure>
-<h3 id="父组件-1"><a href="#父组件-1" class="headerlink" title="父组件"></a>父组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;GeYao tabs=&#123;tabs&#125; /&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="子组件-1"><a href="#子组件-1" class="headerlink" title="子组件"></a>子组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#x27;react&#x27;;</span><br><span class="line">class GeYao extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; tabs = [] &#125; = this.props;</span><br><span class="line"> </span><br><span class="line">    console.log(this, &#x27;this&#x27;);</span><br><span class="line">    console.log(this.props, &#x27;props&#x27;);</span><br><span class="line">    console.log(this.state, &#x27;state&#x27;);</span><br><span class="line">    return (</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &#123;tabs.map((item, index) =&gt; &#123;</span><br><span class="line">          return &lt;li key=&#123;item.key&#125;&gt;&#123;item.name || item.value || &#x27;&#x27;&#125;&lt;/li&gt;;</span><br><span class="line">        &#125;)&#125;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default GeYao;</span><br></pre></td></tr></table></figure>
-<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2e9c1c2df67d439e83d0f360f6e99e49~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h3 id="图解示意"><a href="#图解示意" class="headerlink" title="图解示意"></a>图解示意</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8aa7c5643bc74195ac274acbf1d85349~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h2 id="变化2"><a href="#变化2" class="headerlink" title="变化2"></a>变化2</h2><blockquote>
-<p>样式处理的还是不够完美 接下来处理样式</p>
+<p><img src="https://img-blog.csdnimg.cn/e3b7651c225c4da9bf70adf567ba5c8e.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>formdata转文件格式</p>
 </blockquote>
-<h2 id="变化1-1"><a href="#变化1-1" class="headerlink" title="变化1"></a>变化1</h2><h3 id="数据格式-1"><a href="#数据格式-1" class="headerlink" title="数据格式"></a>数据格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const tabs = [</span><br><span class="line">    &#123; key: &#x27;&#x27;, value: &#x27;全部&#x27; &#125;,</span><br><span class="line">    &#123; key: &#x27;1&#x27;, value: &#x27;已审核&#x27; &#125;,</span><br><span class="line">    &#123; key: &#x27;2&#x27;, value: &#x27;未审核&#x27; &#125;,</span><br><span class="line">  ];</span><br></pre></td></tr></table></figure>
-<h3 id="父组件-2"><a href="#父组件-2" class="headerlink" title="父组件"></a>父组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;GeYao tabs=&#123;tabs&#125; /&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="子组件-2"><a href="#子组件-2" class="headerlink" title="子组件"></a>子组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#x27;react&#x27;;</span><br><span class="line">class GeYao extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; tabs = [], styles, itemStyles &#125; = this.props;</span><br><span class="line"> </span><br><span class="line">    console.log(this, &#x27;this&#x27;);</span><br><span class="line">    console.log(this.props, &#x27;props&#x27;);</span><br><span class="line">    console.log(this.state, &#x27;state&#x27;);</span><br><span class="line">    return (</span><br><span class="line">      &lt;ul</span><br><span class="line">        style=&#123;&#123;</span><br><span class="line">          display: &#x27;flex&#x27;,</span><br><span class="line">          background: &#x27;#FFFFFF&#x27;,</span><br><span class="line">          paddingLeft: &#x27;32px&#x27;,</span><br><span class="line">          width: &#x27;100%&#x27;,</span><br><span class="line">          ...styles,</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &#123;tabs.map((item, index) =&gt; &#123;</span><br><span class="line">          const marginStyle =</span><br><span class="line">            index === 0</span><br><span class="line">              ? &#123;</span><br><span class="line">                  marginLeft: 0,</span><br><span class="line">                &#125;</span><br><span class="line">              : &#123;&#125;;</span><br><span class="line">          return (</span><br><span class="line">            &lt;li</span><br><span class="line">              style=&#123;&#123;</span><br><span class="line">                color: &#x27;#1890FF&#x27;,</span><br><span class="line">                borderBottom: &#x27;2px solid #1890FF&#x27;,</span><br><span class="line">                padding: &#x27;0px 1.5% 8px&#x27;,</span><br><span class="line">                cursor: &#x27;pointer&#x27;,</span><br><span class="line">                whiteSpace: &#x27;nowrap&#x27;,</span><br><span class="line">                ...itemStyles,</span><br><span class="line">                ...marginStyle,</span><br><span class="line">              &#125;&#125;</span><br><span class="line">              key=&#123;item.key&#125;</span><br><span class="line">            &gt;</span><br><span class="line">              &#123;item.name || item.value || &#x27;&#x27;&#125;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">          );</span><br><span class="line">        &#125;)&#125;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default GeYao;</span><br></pre></td></tr></table></figure>
-<h3 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4b663d2bf60741fd8abb04c8e71de902~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/863f0f1daf30432081f5b840147403a9~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h2 id="变化3"><a href="#变化3" class="headerlink" title="变化3"></a>变化3</h2><h3 id="数据格式-2"><a href="#数据格式-2" class="headerlink" title="数据格式"></a>数据格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const tabs = [</span><br><span class="line">    &#123; key: &#x27;&#x27;, value: &#x27;全部&#x27; &#125;,</span><br><span class="line">    &#123; key: &#x27;1&#x27;, value: &#x27;已审核&#x27; &#125;,</span><br><span class="line">    &#123; key: &#x27;2&#x27;, value: &#x27;未审核&#x27; &#125;,</span><br><span class="line">  ];</span><br></pre></td></tr></table></figure>
-<h3 id="父组件-3"><a href="#父组件-3" class="headerlink" title="父组件"></a>父组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;GeYao tabs=&#123;tabs&#125; /&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="子组件-3"><a href="#子组件-3" class="headerlink" title="子组件"></a>子组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#x27;react&#x27;;</span><br><span class="line">class GeYao extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      selectTab: props.selectTab || &#x27;&#x27;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  /**</span><br><span class="line">   * 切换tab</span><br><span class="line">   * @param &#123;Boolean&#125; doNot 是否不做任何事情，如果存在此值，不执行父组件切换方法,仅仅刷新样式</span><br><span class="line">   */</span><br><span class="line">  handleTabClick(key, doNot) &#123;</span><br><span class="line">    console.log(key, &#x27;key&#x27;);</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      selectTab: key,</span><br><span class="line">    &#125;);</span><br><span class="line">   </span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; selectTab &#125; = this.state;</span><br><span class="line">    const &#123; tabs = [], styles, itemStyles &#125; = this.props;</span><br><span class="line"> </span><br><span class="line">    return (</span><br><span class="line">      &lt;ul</span><br><span class="line">        style=&#123;&#123;</span><br><span class="line">          display: &#x27;flex&#x27;,</span><br><span class="line">          background: &#x27;#FFFFFF&#x27;,</span><br><span class="line">          paddingLeft: &#x27;32px&#x27;,</span><br><span class="line">          width: &#x27;100%&#x27;,</span><br><span class="line">          ...styles,</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &#123;tabs.map((item, index) =&gt; &#123;</span><br><span class="line">          const marginStyle =</span><br><span class="line">            index === 0</span><br><span class="line">              ? &#123;</span><br><span class="line">                  marginLeft: 0,</span><br><span class="line">                &#125;</span><br><span class="line">              : &#123;&#125;;</span><br><span class="line">          return (</span><br><span class="line">            &lt;li</span><br><span class="line">              onClick=&#123;() =&gt; this.handleTabClick(item.key)&#125;</span><br><span class="line">              style=&#123;&#123;</span><br><span class="line">                color: item.key === selectTab ? &#x27;#1890FF&#x27; : &#x27;#000000A6&#x27;,</span><br><span class="line">                borderBottom: item.key === selectTab ? &#x27;2px solid #1890FF&#x27; : &#x27;&#x27;,</span><br><span class="line">                padding: &#x27;0px 1.5% 8px&#x27;,</span><br><span class="line">                cursor: &#x27;pointer&#x27;,</span><br><span class="line">                whiteSpace: &#x27;nowrap&#x27;,</span><br><span class="line">                ...itemStyles,</span><br><span class="line">                ...marginStyle,</span><br><span class="line">              &#125;&#125;</span><br><span class="line">              key=&#123;item.key&#125;</span><br><span class="line">            &gt;</span><br><span class="line">              &#123;item.name || item.value || &#x27;&#x27;&#125;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">          );</span><br><span class="line">        &#125;)&#125;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default GeYao;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let formData = new FormData();</span><br><span class="line">    uploadFiles.forEach((file: any, index: any) =&gt; &#123;</span><br><span class="line">      formData.append(`file`, file</span><br><span class="line">      );</span><br></pre></td></tr></table></figure>
 
-<h3 id="运行结果-2"><a href="#运行结果-2" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bd5d2f53da804e00840ff89794e87822~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h3 id="图解-1"><a href="#图解-1" class="headerlink" title="图解"></a>图解</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/579285a38319444bab6d3d247e837fa4~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h2 id="变化4"><a href="#变化4" class="headerlink" title="变化4"></a>变化4</h2><h3 id="数据格式-3"><a href="#数据格式-3" class="headerlink" title="数据格式"></a>数据格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const tabs = [</span><br><span class="line">    &#123; key: &#x27;&#x27;, value: &#x27;全部&#x27; &#125;,</span><br><span class="line">    &#123; key: &#x27;1&#x27;, value: &#x27;已审核&#x27; &#125;,</span><br><span class="line">    &#123; key: &#x27;2&#x27;, value: &#x27;未审核&#x27; &#125;,</span><br><span class="line">  ];</span><br></pre></td></tr></table></figure>
-<h3 id="父组件-4"><a href="#父组件-4" class="headerlink" title="父组件"></a>父组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;GeYao tabs=&#123;tabs&#125; onTabSearch=&#123;this.handleTabChange&#125; /&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="子组件-4"><a href="#子组件-4" class="headerlink" title="子组件"></a>子组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#x27;react&#x27;;</span><br><span class="line">class GeYao extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      selectTab: props.selectTab || &#x27;&#x27;,</span><br><span class="line">      mouseOverTable: &#x27;&#x27;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  /**</span><br><span class="line">   * 切换tab</span><br><span class="line">   * @param &#123;Boolean&#125; doNot 是否不做任何事情，如果存在此值，不执行父组件切换方法,仅仅刷新样式</span><br><span class="line">   */</span><br><span class="line">  handleTabClick(key, doNot) &#123;</span><br><span class="line">    console.log(key, &#x27;key&#x27;);</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      selectTab: key,</span><br><span class="line">    &#125;);</span><br><span class="line">    if (!doNot) &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">        this.props.onTabSearch(key);</span><br><span class="line">      &#125; catch (error) &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; selectTab, mouseOverTable &#125; = this.state;</span><br><span class="line">    const &#123; tabs = [], styles, itemStyles &#125; = this.props;</span><br><span class="line"> </span><br><span class="line">    return (</span><br><span class="line">      &lt;ul</span><br><span class="line">        style=&#123;&#123;</span><br><span class="line">          display: &#x27;flex&#x27;,</span><br><span class="line">          background: &#x27;#FFFFFF&#x27;,</span><br><span class="line">          paddingLeft: &#x27;32px&#x27;,</span><br><span class="line">          width: &#x27;100%&#x27;,</span><br><span class="line">          ...styles,</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &#123;tabs.map((item, index) =&gt; &#123;</span><br><span class="line">          const marginStyle =</span><br><span class="line">            index === 0</span><br><span class="line">              ? &#123;</span><br><span class="line">                  marginLeft: 0,</span><br><span class="line">                &#125;</span><br><span class="line">              : &#123;&#125;;</span><br><span class="line">          return (</span><br><span class="line">            &lt;li</span><br><span class="line">              onMouseOver=&#123;() =&gt; this.setState(&#123; mouseOverTable: item.key &#125;)&#125;</span><br><span class="line">              onMouseLeave=&#123;() =&gt; this.setState(&#123; mouseOverTable: &#x27;mouseLeave&#x27; &#125;)&#125;</span><br><span class="line">              onClick=&#123;() =&gt; this.handleTabClick(item.key)&#125;</span><br><span class="line">              style=&#123;&#123;</span><br><span class="line">                color:</span><br><span class="line">                  item.key === selectTab || item.key === mouseOverTable ? &#x27;#1890FF&#x27; : &#x27;#000000A6&#x27;,</span><br><span class="line">                borderBottom: item.key === selectTab ? &#x27;2px solid #1890FF&#x27; : &#x27;&#x27;,</span><br><span class="line">                padding: &#x27;0px 1.5% 8px&#x27;,</span><br><span class="line">                cursor: &#x27;pointer&#x27;,</span><br><span class="line">                whiteSpace: &#x27;nowrap&#x27;,</span><br><span class="line">                ...itemStyles,</span><br><span class="line">                ...marginStyle,</span><br><span class="line">              &#125;&#125;</span><br><span class="line">              key=&#123;item.key&#125;</span><br><span class="line">            &gt;</span><br><span class="line">              &#123;item.name || item.value || &#x27;&#x27;&#125;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">          );</span><br><span class="line">        &#125;)&#125;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default GeYao;</span><br></pre></td></tr></table></figure>
-<h3 id="运行结果-3"><a href="#运行结果-3" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/da346e304209471f9b181e32dc1d2017~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h3 id="图解-2"><a href="#图解-2" class="headerlink" title="图解"></a>图解</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fb3e0be5240b4dc0a9b1e1b300c76d4a~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我是歌谣 放弃很容易 但是坚持一定很酷 谢谢你的鼓励 微信公众号前端小歌谣 加入前端巅峰交流群</span><br></pre></td></tr></table></figure>
-
-
+<blockquote>
+<p>核心 hook写法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const updateFiles = (function () &#123;</span><br><span class="line">  let fileList: any = null;</span><br><span class="line">  return function (list: any, setState: any) &#123;</span><br><span class="line">    if (!fileList) &#123;</span><br><span class="line">      fileList = list;</span><br><span class="line">      setState &amp;&amp; setState(list);</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;</span><br><span class="line">      fileList,</span><br><span class="line">      reset() &#123;</span><br><span class="line">        fileList = false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 感谢生命中帮助你的每一个人 感谢山川~</p>
+</blockquote>
 
       
 
@@ -226,7 +223,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgnd9ply0006zsfyfp9geunq/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgoq1to90006fwfyd64u4dk9/">展开全文 >></a>
         </p>
       
 
@@ -263,12 +260,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgnd9pm00009zsfyb14dgu58/">Taro+react+TaroUi封装一个公司库的下拉组件</a>
+      <a class="article-title" href="/2023/03/28/clgoq1toa0007fwfy18yx4c9o/">Taro+react+TaroUi封装一个公司库的下拉组件</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgnd9pm00009zsfyb14dgu58/" class="archive-article-date">
+        <a href="/2023/03/28/clgoq1toa0007fwfy18yx4c9o/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -365,93 +362,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgnd9pm00009zsfyb14dgu58/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React+Hook+ts+antDesign实现伪定时调用接口功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgnd9plw0003zsfy4pnl2oyw/">React+Hook+ts+antDesign实现伪定时调用接口功能</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/clgnd9plw0003zsfy4pnl2oyw/" class="archive-article-date">
-  	<time datetime="2023-03-28T07:12:42.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>大家好 我是歌谣 微信公众号关注前端小歌谣 今天要做的需求是接口 在一定时间里面执行一次的功能</p>
-</blockquote>
-<h2 id="定义循环时长"><a href="#定义循环时长" class="headerlink" title="定义循环时长"></a>定义循环时长</h2><blockquote>
-<p>说一下整体实现思路吧 定义定时器执行时间的状态 这里是十秒 可以通过接口配置调用</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const [delay, setDelay] = useState(10000)</span><br></pre></td></tr></table></figure>
-
-<h2 id="定义分页"><a href="#定义分页" class="headerlink" title="定义分页"></a>定义分页</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const [pageIndex, setPageIndex] = useState(0)</span><br></pre></td></tr></table></figure>
-
-<h2 id="核心代码实现"><a href="#核心代码实现" class="headerlink" title="核心代码实现"></a>核心代码实现</h2><blockquote>
-<p>分页变化调用接口</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> const timer = setInterval(() =&gt; &#123;</span><br><span class="line">    if (pageIndex == total) &#123;</span><br><span class="line"></span><br><span class="line">      setPageIndex(0)</span><br><span class="line">      // setVisable(visable++)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      setPageIndex(pageIndex + 1)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, delay)</span><br><span class="line">  return () =&gt; clearInterval(timer)</span><br><span class="line">  // &#125;else&#123;</span><br><span class="line">  //   const time1 = setInterval(() =&gt; &#123;</span><br><span class="line">  //     initMenuList()</span><br><span class="line">  //   &#125;, delay)</span><br><span class="line">  //   return () =&gt; clearInterval(time1)</span><br><span class="line">  // &#125;</span><br><span class="line"></span><br><span class="line">&#125;, [pageIndex, total])</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">  initMenuList();</span><br><span class="line">&#125;, [pageIndex]);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const initMenuList = async () =&gt; &#123;</span><br><span class="line">   const response = await postScreenList(&#123; pageIndex: pageIndex, pageSize: 1, bedCodeList: [&quot;CC001&quot;] &#125;);</span><br><span class="line">   console.log(response, &quot;response&quot;);</span><br><span class="line"></span><br><span class="line">   if (response.code == 200) &#123;</span><br><span class="line">     setMenuList(response.data);</span><br><span class="line">     setTotal(response.total)</span><br><span class="line">     // setPages(response.pages)</span><br><span class="line">     // setCurrent(response.current)</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><blockquote>
-<p>接口中的数据返回的response.total当数据未空时候 返回为1<br>其他正常返回 这样就能实现定时器的永动了</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/4156760d42c2479ea531e8d19eed6019.png" alt="在这里插入图片描述"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我是歌谣 放弃很容易 但是坚持一定很酷</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgnd9plw0003zsfy4pnl2oyw/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgoq1toa0007fwfy18yx4c9o/">展开全文 >></a>
         </p>
       
 
@@ -488,12 +399,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgnd9plx0005zsfy1qft40uc/">React+Hook+ts+antDesign实现table行编辑功能</a>
+      <a class="article-title" href="/2023/03/28/clgoq1to50001fwfy3nkxbztz/">React+Hook+ts+antDesign实现table行编辑功能</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgnd9plx0005zsfy1qft40uc/" class="archive-article-date">
+        <a href="/2023/03/28/clgoq1to50001fwfy3nkxbztz/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -541,7 +452,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgnd9plx0005zsfy1qft40uc/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgoq1to50001fwfy3nkxbztz/">展开全文 >></a>
         </p>
       
 
@@ -578,12 +489,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgnd9pm1000azsfy26kidhlt/">React+antDesign实现上传图片功能(类组件)</a>
+      <a class="article-title" href="/2023/03/28/clgoq1to70003fwfygi0xcf08/">React+antDesign实现上传图片功能(类组件)</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgnd9pm1000azsfy26kidhlt/" class="archive-article-date">
+        <a href="/2023/03/28/clgoq1to70003fwfygi0xcf08/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -620,7 +531,93 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgnd9pm1000azsfy26kidhlt/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgoq1to70003fwfygi0xcf08/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-React+Hook+ts+antDesign实现伪定时调用接口功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/28/clgoq1toc000bfwfy11scakal/">React+Hook+ts+antDesign实现伪定时调用接口功能</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/clgoq1toc000bfwfy11scakal/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:12:42.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 微信公众号关注前端小歌谣 今天要做的需求是接口 在一定时间里面执行一次的功能</p>
+</blockquote>
+<h2 id="定义循环时长"><a href="#定义循环时长" class="headerlink" title="定义循环时长"></a>定义循环时长</h2><blockquote>
+<p>说一下整体实现思路吧 定义定时器执行时间的状态 这里是十秒 可以通过接口配置调用</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const [delay, setDelay] = useState(10000)</span><br></pre></td></tr></table></figure>
+
+<h2 id="定义分页"><a href="#定义分页" class="headerlink" title="定义分页"></a>定义分页</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const [pageIndex, setPageIndex] = useState(0)</span><br></pre></td></tr></table></figure>
+
+<h2 id="核心代码实现"><a href="#核心代码实现" class="headerlink" title="核心代码实现"></a>核心代码实现</h2><blockquote>
+<p>分页变化调用接口</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> const timer = setInterval(() =&gt; &#123;</span><br><span class="line">    if (pageIndex == total) &#123;</span><br><span class="line"></span><br><span class="line">      setPageIndex(0)</span><br><span class="line">      // setVisable(visable++)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      setPageIndex(pageIndex + 1)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, delay)</span><br><span class="line">  return () =&gt; clearInterval(timer)</span><br><span class="line">  // &#125;else&#123;</span><br><span class="line">  //   const time1 = setInterval(() =&gt; &#123;</span><br><span class="line">  //     initMenuList()</span><br><span class="line">  //   &#125;, delay)</span><br><span class="line">  //   return () =&gt; clearInterval(time1)</span><br><span class="line">  // &#125;</span><br><span class="line"></span><br><span class="line">&#125;, [pageIndex, total])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">  initMenuList();</span><br><span class="line">&#125;, [pageIndex]);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const initMenuList = async () =&gt; &#123;</span><br><span class="line">   const response = await postScreenList(&#123; pageIndex: pageIndex, pageSize: 1, bedCodeList: [&quot;CC001&quot;] &#125;);</span><br><span class="line">   console.log(response, &quot;response&quot;);</span><br><span class="line"></span><br><span class="line">   if (response.code == 200) &#123;</span><br><span class="line">     setMenuList(response.data);</span><br><span class="line">     setTotal(response.total)</span><br><span class="line">     // setPages(response.pages)</span><br><span class="line">     // setCurrent(response.current)</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><blockquote>
+<p>接口中的数据返回的response.total当数据未空时候 返回为1<br>其他正常返回 这样就能实现定时器的永动了</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/4156760d42c2479ea531e8d19eed6019.png" alt="在这里插入图片描述"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我是歌谣 放弃很容易 但是坚持一定很酷</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/28/clgoq1toc000bfwfy11scakal/">展开全文 >></a>
         </p>
       
 
@@ -657,12 +654,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgnd9plt0001zsfy55gg8ewi/">React+Hook+ts+antDesignMobile实现input自动获取功能</a>
+      <a class="article-title" href="/2023/03/28/clgoq1to60002fwfy9xeg1u87/">React+Hook+ts+antDesignMobile实现input自动获取功能</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgnd9plt0001zsfy55gg8ewi/" class="archive-article-date">
+        <a href="/2023/03/28/clgoq1to60002fwfy9xeg1u87/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -696,7 +693,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgnd9plt0001zsfy55gg8ewi/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgoq1to60002fwfy9xeg1u87/">展开全文 >></a>
         </p>
       
 
@@ -733,12 +730,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgnd9plx0004zsfyb9zs19gs/">React+Hook+ts+antDesign实现table增加一个合计功能</a>
+      <a class="article-title" href="/2023/03/28/clgoq1to80005fwfy8uarggnw/">React+Hook+ts+antDesign实现table增加一个合计功能</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgnd9plx0004zsfyb9zs19gs/" class="archive-article-date">
+        <a href="/2023/03/28/clgoq1to80005fwfy8uarggnw/" class="archive-article-date">
   	<time datetime="2023-03-28T07:12:42.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -769,7 +766,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgnd9plx0004zsfyb9zs19gs/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgoq1to80005fwfy8uarggnw/">展开全文 >></a>
         </p>
       
 
@@ -806,12 +803,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgnd9pm6000lzsfy9x3adsmp/">前端小知识点扫盲笔记记录5</a>
+      <a class="article-title" href="/2023/03/28/clgoq1toi000nfwfy15b19im8/">前端小知识点扫盲笔记记录5</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgnd9pm6000lzsfy9x3adsmp/" class="archive-article-date">
+        <a href="/2023/03/28/clgoq1toi000nfwfy15b19im8/" class="archive-article-date">
   	<time datetime="2023-03-28T02:52:07.832Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -862,7 +859,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgnd9pm6000lzsfy9x3adsmp/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgoq1toi000nfwfy15b19im8/">展开全文 >></a>
         </p>
       
 
@@ -899,12 +896,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/clgnd9pma000szsfy07mt54xx/">前端小知识点扫盲笔记记录4</a>
+      <a class="article-title" href="/2023/03/28/clgoq1tog000lfwfyg49c1m17/">前端小知识点扫盲笔记记录4</a>
     </h1>
   
 
         
-        <a href="/2023/03/28/clgnd9pma000szsfy07mt54xx/" class="archive-article-date">
+        <a href="/2023/03/28/clgoq1tog000lfwfyg49c1m17/" class="archive-article-date">
   	<time datetime="2023-03-28T02:06:24.359Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
@@ -942,7 +939,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/clgnd9pma000szsfy07mt54xx/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/28/clgoq1tog000lfwfyg49c1m17/">展开全文 >></a>
         </p>
       
 
@@ -1154,6 +1151,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="https://www.jianshu.com/u/78cb46766e9b" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>简书歌谣</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://www.cnblogs.com/yao-655442/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>博客园前端导师歌谣</a>
             </li>
           
         </ul>

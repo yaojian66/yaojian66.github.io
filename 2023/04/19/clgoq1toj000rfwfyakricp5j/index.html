@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>文章分类 | 前端导师歌谣的博客</title>
+  <title>原生table实现矩阵展示打勾功能 | 前端导师歌谣的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分享技术 分享快乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="文章分类">
-<meta property="og:url" content="http://example.com/categories/index.html">
+  <meta name="description" content="前言 大家好 我是歌谣 今天又遇到了一个新的开发需求 就是我们的需要实现一个二维表功能  需求设计 定义数据格式 [         [             &amp;#123;                 &quot;flag&quot;: &quot;false&quot;,                 &quot;id&quot;: &quot;96aea64d-5014-4479-98">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原生table实现矩阵展示打勾功能">
+<meta property="og:url" content="http://example.com/2023/04/19/clgoq1toj000rfwfyakricp5j/index.html">
 <meta property="og:site_name" content="前端导师歌谣的博客">
-<meta property="og:description" content="分享技术 分享快乐">
+<meta property="og:description" content="前言 大家好 我是歌谣 今天又遇到了一个新的开发需求 就是我们的需要实现一个二维表功能  需求设计 定义数据格式 [         [             &amp;#123;                 &quot;flag&quot;: &quot;false&quot;,                 &quot;id&quot;: &quot;96aea64d-5014-4479-98">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2018-06-11T02:13:21.000Z">
-<meta property="article:modified_time" content="2023-03-28T07:12:42.841Z">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fc76ece6274a49249f0cfc10d5f69ffd~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c5ff8a4793e0426baa6f656c7a19523c~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="article:published_time" content="2023-04-19T06:47:35.884Z">
+<meta property="article:modified_time" content="2023-04-19T06:48:24.785Z">
 <meta property="article:author" content="geyao">
 <meta property="article:tag" content="前端,程序猿,热爱生活">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fc76ece6274a49249f0cfc10d5f69ffd~tplv-k3u1fbpfcp-zoom-1.image">
   
     <link rel="alternative" href="/atom.xml" title="前端导师歌谣的博客" type="application/atom+xml">
   
@@ -155,27 +158,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-原生table实现矩阵展示打勾功能" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      文章分类
+      原生table实现矩阵展示打勾功能
     </h1>
   
 
         
-        <a href="/categories/index.html" class="archive-article-date">
-  	<time datetime="2018-06-11T02:13:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-11</time>
+        <a href="/2023/04/19/clgoq1toj000rfwfyakricp5j/" class="archive-article-date">
+  	<time datetime="2023-04-19T06:47:35.884Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 今天又遇到了一个新的开发需求 就是我们的需要实现一个二维表功能</p>
+</blockquote>
+<h1 id="需求设计"><a href="#需求设计" class="headerlink" title="需求设计"></a>需求设计</h1><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fc76ece6274a49249f0cfc10d5f69ffd~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h1 id="定义数据格式"><a href="#定义数据格式" class="headerlink" title="定义数据格式"></a>定义数据格式</h1><pre><code> [
+        [
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;96aea64d-5014-4479-98bd-64eac444e64a&quot;,
+                &quot;value&quot;: &quot;尺码/颜色&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;9cf8e371-8738-4c61-acb4-a80b036bc44e&quot;,
+                &quot;value&quot;: &quot;黑色/8056&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;60c009b3-b215-4761-acd4-77cd080c5e9a&quot;,
+                &quot;value&quot;: &quot;秘釉色7475&quot;
+            &#125;
+        ],
+        [
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;cf606eae-f535-48a0-a5d6-566979699a2d&quot;,
+                &quot;value&quot;: &quot;165&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;3b868f1d-9dbf-4d55-acc7-eb170f071af7&quot;,
+                &quot;value&quot;: &quot;&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;e5b4f621-f03b-4079-b34d-d99952764e00&quot;,
+                &quot;value&quot;: &quot;&quot;
+            &#125;
+        ],
+        [
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;a17a855b-8a3b-4202-813f-52a39dd6b183&quot;,
+                &quot;value&quot;: &quot;170&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;204885f5-c786-4dfa-a949-3beb873d8b1f&quot;,
+                &quot;value&quot;: &quot;&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;de183b17-8971-4735-9b03-0e9169bf672b&quot;,
+                &quot;value&quot;: &quot;&quot;
+            &#125;
+        ],
+        [
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;91923b21-bdaa-45fa-bf49-89286fefda75&quot;,
+                &quot;value&quot;: &quot;175&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;9c3d73f8-b693-48fa-93b4-d36b43862728&quot;,
+                &quot;value&quot;: &quot;&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;d578b782-0494-4223-9b5e-22106e7316f3&quot;,
+                &quot;value&quot;: &quot;&quot;
+            &#125;
+        ],
+        [
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;94a7a2c9-2f26-4bd5-83f8-7b3c691e9bef&quot;,
+                &quot;value&quot;: &quot;160&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;b4a89ad8-2e35-4687-92e8-9b2b2b0206c9&quot;,
+                &quot;value&quot;: &quot;&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;1ad8ca10-089a-4719-9782-b0f84e3c7dcd&quot;,
+                &quot;value&quot;: &quot;&quot;
+            &#125;
+        ],
+        [
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;2d5fcd60-cf7b-4bf7-bcd9-3cc9d91189d0&quot;,
+                &quot;value&quot;: &quot;155&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;370e5ebf-3db5-4ce5-bfe6-8eb97601c27a&quot;,
+                &quot;value&quot;: &quot;&quot;
+            &#125;,
+            &#123;
+                &quot;flag&quot;: &quot;false&quot;,
+                &quot;id&quot;: &quot;a5654806-808a-469b-94e1-29d2fe6b2e28&quot;,
+                &quot;value&quot;: &quot;&quot;
+            &#125;
+        ]
+    ]
+</code></pre>
+<h1 id="紧接着就是数据处理两层循环"><a href="#紧接着就是数据处理两层循环" class="headerlink" title="紧接着就是数据处理两层循环"></a>紧接着就是数据处理两层循环</h1><pre><code> &lt;table style=&#123;&#123; border: "1px solid #ccc" &#125;&#125;&gt;
+            &#123;dataListTest &amp;&amp; dataListTest.map((outer: any, index: any) =&gt; (
+              &lt;tr&gt;
+                &#123;outer &amp;&amp; outer.map((inner: any, num: any) =&gt; &#123;
+                  if (num == 0 || index == 0) &#123;
+                    return &lt;th style=&#123;&#123; width: "5%", border: "1px solid #ccc", &#125;&#125;&gt;&#123;inner.value&#125;&lt;/th&gt;
+                  &#125; else &#123;
+                    return &lt;th onClick=&#123;() =&gt; handleClick(inner)&#125; style=&#123;&#123;
+                          width: "5%", border: "1px solid #ccc",
+                        &#125;&#125;&gt;&#123;inner.flag ? &quot;✔&quot; : inner.value&#125;&lt;/th&gt;
+                  &#125;
+                &#125;)&#125;
+              &lt;/tr&gt;
+            ))&#125;
+          &lt;/table&gt;
+</code></pre>
+<blockquote>
+<p>需要进行两层循环  然后三元用来判断是否打勾 (num &#x3D;&#x3D; 0 || index &#x3D;&#x3D; 0）控制第一行和<br>第一列不可以点击</p>
+</blockquote>
+<h1 id="处理方法"><a href="#处理方法" class="headerlink" title="处理方法"></a>处理方法</h1><pre><code> const handleClick = (test: any) =&gt; &#123;
+    var dataList = JSON.parse(JSON.stringify(dataListTest))
+    for (const outer of dataList) &#123;
+      for (const inner of outer) &#123;
+        if (inner.id == test.id) &#123;
+          inner.flag = !inner.flag
+        &#125;
+      &#125;
+    &#125;
+    console.log(dataList, &quot;dataChange&quot;)
+    setDataListTest(dataList)
+  &#125;
+</code></pre>
+<blockquote>
+<p>通过flag的true和false切换控制打勾</p>
+</blockquote>
+<h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c5ff8a4793e0426baa6f656c7a19523c~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入代码片"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>我是歌谣 放弃很容易 但是坚持一定很酷 微信公众号关注前端小歌谣 一起学习前端知识</p>
+</blockquote>
+
       
 
       
@@ -264,7 +415,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/categories/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/04/19/clgoq1toj000rfwfyakricp5j/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -276,6 +427,25 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2023/04/19/clgoq1toj000qfwfy6j50bgg8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          前端小知识点扫盲笔记记录9
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/04/14/clgoq1tok000tfwfybnuw45bq/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端小知识点扫盲笔记记录8</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -297,7 +467,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">需求设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">定义数据格式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B4%A7%E6%8E%A5%E7%9D%80%E5%B0%B1%E6%98%AF%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%A4%E5%B1%82%E5%BE%AA%E7%8E%AF"><span class="toc-number">4.</span> <span class="toc-text">紧接着就是数据处理两层循环</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">处理方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">6.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -307,6 +477,16 @@
 </aside>
 
 
+
+  
+  
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -329,7 +509,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

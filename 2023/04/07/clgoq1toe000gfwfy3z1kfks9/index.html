@@ -6,20 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>文章分类 | 前端导师歌谣的博客</title>
+  <title>再次接触老朋友react+ant design table合并单元格 | 前端导师歌谣的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分享技术 分享快乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="文章分类">
-<meta property="og:url" content="http://example.com/categories/index.html">
+  <meta name="description" content="前言 大家好 我是歌谣 今天继续开发一个需求 就是我们的大屏需求 今天让我们一步步解决所遇到的问题  第一个功能 如何渲染参照官网案例12345678910111213141516171819202122232425262728293031323334const dataSource &#x3D; [  &amp;#123;    key: &amp;#x27;1&amp;#x27;,    name: &amp;#x27;胡彦斌&amp;#x2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="再次接触老朋友react+ant design table合并单元格">
+<meta property="og:url" content="http://example.com/2023/04/07/clgoq1toe000gfwfy3z1kfks9/index.html">
 <meta property="og:site_name" content="前端导师歌谣的博客">
-<meta property="og:description" content="分享技术 分享快乐">
+<meta property="og:description" content="前言 大家好 我是歌谣 今天继续开发一个需求 就是我们的大屏需求 今天让我们一步步解决所遇到的问题  第一个功能 如何渲染参照官网案例12345678910111213141516171819202122232425262728293031323334const dataSource &#x3D; [  &amp;#123;    key: &amp;#x27;1&amp;#x27;,    name: &amp;#x27;胡彦斌&amp;#x2">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2018-06-11T02:13:21.000Z">
-<meta property="article:modified_time" content="2023-03-28T07:12:42.841Z">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6bf81faa8e204c44a6c1cb6247b3eabd~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3c5cf2ed784946028e402ae49c16cecc~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2b4868db13c435d9faee41ecd1c3558~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6b45b6263ff9433f8255128bf6f3c1c0~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="article:published_time" content="2023-04-07T07:55:11.929Z">
+<meta property="article:modified_time" content="2023-04-07T08:00:31.051Z">
 <meta property="article:author" content="geyao">
 <meta property="article:tag" content="前端,程序猿,热爱生活">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6bf81faa8e204c44a6c1cb6247b3eabd~tplv-k3u1fbpfcp-zoom-1.image">
   
     <link rel="alternative" href="/atom.xml" title="前端导师歌谣的博客" type="application/atom+xml">
   
@@ -155,27 +160,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-再次接触老朋友react+ant design table合并单元格" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      文章分类
+      再次接触老朋友react+ant design table合并单元格
     </h1>
   
 
         
-        <a href="/categories/index.html" class="archive-article-date">
-  	<time datetime="2018-06-11T02:13:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-11</time>
+        <a href="/2023/04/07/clgoq1toe000gfwfy3z1kfks9/" class="archive-article-date">
+  	<time datetime="2023-04-07T07:55:11.929Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>大家好 我是歌谣 今天继续开发一个需求 就是我们的大屏需求 今天让我们一步步<br>解决所遇到的问题</p>
+</blockquote>
+<h1 id="第一个功能-如何渲染"><a href="#第一个功能-如何渲染" class="headerlink" title="第一个功能 如何渲染"></a>第一个功能 如何渲染</h1><h2 id="参照官网案例"><a href="#参照官网案例" class="headerlink" title="参照官网案例"></a>参照官网案例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">const dataSource = [</span><br><span class="line">  &#123;</span><br><span class="line">    key: &#x27;1&#x27;,</span><br><span class="line">    name: &#x27;胡彦斌&#x27;,</span><br><span class="line">    age: 32,</span><br><span class="line">    address: &#x27;西湖区湖底公园1号&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    key: &#x27;2&#x27;,</span><br><span class="line">    name: &#x27;胡彦祖&#x27;,</span><br><span class="line">    age: 42,</span><br><span class="line">    address: &#x27;西湖区湖底公园1号&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">const columns = [</span><br><span class="line">  &#123;</span><br><span class="line">    title: &#x27;姓名&#x27;,</span><br><span class="line">    dataIndex: &#x27;name&#x27;,</span><br><span class="line">    key: &#x27;name&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    title: &#x27;年龄&#x27;,</span><br><span class="line">    dataIndex: &#x27;age&#x27;,</span><br><span class="line">    key: &#x27;age&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    title: &#x27;住址&#x27;,</span><br><span class="line">    dataIndex: &#x27;address&#x27;,</span><br><span class="line">    key: &#x27;address&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">&lt;Table dataSource=&#123;dataSource&#125; columns=&#123;columns&#125; /&gt;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当我们看完了这个基础案例以后 相信我们就已经清楚该定义数据格式了</p>
+</blockquote>
+<h2 id="最终数据格式"><a href="#最终数据格式" class="headerlink" title="最终数据格式"></a>最终数据格式</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6bf81faa8e204c44a6c1cb6247b3eabd~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h2 id="结果-解决"><a href="#结果-解决" class="headerlink" title="结果(解决)"></a>结果(解决)</h2><h1 id="第二个功能-如何合并"><a href="#第二个功能-如何合并" class="headerlink" title="第二个功能 如何合并"></a>第二个功能 如何合并</h1><h2 id="直接看全部代码-进行重点讲解"><a href="#直接看全部代码-进行重点讲解" class="headerlink" title="直接看全部代码 进行重点讲解"></a>直接看全部代码 进行重点讲解</h2><h3 id="定义处理column哥的方法-加入render"><a href="#定义处理column哥的方法-加入render" class="headerlink" title="定义处理column哥的方法 加入render"></a>定义处理column哥的方法 加入render</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const handleColumn = (columns) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">  for (let i = 0; i &lt; columns.length; i++) &#123;</span><br><span class="line">    if (columns[i]?.dataIndex == &quot;cuttingName&quot;) &#123;</span><br><span class="line">      columns[i].render = data</span><br><span class="line">    &#125; else if (columns[i]?.dataIndex == &quot;colorName&quot;) &#123;</span><br><span class="line">      columns[i].render = dataColor</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return columns</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="datacolor处理合并逻辑"><a href="#datacolor处理合并逻辑" class="headerlink" title="datacolor处理合并逻辑"></a>datacolor处理合并逻辑</h3><blockquote>
+<p>datacolor是一个函数 下面看我的定义</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const dataColor = (value, row, index) =&gt; &#123;</span><br><span class="line">    const obj = &#123;</span><br><span class="line">      children: value,</span><br><span class="line">      props: &#123; rowSpan: 1 &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">    if (columns.length &gt; 0) &#123;</span><br><span class="line">      return filterNumData(obj, dataSource, row, index, &#x27;colorName&#x27;)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return obj</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>if判断特别关键 不然刚刷新页面就会报错 因为render找不到对应属性</p>
+</blockquote>
+<h3 id="filterNumData处理合并逻辑核心"><a href="#filterNumData处理合并逻辑核心" class="headerlink" title="filterNumData处理合并逻辑核心"></a>filterNumData处理合并逻辑核心</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const filterNumData = (obj, arr, record, index, flag) =&gt; &#123;</span><br><span class="line">    let length = 0</span><br><span class="line">    if (arr.length &gt; 0) &#123;</span><br><span class="line">      for (let i = index; i &lt; arr.length; i++) &#123;</span><br><span class="line">        if (i === arr.length - 1 &amp;&amp; arr.length != 1) &#123;</span><br><span class="line">          if (arr[i - 1][`$&#123;flag&#125;`] === record[`$&#123;flag&#125;`]) &#123;</span><br><span class="line">            length += 1</span><br><span class="line">            break</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          if (arr[i][`$&#123;flag&#125;`] === record[`$&#123;flag&#125;`]) &#123;</span><br><span class="line">            length += 1</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            break</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>五个属性 我们分别讲解<br>obj 自己定义了 看如上  const obj &#x3D; {<br>      children: value,<br>      props: { rowSpan: 1 },<br>    }<br>  dataSource返回的数据<br>  row  render自带<br>  index render自带<br>  colorName 要合并的属性<br>最后重新setState columns 合并完成</p>
+</blockquote>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3c5cf2ed784946028e402ae49c16cecc~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h1 id="第三个功能-如何通过定时器渲染"><a href="#第三个功能-如何通过定时器渲染" class="headerlink" title="第三个功能 如何通过定时器渲染"></a>第三个功能 如何通过定时器渲染</h1><blockquote>
+<p>根据数据返回的条数进行累加 累加到最大条数置为0</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">   const timer = setInterval(() =&gt; &#123;</span><br><span class="line">     if (pageIndex == total || pageIndex == 10) &#123;</span><br><span class="line">       setPageIndex(0)</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">       setPageIndex(pageIndex + 1)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;, delay)</span><br><span class="line">   return () =&gt; clearInterval(timer)</span><br><span class="line"> &#125;, [pageIndex, total])</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过接口的接口赋值 完成 pageIndex变化的时候重新调用接口</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">    initMenuList();</span><br><span class="line">  &#125;, [pageIndex]);</span><br></pre></td></tr></table></figure>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2b4868db13c435d9faee41ecd1c3558~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+<h1 id="第四个功能-增加合计"><a href="#第四个功能-增加合计" class="headerlink" title="第四个功能 增加合计"></a>第四个功能 增加合计</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;Table dataSource=&#123;dataSource&#125; columns=&#123;columns&#125; pagination=&#123;false&#125;  summary=&#123;data =&gt; &#123;</span><br><span class="line">                       let totalCount = 0;</span><br><span class="line">                       return (</span><br><span class="line">                           &lt;&gt;</span><br><span class="line">                               &lt;Table.Summary.Row&gt;</span><br><span class="line">                                   &lt;Table.Summary.Cell index=&#123;0&#125;&gt;合计&lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                   &lt;Table.Summary.Cell index=&#123;1&#125;&gt;</span><br><span class="line">                                   &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                   &lt;Table.Summary.Cell index=&#123;2&#125;&gt;</span><br><span class="line">                                   &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                   &lt;Table.Summary.Cell index=&#123;3&#125;&gt;</span><br><span class="line">                                   &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                                   &lt;Table.Summary.Cell index=&#123;4&#125;&gt;</span><br><span class="line">                                       &lt;span&gt;&#123;total&#125;&lt;/span&gt;</span><br><span class="line">                                   &lt;/Table.Summary.Cell&gt;</span><br><span class="line">                               &lt;/Table.Summary.Row&gt;</span><br><span class="line">                           &lt;/&gt;</span><br><span class="line">                       );</span><br><span class="line">                   &#125;&#125; /&gt;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>直接summary完成数据合计 对应再对应的值上面即可 继续接口返回<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6b45b6263ff9433f8255128bf6f3c1c0~tplv-k3u1fbpfcp-zoom-1.image" alt="在这里插入图片描述"></p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>以上就是真实项目中解决问题的思路和写法 我是歌谣 微信公众号关注前端小歌谣<br>带你进入强大的前端巅峰人才交流群</p>
+</blockquote>
+
       
 
       
@@ -264,7 +311,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/categories/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/04/07/clgoq1toe000gfwfy3z1kfks9/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -276,6 +323,25 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2023/04/11/clgoq1toe000ffwfydm0qcxqb/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          springboot+vue搭建前后端项目实现员工的增删改查
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/04/05/clgoq1toj000sfwfy1q043eqk/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记录一次艰难的云服务器部署前后端项目springBoot+mybatis+vue(两天解决的前后端跨域问题多种方式)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -297,7 +363,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD-%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93"><span class="toc-number">2.</span> <span class="toc-text">第一个功能 如何渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E7%85%A7%E5%AE%98%E7%BD%91%E6%A1%88%E4%BE%8B"><span class="toc-number">2.1.</span> <span class="toc-text">参照官网案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">最终数据格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C-%E8%A7%A3%E5%86%B3"><span class="toc-number">2.3.</span> <span class="toc-text">结果(解决)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%8A%9F%E8%83%BD-%E5%A6%82%E4%BD%95%E5%90%88%E5%B9%B6"><span class="toc-number">3.</span> <span class="toc-text">第二个功能 如何合并</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E7%9C%8B%E5%85%A8%E9%83%A8%E4%BB%A3%E7%A0%81-%E8%BF%9B%E8%A1%8C%E9%87%8D%E7%82%B9%E8%AE%B2%E8%A7%A3"><span class="toc-number">3.1.</span> <span class="toc-text">直接看全部代码 进行重点讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%A4%84%E7%90%86column%E5%93%A5%E7%9A%84%E6%96%B9%E6%B3%95-%E5%8A%A0%E5%85%A5render"><span class="toc-number">3.1.1.</span> <span class="toc-text">定义处理column哥的方法 加入render</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#datacolor%E5%A4%84%E7%90%86%E5%90%88%E5%B9%B6%E9%80%BB%E8%BE%91"><span class="toc-number">3.1.2.</span> <span class="toc-text">datacolor处理合并逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filterNumData%E5%A4%84%E7%90%86%E5%90%88%E5%B9%B6%E9%80%BB%E8%BE%91%E6%A0%B8%E5%BF%83"><span class="toc-number">3.1.3.</span> <span class="toc-text">filterNumData处理合并逻辑核心</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8A%9F%E8%83%BD-%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%AE%9A%E6%97%B6%E5%99%A8%E6%B8%B2%E6%9F%93"><span class="toc-number">4.</span> <span class="toc-text">第三个功能 如何通过定时器渲染</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E4%B8%AA%E5%8A%9F%E8%83%BD-%E5%A2%9E%E5%8A%A0%E5%90%88%E8%AE%A1"><span class="toc-number">5.</span> <span class="toc-text">第四个功能 增加合计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -307,6 +373,16 @@
 </aside>
 
 
+
+  
+  
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -329,7 +405,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
